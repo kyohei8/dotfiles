@@ -6,6 +6,14 @@ set statusline=[*%n]\ %<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=
 call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
 
+".vimrcを開くコマンド<Space+.>
+nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
+"vimrcを再読み込み <Space+,>
+nnoremap <Space>, :<C-u>source $MYVIMRC<Return>
+
+"Ctrl+cでも抜ける
+inoremap <C-c> <Esc>
+
 "折りたたみ設定
 set foldmethod=indent
 set fdc=4
@@ -182,7 +190,7 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 " Ctrl+g で1文字削除
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
-" SuperTab like snippets behavior.
+" SuperTab like snippets behavior. タブで展開
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -309,3 +317,14 @@ hi IndentGuidesOdd  ctermbg=249
 hi IndentGuidesEven ctermbg=235
 au FileType coffee,ruby,javascript,python,haml,eruby IndentGuidesEnable
 nmap <silent><Leader>ig <Plug>IndentGuidesToggle
+
+"------------------------------
+" カーソルを自動的に()の中へ
+imap {} {}<Left>
+imap [] []<Left>
+imap () ()<Left>
+imap "" ""<Left>
+imap '' ''<Left>
+imap <> <><Left>
+imap // //<left>
+imap /// ///<left>
