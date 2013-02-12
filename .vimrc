@@ -236,9 +236,17 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 "NERDtree(ファイルツリー)の設定
 "------------------------------------------------------
 let file_name = expand("%")
+"let g:NERDTreeDirArrows=0
 if has('vim_starting') &&  file_name == ""
   autocmd VimEnter * NERDTree ./
 endif
+"Ctrl+eで開閉
+nmap <silent> <C-e>      :NERDTreeToggle<CR>
+vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+omap <silent> <C-e>      :NERDTreeToggle<CR>
+imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
+"
 
 "------------------------------------------------------
 "JavascriptからCoffeescriptを生成するfunction ---------
@@ -328,3 +336,9 @@ imap '' ''<Left>
 imap <> <><Left>
 imap // //<left>
 imap /// ///<left>
+
+"------------------------------------
+"srcexpl.vim
+"------------------------------------
+"タグを生成
+let g:SrcExpl_UpdateTags = 1
