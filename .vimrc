@@ -1,10 +1,40 @@
+set nocompatible
+filetype off
+"vundle
+set rtp+=~/dotfiles/.vim/vundle.git/
+call vundle#rc()
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neosnippet.git'
+Bundle 'Shougo/unite.vim'
+Bundle 'scrooloose/nerdtree'
+
+Bundle 'pivotal/jasmine'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'pekepeke/titanium-vim'
+Bundle 'taglist.vim'
+Bundle 'ZenCoding.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-rails'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Source-Explorer-srcexpl.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
+"js環境
+Bundle 'JavaScript-syntax'
+Bundle 'pangloss/vim-javascript'
+
+filetype plugin indent on     " required!
+
 "ステータスラインに文字コードと改行コードを表示
 "set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set statusline=[*%n]\ %<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 "pathogenの読み込み
-call pathogen#runtime_append_all_bundles()
-call pathogen#infect()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#infect()
 
 ".vimrcを開くコマンド<Space+.>
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
@@ -191,15 +221,19 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 " SuperTab like snippets behavior. タブで展開
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 "inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
 " 補完候補が表示されている場合は確定。そうでない場合は改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
-
-" <TAB>: completion.
+"inoremap <expr><CR>  neocomplcache#sources#snippets_complete#expandable()" ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? neocomplcache#close_popup() : "<CR>"
+"Tabキーの動作
 "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
