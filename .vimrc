@@ -14,7 +14,7 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'pekepeke/titanium-vim'
 Bundle 'taglist.vim'
 Bundle 'ZenCoding.vim'
-Bundle 'kchmck/vim-coffee-script'
+Bundle 'vim-coffee-script'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-rails'
@@ -323,6 +323,9 @@ nmap <silent>  ;log :call ReplaceLog()<CR>
 "------------------------------------
 " vimにcoffeeファイルタイプを認識させる
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+"リアルタイムプレビュー
+let coffee_compile_vert = 1
+au BufWritePost *.coffee :CoffeeCompile watch vert
 "------------------------------------
 " vim-coffee-script
 "------------------------------------
