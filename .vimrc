@@ -1,48 +1,49 @@
-set nocompatible
-filetype off
-"vundle
-set rtp+=~/dotfiles/.vim/vundle.git/
-call vundle#rc()
+" Basics {
+    set nocompatible
+" }
 
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet.git'
-Bundle 'Shougo/unite.vim'
-Bundle 'scrooloose/nerdtree'
+"Bundles {
+  filetype off
+  set rtp+=~/dotfiles/.vim/vundle.git/
+  call vundle#rc()
 
-Bundle 'pivotal/jasmine'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'pekepeke/titanium-vim'
-Bundle 'taglist.vim'
-Bundle 'ZenCoding.vim'
-Bundle 'vim-coffee-script'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rails'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Source-Explorer-srcexpl.vim'
-Bundle 'thinca/vim-ref'
-Bundle 'thinca/vim-quickrun'
-"js環境
-Bundle 'JavaScript-syntax'
-Bundle 'pangloss/vim-javascript'
+  Bundle 'Shougo/neocomplcache'
+  Bundle 'Shougo/neosnippet.git'
+  Bundle 'Shougo/unite.vim'
+  Bundle 'scrooloose/nerdtree'
 
-filetype plugin indent on     " required!
+  Bundle 'pivotal/jasmine'
+  Bundle 'tomtom/tcomment_vim'
+  Bundle 'pekepeke/titanium-vim'
+  Bundle 'taglist.vim'
+  Bundle 'ZenCoding.vim'
+  Bundle 'vim-coffee-script'
+  Bundle 'tpope/vim-surround'
+  Bundle 'tpope/vim-haml'
+  Bundle 'tpope/vim-rails'
+  Bundle 'nathanaelkane/vim-indent-guides'
+  Bundle 'Source-Explorer-srcexpl.vim'
+  Bundle 'thinca/vim-ref'
+  Bundle 'thinca/vim-quickrun'
+  "js環境
+  Bundle 'JavaScript-syntax'
+  Bundle 'pangloss/vim-javascript'
+  "jqueryリファレンス
+  Bundle 'soh335/vim-ref-jquery'
+  "powerline
+  Bundle 'Lokaltog/vim-powerline'
+  Bundle 'Lokaltog/powerline-fonts'
+  filetype plugin indent on     " required!
+"}
 
 "ステータスラインに文字コードと改行コードを表示
 "set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-set statusline=[*%n]\ %<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+"set statusline=[*%n]\ %<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 "pathogenの読み込み
 "call pathogen#runtime_append_all_bundles()
 "call pathogen#infect()
 
-".vimrcを開くコマンド<Space+.>
-nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
-"vimrcを再読み込み <Space+,>
-nnoremap <Space>, :<C-u>source $MYVIMRC<Return>
-
-"Ctrl+cでも抜ける
-inoremap <C-c> <Esc>
 
 "折りたたみ設定
 set foldmethod=indent
@@ -50,76 +51,111 @@ set fdc=4
 let perl_fold=1
 set foldlevel=100 "Don't autofold anything
 
-"新しい行のインデントを現在行と同じにする
-set autoindent
-"バックアップファイルを作るディレクトリ
-set backupdir=$HOME/.vimbackup
-"ファイル保存ダイアログの初期ディレクトリをバッファファイル位置に設定
-set browsedir=buffer
-"クリップボードをWindowsと連携
-"set clipboard=unnamed
-"Vi互換をオフ
-set nocompatible
-"スワップファイル用のディレクトリ
-"set directory=$HOME/vimbackup
-"タブの代わりに空白文字を挿入する
-set expandtab
-"変更中のファイルでも、保存しないで他のファイルを表示
-set hidden
-"インクリメンタルサーチを行う
-set incsearch
-"タブ文字、行末など不可視文字を表示する
-set list
-"listで表示される文字のフォーマットを指定する
-"set listchars=eol:$,tab:>\ ,extends:<
-set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
-"行番号を表示する
-set number
-"シフト移動幅
-"set shiftwidth=4
-"閉じ括弧が入力されたとき、対応する括弧を表示する
-set showmatch
-"検索時に大文字を含んでいたら大/小を区別
-set smartcase
-"新しい行を作ったときに高度な自動インデントを行う
-set smartindent
-"行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
-set smarttab
-"ファイル内の  が対応する空白の数
-"set tabstop=4
-"カーソルを行頭、行末で止まらないようにする
-set whichwrap=b,s,h,l,<,>,[,]
-"検索をファイルの先頭へループしない
-"set nowrapscan
+set autoindent                      "新しい行のインデントを現在行と同じにする
+set backupdir=$HOME/.vimbackup      "バックアップファイルを作るディレクトリ
+set browsedir=buffer                "ファイル保存ダイアログの初期ディレクトリをバッファファイル位置に設定
+"set clipboard=unnamed              "クリップボードをWindowsと連携
+"set directory=$HOME/vimbackup      "スワップファイル用のディレクトリ
+set expandtab                       "タブの代わりに空白文字を挿入する
+set hidden                          "変更中のファイルでも、保存しないで他のファイルを表示
+set list                            "タブ文字、行末など不可視文字を表示する "インクリメンタルサーチを行set incsearch
+set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:< "listで表示される文字のフォーマットを指定する
+set number                          "行番号を表示する
+"set shiftwidth=4                   "シフト移動幅
+set showmatch                       "閉じ括弧が入力されたとき、対応する括弧を表示する
+set smartcase                       "検索時に大文字を含んでいたら大/小を区別
+set smartindent                     "新しい行を作ったときに高度な自動インデントを行う
+set smarttab                        "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
+"set tabstop=4                      "ファイル内の  が対応する空白の数
+set whichwrap=b,s,h,l,<,>,[,]       "カーソルを行頭、行末で止まらないようにする
+"set nowrapscan                     "検索をファイルの先頭へループしない
 
-"折り返さない
-set nowrap
+"履歴を50件に
+set history=50
+
+" Status Line
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
+
+set nowrap "折り返さない
 set enc=utf-8
 set fenc=utf-8
 set fencs=iso-2022-jp,euc-jp,cp932
-"水平スクロールバーを表示
-set guioptions+=b
-"インデントを削除
-set backspace=indent,eol,start
-"コマンドライン補完するときに補完候補を表示する
-set wildmenu
-"入力モード時、ステータスラインのカラーを変更
-augroup InsertHook
-autocmd!
-autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
-autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
-augroup END
-"日本語入力をリセット
-au BufNewFile,BufRead * set iminsert=0
-"タブ幅をリセット
-au BufNewFile,BufRead * set tabstop=2 shiftwidth=2
-"検索語が画面の真ん中に来るようにする
-nmap n nzz 
-nmap N Nzz 
-nmap * *zz 
-nmap # #zz 
-nmap g* g*zz 
-nmap g# g#zz
+set guioptions+=b "水平スクロールバーを表示
+set backspace=indent,eol,start "インデントを削除
+set wildmenu "コマンドライン補完するときに補完候補を表示する
+au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
+au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
+set colorcolumn=100 "100列目を強調表示 
+
+"keymapping{{{
+  ".vimrcを開くコマンド<Space+.>
+  nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
+  "vimrcを再読み込み <Space+,>
+  nnoremap <Space>, :<C-u>source $MYVIMRC<Return>
+
+  "ノーマルモードのIMEを無効化
+  nnoremap <silent> <C-^> <Nop>
+  "Ctrl+cでも抜ける
+  "inoremap <C-c> <Esc>
+  " insertモードから抜ける
+  inoremap <silent> jj <ESC>
+  inoremap <silent> kk <ESC>
+
+  "も:
+  nmap ; :
+
+  "とりあえずDbに保存
+  map  sa :savesa ~/Dropbox/private/vimdata
+
+  "検索語が画面の真ん中に来るようにする
+  nmap n nzz 
+  nmap N Nzz 
+  nmap * *zz 
+  nmap # #zz 
+  nmap g* g*zz 
+  nmap g# g#zz
+
+  " カーソルを自動的に()の中へ
+  imap {} {}<Left>
+  imap [] []<Left>
+  imap () ()<Left>
+  imap "" ""<Left>
+  imap '' ''<Left>
+  imap <> <><Left>
+  imap // //<left>
+  imap /// ///<left>
+
+  "eclipseのあの動き
+  map <silent> <A-Up> dd<Up>P
+  map <silent> <C-A-Up> yyP
+  map <silent> <A-Down> ddp
+  map <silent> <C-A-Down> yyp
+
+  "tabの動き
+  nnoremap <silent> <A-left> <ESC>:tabn<CR>
+  nnoremap <silent> <A-Right> <ESC>:tabp<CR>
+  nnoremap <C-TAB> :tabnext<CR>
+  nnoremap <C-S-TAB> :tabprev<CR>
+
+  "Cmd+Enterでフルスクリーン
+  map <D-enter> :set fullscreen! <CR>
+  "imap <D> <ESC>
+  " コンマの後に自動的にスペースを挿入
+  inoremap , ,<Space>
+
+  " 線を引く
+  inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
+  " 外部で変更のあったファイルを自動的に再読み込みする
+  " http://vim-users.jp/2011/03/hack206/
+  augroup vimrc-checktime
+    autocmd!
+    autocmd WinEnter * checktime
+  augroup END
+  "行を次の行の末尾につける(コメントなどに使う)
+  map ff ddpkJ
+"}
+
 " ▼文字コードの自動認識
 if &encoding !=# 'utf-8'
   set encoding=japan
@@ -260,7 +296,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
-endif
+  endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
@@ -273,6 +309,7 @@ let file_name = expand("%")
 "let g:NERDTreeDirArrows=0
 if has('vim_starting') &&  file_name == ""
   autocmd VimEnter * NERDTree ./
+  autocmd VimEnter  <C-w>wi
 endif
 "Ctrl+eで開閉
 nmap <silent> <C-e>      :NERDTreeToggle<CR>
@@ -317,6 +354,10 @@ function! ReplaceLog()
   endtry
 endfunction
 nmap <silent>  ;log :call ReplaceLog()<CR>
+
+"jquery の ref
+let g:ref_jquery_path = '~\Documents\jqapi\docs'
+
 
 "------------------------------------
 " coffeeScript Setting
@@ -364,18 +405,10 @@ au FileType coffee,ruby,javascript,python,haml,eruby IndentGuidesEnable
 nmap <silent><Leader>ig <Plug>IndentGuidesToggle
 
 "------------------------------
-" カーソルを自動的に()の中へ
-imap {} {}<Left>
-imap [] []<Left>
-imap () ()<Left>
-imap "" ""<Left>
-imap '' ''<Left>
-imap <> <><Left>
-imap // //<left>
-imap /// ///<left>
 
 "------------------------------------
 "srcexpl.vim
 "------------------------------------
 "タグを生成
 let g:SrcExpl_UpdateTags = 1
+

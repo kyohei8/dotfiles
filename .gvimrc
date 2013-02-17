@@ -10,8 +10,9 @@ set lsp=1
 " タブサイズ
 set shiftwidth=2
 " フォント設定
-set guifontwide=Rickty:h12
+set guifontwide=Ricty:h14
 set guifont =Ricty:h14
+
 "全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
 au BufNewFile,BufRead * match ZenkakuSpace /　/
@@ -21,6 +22,7 @@ set showtabline=2
 set transparency=0
 map  gw :macaction selectNextWindow:
 map  gW :macaction selectPreviousWindow:i
+
 
 "------------------------------------
 " indent_guides
