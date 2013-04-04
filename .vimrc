@@ -1,12 +1,9 @@
-" Basics {
-    set nocompatible
-" }
-
+set nocompatible
 "Bundles {
   filetype off
   set rtp+=~/dotfiles/.vim/vundle.git/
   call vundle#rc()
-
+  
   Bundle 'Shougo/neocomplcache'
   Bundle 'Shougo/neosnippet.git'
   Bundle 'Shougo/unite.vim'
@@ -17,7 +14,7 @@
   Bundle 'pekepeke/titanium-vim'
   Bundle 'taglist.vim'
   Bundle 'ZenCoding.vim'
-  Bundle 'vim-coffee-script'
+  Bundle 'kchmck/vim-coffee-script'
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-haml'
   Bundle 'tpope/vim-rails'
@@ -34,6 +31,7 @@
   Bundle 'Lokaltog/vim-powerline'
   Bundle 'Lokaltog/powerline-fonts'
   filetype plugin indent on     " required!
+
 "}
 
 "ステータスラインに文字コードと改行コードを表示
@@ -88,7 +86,11 @@ au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
 au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
 set colorcolumn=100 "100列目を強調表示 
 
-"keymapping{{{
+"keymapping {
+  " Shift-Space で抜けたり入ったり
+  imap <S-Space> <Esc>
+  nmap <S-Space> i
+  
   ".vimrcを開くコマンド<Space+.>
   nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
   "vimrcを再読み込み <Space+,>
@@ -106,7 +108,7 @@ set colorcolumn=100 "100列目を強調表示
   nmap ; :
 
   "とりあえずDbに保存
-  map  sa :savesa ~/Dropbox/private/vimdata
+  map  sa :saveas ~/Dropbox/private/vimdata
 
   "検索語が画面の真ん中に来るようにする
   nmap n nzz 
@@ -115,6 +117,10 @@ set colorcolumn=100 "100列目を強調表示
   nmap # #zz 
   nmap g* g*zz 
   nmap g# g#zz
+  
+  "
+  map <C-f> <C-f>zz
+  map <C-b> <C-b>zz
 
   " カーソルを自動的に()の中へ
   imap {} {}<Left>
@@ -152,9 +158,19 @@ set colorcolumn=100 "100列目を強調表示
     autocmd!
     autocmd WinEnter * checktime
   augroup END
+  
   "行を次の行の末尾につける(コメントなどに使う)
   map ff ddpkJ
+
+  "quick run
+  nmap run :QuickRun<Enter>
+  nmap crun :CoffeeCompile watch vert<Enter><C-w>w :QuickRun<Enter>
+
 "}
+
+"rename関数 編集しているファイル名を変更
+"ex) :Rename newText.txt
+command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
 
 " ▼文字コードの自動認識
 if &encoding !=# 'utf-8'
@@ -377,16 +393,16 @@ autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
 " jasmine.vim
 "------------------------------------
 " ファイルタイプを変更
-function! JasmineSetting()
-  au BufRead,BufNewFile *Helper.js,*Spec.js  set filetype=jasmine.javascript
-  au BufRead,BufNewFile *Helper.coffee,*Spec.coffee  set filetype=jasmine.coffee
-  au BufRead,BufNewFile,BufReadPre *Helper.coffee,*Spec.coffee  let b:quickrun_config = {'type' : 'coffee'}
-  call jasmine#load_snippets()
-  map <buffer> <leader>m :JasmineRedGreen<CR>
-  command! JasmineRedGreen :call jasmine#redgreen()
-  command! JasmineMake :call jasmine#make()
-endfunction
-au BufRead,BufNewFile,BufReadPre *.coffee,*.js call JasmineSetting()
+"function! JasmineSetting()
+"  au BufRead,BufNewFile *Helper.js,*Spec.js  set filetype=jasmine.javascript
+"  au BufRead,BufNewFile *Helper.coffee,*Spec.coffee  set filetype=jasmine.coffee
+"  au BufRead,BufNewFile,BufReadPre *Helper.coffee,*Spec.coffee  let b:quickrun_config = {'type' : 'coffee'}
+"  call jasmine#load_snippets()
+"  map <buffer> <leader>m :JasmineRedGreen<CR>
+"  command! JasmineRedGreen :call jasmine#redgreen()
+"  command! JasmineMake :call jasmine#make()
+"endfunction
+"au BufRead,BufNewFile,BufReadPre *.coffee,*.js call JasmineSetting()
 
 "------------------------------------
 " indent_guides
