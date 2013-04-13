@@ -16,6 +16,8 @@ alias gb="git branch"
 alias gc="git checkout"
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias mvim='open -a  /Applications/MacVim.app'
+
+alias rm="rm -i"
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
