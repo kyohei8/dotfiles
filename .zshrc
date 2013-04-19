@@ -10,10 +10,21 @@ ZSH_THEME="miloshadzic"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#------------------------------------------------------------------------------
+# git
+#------------------------------------------------------------------------------
 alias gs="git status"
 alias gpom="git push origin master"
 alias gb="git branch"
 alias gc="git checkout"
+alias garc='git archive --format=zip HEAD '
+alias glap="git log --abbrev-commit --pretty=oneline"
+alias gronce="git reset --soft HEAD~1"
+#------------------------------------------------------------------------------
+# other
+#------------------------------------------------------------------------------
+alias cl="clear"
+alias sz="source ~/.zshrc"
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias mvim='open -a  /Applications/MacVim.app'
 # Set to this to use case-sensitive completion
@@ -43,3 +54,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/kyohei/.rvm/gems/ruby-1.9.3-p0/bin:/Users/kyohei/.rvm/gems/ruby-1.9.3-p0@global/bin:/Users/kyohei/.rvm/rubies/ruby-1.9.3-p0/bin:/Users/kyohei/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+eval "$(rbenv init -)"
