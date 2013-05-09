@@ -19,7 +19,6 @@ source $ZSH/oh-my-zsh.sh
 alias gs="git status"
 alias gpom="git push origin master"
 alias gb="git branch"
-alias gc="git checkout"
 alias garc='git archive --format=zip HEAD '
 alias gronce="git reset --soft HEAD~1"
 #ログ
@@ -34,7 +33,8 @@ alias c="clear"
 alias sz="source ~/.zshrc"
 alias mz="m ~/.zshrc"
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias m='open -a  /Applications/MacVim.app'
+alias mvim='open -a  /Applications/MacVim.app'
+alias m='mvim'
 
 alias l="ls -lah"
 alias s="l"
@@ -44,6 +44,14 @@ alias ..='cd ..'
 
 alias rm="rm -i"
 alias mv="mv -i"
+
+#------------------------------------------------------------------------------
+# project
+#------------------------------------------------------------------------------
+alias apstart="sudo apachectl -f /project/asahijutaku/asahijutaku/infra/local/apache/conf/httpd.conf -k start"
+alias aprestart="sudo apachectl -f /project/asahijutaku/asahijutaku/infra/local/apache/conf/httpd.conf -k restart"
+alias apstop="sudo apachectl -f /project/asahijutaku/asahijutaku/infra/local/apache/conf/httpd.conf -k stop"
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -64,11 +72,14 @@ alias mv="mv -i"
 
 
 # Customize to your needs...
-export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/kyohei/.rvm/gems/ruby-1.9.3-p0/bin:/Users/kyohei/.rvm/gems/ruby-1.9.3-p0@global/bin:/Users/kyohei/.rvm/rubies/ruby-1.9.3-p0/bin:/Users/kyohei/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin
-
+export PATH=/opt/local/bin:/opt/local/sbin:/Users/kyohei/.rvm/gems/ruby-1.9.3-p0/bin:/Users/kyohei/.rvm/gems/ruby-1.9.3-p0@global/bin:/Users/kyohei/.rvm/rubies/ruby-1.9.3-p0/bin:/Users/kyohei/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 eval "$(rbenv init -)"
 
 date
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
