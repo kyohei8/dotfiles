@@ -44,6 +44,18 @@ alias ..='cd ..'
 
 alias rm="rm -i"
 alias mv="mv -i"
+#------------------------------------------------------------------------------
+# heroku 
+#------------------------------------------------------------------------------
+alias gphm='git push heroku master'
+alias h='heroku'
+alias hps='heroku ps'
+alias hl='heroku logs'
+alias hrs='heroku restart'
+alias hc='heroku config'
+alias hpgsql='heroku pg:psql'
+alias hpgi='heroku pg:info'
+
 
 #------------------------------------------------------------------------------
 # project
