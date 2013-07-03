@@ -17,6 +17,7 @@ source $ZSH/oh-my-zsh.sh
 # git
 #------------------------------------------------------------------------------
 alias gs="git status"
+alias gdi='gd --ignore-space-change'
 alias gpom="git push origin master"
 alias gb="git branch"
 alias garc='git archive --format=zip HEAD '
@@ -44,13 +45,32 @@ alias ..='cd ..'
 
 alias rm="rm -i"
 alias mv="mv -i"
+#------------------------------------------------------------------------------
+# heroku 
+#------------------------------------------------------------------------------
+alias gphm='git push heroku master'
+alias h='heroku'
+alias hps='heroku ps'
+alias hl='heroku logs'
+alias hrs='heroku restart'
+alias hc='heroku config'
+alias hpgsql='heroku pg:psql'
+alias hpgi='heroku pg:info'
+
+#------------------------------------------------------------------------------
+# rvm
+#-----------------------------------------------------------------------------
+alias ru='rvm use'
+alias r193='rvm use 1.9.3@rails32'
+alias r200='rvm use 2.0.0@rails4'
 
 #------------------------------------------------------------------------------
 # project
 #------------------------------------------------------------------------------
-alias apstart="sudo apachectl -f /project/asahijutaku/asahijutaku/infra/local/apache/conf/httpd.conf -k start"
-alias aprestart="sudo apachectl -f /project/asahijutaku/asahijutaku/infra/local/apache/conf/httpd.conf -k restart"
-alias apstop="sudo apachectl -f /project/asahijutaku/asahijutaku/infra/local/apache/conf/httpd.conf -k stop"
+alias apstart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k start"
+alias aprestart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k restart"
+alias apstop="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k stop"
+alias mrw="more /etc/httpd/logs/rewrite.log"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -77,9 +97,8 @@ export PATH=/usr/local/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
-date
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -88,3 +107,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 rvm use 1.9.3@rails32
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:/usr/local/rvm/bin # Add RVM to PATH for scripting
+date
