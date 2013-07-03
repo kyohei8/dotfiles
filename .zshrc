@@ -2,7 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="miloshadzic"
 
-plugins=(git)
+plugins=(git, rails)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,3 +83,8 @@ date
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+#default rvm
+rvm use 1.9.3@rails32
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
