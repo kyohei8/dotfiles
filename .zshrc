@@ -2,13 +2,13 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="miloshadzic"
 
-plugins=(git)
+plugins=(git bundler gem rails3)
 
 source $ZSH/oh-my-zsh.sh
 
 # é©ìÆï‚äÆê›íË 
-# autoload predict-on
-# predict-on
+#autoload predict-on
+#predict-on
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -16,13 +16,12 @@ source $ZSH/oh-my-zsh.sh
 #------------------------------------------------------------------------------
 # git
 #------------------------------------------------------------------------------
-alias gs="git status"
+alias gs="git status -s"
 alias gdi='gd --ignore-space-change'
 alias gpom="git push origin master"
-alias gb="git branch"
 alias garc='git archive --format=zip HEAD '
 alias gronce="git reset --soft HEAD~1"
-#„É≠„Ç∞
+# git log 
 alias glap="git log --abbrev-commit --pretty=oneline"
 alias glog='git log --all --graph --pretty="tformat:%C(yellow)%h%Cblue%d%Creset %s %C(red) %an, %ar%Creset"'
 alias glogp="glog -p"
@@ -60,9 +59,9 @@ alias hpgi='heroku pg:info'
 #------------------------------------------------------------------------------
 # rvm
 #-----------------------------------------------------------------------------
-alias ru='rvm use'
-alias r193='rvm use 1.9.3@rails32'
-alias r200='rvm use 2.0.0@rails4'
+#alias rvm='rvm use'
+#alias r193='rvm use 1.9.3@rails32'
+#alias r200='rvm use 2.0.0@rails4'
 
 #------------------------------------------------------------------------------
 # project
@@ -71,6 +70,12 @@ alias apstart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribu
 alias aprestart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k restart"
 alias apstop="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k stop"
 alias mrw="more /etc/httpd/logs/rewrite.log"
+#------------------------------------------------------------------------------
+# timey
+#------------------------------------------------------------------------------
+alias rtg="rake timey:get_article"
+alias hrrtg="heroku run rake timey:get_article"
+
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -92,16 +97,14 @@ alias mrw="more /etc/httpd/logs/rewrite.log"
 
 
 # Customize to your needs...
-export PATH=/opt/local/bin:/opt/local/sbin:/Users/kyohei/.rvm/gems/ruby-1.9.3-p0/bin:/Users/kyohei/.rvm/gems/ruby-1.9.3-p0@global/bin:/Users/kyohei/.rvm/rubies/ruby-1.9.3-p0/bin:/Users/kyohei/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:usr/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:usr/local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-#eval "$(rbenv init -)"
-
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-PATH=$PATH:/usr/local/rvm/bin # Add RVM to PATH for scripting
+## rbenv setting 
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 date
