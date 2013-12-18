@@ -10,8 +10,8 @@ set lsp=1
 " タブサイズ
 set shiftwidth=2
 " フォント設定
-set guifontwide=Ricty:h12
-set guifont =Ricty:h12
+set guifontwide=Ricty:h14
+set guifont =Ricty:h14
 
 "全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666

@@ -57,6 +57,23 @@ alias hpgsql='heroku pg:psql'
 alias hpgi='heroku pg:info'
 
 #------------------------------------------------------------------------------
+# bower
+#------------------------------------------------------------------------------
+alias bw='bower'
+alias bwi='bower install'
+alias bwif='bower info'
+alias bws='bower search'
+alias bwl='bower list'
+
+#------------------------------------------------------------------------------
+# npm
+#------------------------------------------------------------------------------
+alias n='npm'
+alias nl='npm list'
+alias nl0='npm list --depth=0 "$@" 2>/dev/null'
+
+
+#------------------------------------------------------------------------------
 # rvm
 #-----------------------------------------------------------------------------
 #alias rvm='rvm use'
@@ -66,10 +83,21 @@ alias hpgi='heroku pg:info'
 #------------------------------------------------------------------------------
 # project
 #------------------------------------------------------------------------------
-alias apstart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k start"
-alias aprestart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k restart"
-alias apstop="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k stop"
+alias apstart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k start && echo 'server started...'"
+alias aprestart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k restart && echo 'server restarted...'"
+alias apstop="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k stop && echo 'server stoped...'"
 alias mrw="more /etc/httpd/logs/rewrite.log"
+alias sshdev="sh /project/asahijutakush/dev_login.sh"
+alias sshprd="sh /project/asahijutakush/prd_login.sh"
+
+# path gradle
+export GRADLE_HOME=/project/gradle-1.7
+export PATH="$GRADLE_HOME/bin:$PATH"
+
+# java home
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+export PATH=$PATH:$JAVA_HOME/bin
+
 #------------------------------------------------------------------------------
 # timey
 #------------------------------------------------------------------------------
@@ -99,6 +127,7 @@ alias hrrtg="heroku run rake timey:get_article"
 # Customize to your needs...
 export PATH=/opt/local/bin:/opt/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:usr/local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/include:$PATH
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -106,5 +135,14 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ## rbenv setting 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# MySQL Path Setting
+export PATH=$PATH:/usr/local/mysql/bin
+
+#grunt task autocomplete
+eval "$(grunt --completion=zsh)"
+
+# added by travis gem
+source /Users/ktsukuda/.travis/travis.sh
 
 date
