@@ -80,16 +80,6 @@ alias nl0='npm list --depth=0 "$@" 2>/dev/null'
 #alias r193='rvm use 1.9.3@rails32'
 #alias r200='rvm use 2.0.0@rails4'
 
-#------------------------------------------------------------------------------
-# project
-#------------------------------------------------------------------------------
-alias apstart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k start && echo 'server started...'"
-alias aprestart="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k restart && echo 'server restarted...'"
-alias apstop="sudo apachectl -f /project/asahijutaku/asahijutaku-infra/distribution/apache/httpd.local/conf/httpd.conf -k stop && echo 'server stoped...'"
-alias mrw="more /etc/httpd/logs/rewrite.log"
-alias sshdev="sh /project/asahijutakush/dev_login.sh"
-alias sshprd="sh /project/asahijutakush/prd_login.sh"
-
 # path gradle
 export GRADLE_HOME=/project/gradle-1.7
 export PATH="$GRADLE_HOME/bin:$PATH"
@@ -142,7 +132,7 @@ export PATH=$PATH:/usr/local/mysql/bin
 #grunt task autocomplete
 eval "$(grunt --completion=zsh)"
 
-# added by travis gem
-source /Users/ktsukuda/.travis/travis.sh
+#èdï°ÇµÇΩpathÇàÍà”Ç…Ç∑ÇÈ
+typeset -U path cdpath fpath manpath
 
 date
