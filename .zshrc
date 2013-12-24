@@ -135,4 +135,6 @@ eval "$(grunt --completion=zsh)"
 #d•¡‚µ‚½path‚ğˆêˆÓ‚É‚·‚é
 typeset -U path cdpath fpath manpath
 
+export LANG=ja_JP.UTF-8
+
 date
