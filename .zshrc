@@ -2,7 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="miloshadzic"
 
-plugins=(git bundler gem rails3)
+plugins=(git gem rails3)
 
 source $ZSH/oh-my-zsh.sh
 
