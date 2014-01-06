@@ -14,9 +14,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #------------------------------------------------------------------------------
+# Applications
+#------------------------------------------------------------------------------
+alias cot='open -g -a CotEditor'
+#------------------------------------------------------------------------------
 # git
 #------------------------------------------------------------------------------
 alias gs="git status -s"
+alias gft="git fetch"
+alias gupdate="git fetch && git merge origin/master"
 alias gdi='gd --ignore-space-change'
 alias gpom="git push origin master"
 alias garc='git archive --format=zip HEAD '
