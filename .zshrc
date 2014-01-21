@@ -1,12 +1,11 @@
 ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="miloshadzic"
 
-plugins=(git bundler gem rails3)
+plugins=(git gem rails4)
 
 source $ZSH/oh-my-zsh.sh
 
-# �����⊮�ݒ� 
+# 自動補完設定 
 #autoload predict-on
 #predict-on
 
@@ -14,14 +13,23 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #------------------------------------------------------------------------------
+# Applications
+#------------------------------------------------------------------------------
+alias cot='open -g -a CotEditor'
+
+#------------------------------------------------------------------------------
 # git
 #------------------------------------------------------------------------------
 alias gs="git status -s"
+alias gft="git fetch"
+alias gupdate="git fetch && git merge origin/master"
 alias gdi='gd --ignore-space-change'
 alias gpom="git push origin master"
 alias garc='git archive --format=zip HEAD '
 alias gronce="git reset --soft HEAD~1"
-# git log 
+alias gphm='git push heroku master'
+
+# git log
 alias glap="git log --abbrev-commit --pretty=oneline"
 alias glog='git log --all --graph --pretty="tformat:%C(yellow)%h%Cblue%d%Creset %s %C(red) %an, %ar%Creset"'
 alias glogp="glog -p"
@@ -44,16 +52,33 @@ alias ..='cd ..'
 
 alias rm="rm -i"
 alias mv="mv -i"
+
+# SL!!!
+alias sll='/usr/local/bin/sl'
+
+
+# ファイルのみを表示
+alias llf="ll -aF | grep -v /"
+# ディレクトリのみを表示
+alias lld="ll -aF | grep /"
+
+# sudo の後のコマンドでエイリアスを有効にする
+alias sudo='sudo '
+ 
+# グローバルエイリアス
+alias -g L='| less'
+alias -g G='| grep'
+
 #------------------------------------------------------------------------------
 # heroku 
 #------------------------------------------------------------------------------
-alias gphm='git push heroku master'
 alias h='heroku'
 alias hps='heroku ps'
 alias hl='heroku logs'
-alias hrs='heroku restart'
+alias hr='heroku restart'
 alias hc='heroku config'
-alias hpgsql='heroku pg:psql'
+alias hm='heroku maintenance '
+alias hsql='heroku pg:psql'
 alias hpgi='heroku pg:info'
 
 #------------------------------------------------------------------------------
@@ -132,7 +157,7 @@ export PATH=$PATH:/usr/local/mysql/bin
 #grunt task autocomplete
 eval "$(grunt --completion=zsh)"
 
-#�d������path����ӂɂ���
+#重複したpathを一意にする
 typeset -U path cdpath fpath manpath
 
 export LANG=ja_JP.UTF-8
