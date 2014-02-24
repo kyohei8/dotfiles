@@ -163,6 +163,7 @@ alias hrrtg="heroku run rake timey:get_article"
 export PATH=/opt/local/bin:/opt/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:usr/local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/include:$PATH
+export PATH=$HOME/.node/bin:$PATH
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
