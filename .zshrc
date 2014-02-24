@@ -180,4 +180,6 @@ eval "$(grunt --completion=zsh)"
 #重複したpathを一意にする
 typeset -U path cdpath fpath manpath
 
+export LANG=ja_JP.UTF-8
+
 date
