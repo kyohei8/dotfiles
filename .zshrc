@@ -9,6 +9,23 @@ source $ZSH/oh-my-zsh.sh
 #autoload predict-on
 #predict-on
 
+#------------------------------------------------------------------------------
+# git cloneからWebStromで開く
+#------------------------------------------------------------------------------
+function clone_w(){
+reponame="$(echo $1 | grep / | cut -d/ -f5 | cut -d\. -f1)"
+git clone $1&& wstorm $reponame 
+}
+
+#------------------------------------------------------------------------------
+# git cloneからRubyMineで開く
+#------------------------------------------------------------------------------
+function clone_r(){
+reponame="$(echo $1 | grep / | cut -d/ -f5 | cut -d\. -f1)"
+git clone $1&& mine $reponame 
+}
+
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -52,6 +69,9 @@ alias ..='cd ..'
 
 alias rm="rm -i"
 alias mv="mv -i"
+
+# grunt
+alias gt='grunt $1'
 
 # SL!!!
 alias sll='/usr/local/bin/sl'
