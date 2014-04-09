@@ -2,3 +2,5 @@
 .vim/bundle/*
 *.swp
 
+.atom/storage
+.atom/.node-gyp

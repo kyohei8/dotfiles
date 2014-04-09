@@ -1,0 +1,26 @@
+{
+  "name": "docs-snippets",
+  "main": "./index",
+  "version": "0.7.2",
+  "description": "Snippets for writing documentation in your code.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonrohan/docs-snippets"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "readme": "## Docs Snippets\n\nSnippets for making documenting your code super fun!\n\n#### Installation\n\nRun the following command:\n\n```sh\napm install docs-snippets\n```\n\nThen reload your Atom.\n\n#### Current Support:\n\n| Format                                 | Tab-Prefix   | Extensions         |\n| -------------                          | :----------: | ------------------ |\n| [Appledoc](./snippets/appledoc.cson)   | `appledoc`   | .h, .m             |\n| [Erlang](./snippets/erlang.cson)       | `edoc`       | .erlang            |\n| [Hubot Scripts](./snippets/hubot.cson) | `hubot`      | .coffee, .js       |\n| [jsDoc](./snippets/jsdoc.cson)         | `jsdoc`      | .js                |\n| [KSS](./snippets/kss.cson)             | `kss`        | .css, .less, .scss |\n| [TomDoc](./snippets/tomdoc.cson)       | `tom`        | .coffee, .rb       |\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/jonrohan/docs-snippets/issues"
+  },
+  "homepage": "https://github.com/jonrohan/docs-snippets",
+  "_id": "docs-snippets@0.7.2",
+  "dist": {
+    "shasum": "d4d9b9b56d300b00903b4844e3bb45aefc993c39"
+  },
+  "_resolved": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-114231-1069-6aqt6n/package.tgz",
+  "_from": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-114231-1069-6aqt6n/package.tgz"
+}
