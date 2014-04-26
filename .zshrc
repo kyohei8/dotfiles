@@ -57,7 +57,7 @@ alias glogp="glog -p"
 alias c="clear"
 alias sz="source ~/.zshrc"
 alias mz="m ~/.zshrc"
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+#alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias mvim='open -a  /Applications/MacVim.app'
 alias m='mvim'
 

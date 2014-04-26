@@ -1,37 +1,47 @@
-_ = require 'underscore-plus'
-path = require 'path'
-minimatch = require 'minimatch'
-SimpleSelectListView = require './simple-select-list-view'
-{Editor, $, $$, Range, Point, SelectListView}  = require 'atom'
-fuzzaldrin = require 'fuzzaldrin'
-Perf = require './perf'
-Q = require 'q'
+{Editor, $, $$, Range}  = require "atom"
+_ = require "underscore-plus"
+path = require "path"
+minimatch = require "minimatch"
+SimpleSelectListView = require "./simple-select-list-view"
+FuzzyProvider = require "./fuzzy-provider"
+Perf = require "./perf"
+Utils = require "./utils"
 
 module.exports =
 class AutocompleteView extends SimpleSelectListView
   currentBuffer: null
-  wordList: null
-  wordRegex: /\b\w*[a-zA-Z_]\w*\b/g
-  originalCursorPosition: null
-  aboveCursor: false
   debug: false
-  lastConfirmedWord: null
 
+  ###
+   * Makes sure we're listening to editor and buffer events, sets
+   * the current buffer
+   * @param  {EditorView} @editorView
+   * @private
+  ###
   initialize: (@editorView) ->
-    super
-    @addClass('autocomplete popover-list')
     {@editor} = @editorView
+
+    super
+
+    @addClass "autocomplete-plus"
+    @providers = []
 
     return if @currentFileBlacklisted()
 
+    @registerProvider new FuzzyProvider(@editorView)
+
     @handleEvents()
-    @setCurrentBuffer(@editor.getBuffer())
+    @setCurrentBuffer @editor.getBuffer()
+
+    @subscribeToCommand @editorView, "autocomplete-plus:activate", @runAutocompletion
 
   ###
    * Checks whether the current file is blacklisted
+   * @return {Boolean}
+   * @private
   ###
   currentFileBlacklisted: ->
-    blacklist = atom.config.get("autocomplete-plus.fileBlacklist")
+    blacklist = (atom.config.get("autocomplete-plus.fileBlacklist") or "")
       .split ","
       .map (s) -> s.trim()
 
@@ -44,145 +54,95 @@ class AutocompleteView extends SimpleSelectListView
 
   ###
    * Creates a view for the given item
+   * @return {jQuery}
+   * @private
   ###
-  viewForItem: ({word}) ->
+  viewForItem: ({word, label}) ->
     $$ ->
       @li =>
-        @span word
+        @span word, class: "word"
+        if label?
+          @span label, class: "label"
 
   ###
    * Handles editor events
+   * @private
   ###
   handleEvents: ->
     # Make sure we don't scroll in the editor view when scrolling
     # in the list
-    @list.on 'mousewheel', (event) -> event.stopPropagation()
-
-    # Listen to `contents-modified` event when live completion is disabled
-    unless atom.config.get('autocomplete-plus.liveCompletion')
-      @editor.on 'contents-modified', @contentsModified
+    @list.on "mousewheel", (event) -> event.stopPropagation()
 
     # Is this the event for switching tabs? Dunno...
-    @editor.on 'title-changed-subscription-removed', @cancel
+    @editor.on "title-changed-subscription-removed", @cancel
 
     # Close the overlay when the cursor moved without
     # changing any text
-    @editor.on 'cursor-moved', @cursorMoved
+    @editor.on "cursor-moved", @cursorMoved
 
   ###
-   * Return false so that the events don't bubble up to the editor
+   * Registers the given provider
+   * @param  {Provider} provider
+   * @public
   ###
-  selectNextItemView: ->
-    super
-    false
-
-  ###
-   * Return false so that the events don't bubble up to the editor
-  ###
-  selectPreviousItemView: ->
-    super
-    false
+  registerProvider: (provider) ->
+    @providers.push(provider) unless _.findWhere(@providers, provider)?
 
   ###
-   * Don't really know what that does...
+   * Unregisters the given provider
+   * @param  {Provider} provider
+   * @public
   ###
-  getCompletionsForCursorScope: ->
-    cursorScope = @editor.scopesForBufferPosition(@editor.getCursorBufferPosition())
-    completions = atom.syntax.propertiesForScope(cursorScope, 'editor.completions')
-    completions = completions.map (properties) -> _.valueForKeyPath(properties, 'editor.completions')
-    _.uniq(_.flatten(completions))
-
-  ###
-   * Generates the word list from the editor buffer(s)
-  ###
-  buildWordList: ->
-    wordHash = {}
-    if atom.config.get('autocomplete-plus.includeCompletionsFromAllBuffers')
-      buffers = atom.project.getBuffers()
-    else
-      buffers = [@currentBuffer]
-    matches = []
-
-    p = new Perf "Building word list", {@debug}
-    p.start()
-
-    matches.push(buffer.getText().match(@wordRegex)) for buffer in buffers
-    matches.push(@getCompletionsForCursorScope())
-
-    # Uniqueness workaround
-    words = _.flatten(matches)
-    for word in words
-      wordHash[word] ?= true
-    wordList = Object.keys(wordHash)
-
-    # We can't set the value for the following keys.
-    # Check whether they're in the `words` variable
-    # and add them to `wordList`
-    objectKeyBlacklist = [
-      'toString',
-      'toLocaleString',
-      'valueOf',
-      'hasOwnProperty',
-      'isPrototypeOf',
-      'propertyIsEnumerable',
-      'constructor'
-    ]
-    for word in objectKeyBlacklist when word in words
-      wordList.push word
-    @wordList = wordList
-
-    p.stop()
+  unregisterProvider: (provider) ->
+    _.remove @providers, provider
 
   ###
-   * Handles confirmation (the user pressed enter)
+   * Gets called when the user successfully confirms a suggestion
+   * @private
   ###
   confirmed: (match) ->
+    replace = match.provider.confirm match
+
     @editor.getSelection().clear()
     @cancel()
 
     return unless match
 
-    @lastConfirmedWord = match.word
-    @replaceTextWithMatch match
-    position = @editor.getCursorBufferPosition()
-    @editor.setCursorBufferPosition([position.row, position.column])
+    if replace
+      @replaceTextWithMatch match
+      position = @editor.getCursorBufferPosition()
+      @editor.setCursorBufferPosition [position.row, position.column]
 
   ###
-   * Activates
-  ###
-  setActive: ->
-    super
-    @active = true
-
-  ###
-   * Clears the list, sets back the cursor, focuses the editor and
-   * detaches the list DOM element
+   * Focuses the editor again
+   * @private
   ###
   cancel: =>
-    @active = false
-
-    @list.empty()
-
+    super
     @editorView.focus()
 
-    @detach()
-
-  contentsModified: =>
+  ###
+   * Finds suggestions for the current prefix, sets the list items,
+   * positions the overlay and shows it
+   * @private
+  ###
+  runAutocompletion: =>
     if @active
       @detach()
       @list.empty()
       @editorView.focus()
 
-    selection = @editor.getSelection()
-    prefix = @prefixOfSelection selection
+    # Iterate over all providers, ask them to build word lists
+    suggestions = []
+    for provider in @providers.slice().reverse()
+      providerSuggestions = provider.buildSuggestions()
+      continue unless providerSuggestions?.length
 
-    # Stop completion if the word was already confirmed
-    return if prefix is @lastConfirmedWord
-
-    # No prefix? Don't autocomplete!
-    return unless prefix.length
-
-    suggestions = @findMatchesForWord prefix
+      if provider.exclusive
+        suggestions = providerSuggestions
+        break
+      else
+        suggestions = suggestions.concat providerSuggestions
 
     # No suggestions? Don't autocomplete!
     return unless suggestions.length
@@ -194,124 +154,117 @@ class AutocompleteView extends SimpleSelectListView
 
     @setActive()
 
-  cursorMoved: (data) =>
-    if not data.textChanged and @active
-      @cancel()
+  ###
+   * Gets called when the content has been modified
+   * @private
+  ###
+  contentsModified: =>
+    delay = parseInt(atom.config.get "autocomplete-plus.autoActivationDelay")
+    if @delayTimeout
+      clearTimeout @delayTimeout
 
+    @delayTimeout = setTimeout @runAutocompletion, delay
+
+  ###
+   * Gets called when the cursor has moved. Cancels the autocompletion if
+   * the text has not been changed and the autocompletion is
+   * @param  {[type]} data [description]
+   * @return {[type]}      [description]
+  ###
+  cursorMoved: (data) =>
+    @cancel() unless data.textChanged
+
+  ###
+   * Gets called when the user saves the document. Rebuilds the word
+   * list and cancels the autocompletion
+   * @private
+  ###
   onSaved: =>
-    @buildWordList()
     @cancel()
 
+  ###
+   * Cancels the autocompletion if the user entered more than one character
+   * with a single keystroke. (= pasting)
+   * @param  {Event} e
+   * @private
+  ###
   onChanged: (e) =>
-    if e.newText in ["\n", " "]
-      @addLastWordToList e.newText is "\n"
-
-    if e.newText.length is 1
+    if e.newText.length is 1 and atom.config.get "autocomplete-plus.enableAutoActivation"
       @contentsModified()
     else
       @cancel()
 
-  findMatchesForWord: (prefix) ->
-    p = new Perf "Finding matches for '#{prefix}'", {@debug}
-    p.start()
-
-    words = fuzzaldrin.filter @wordList, prefix
-
-    results = for word in words when word isnt prefix
-      {prefix, word}
-
-    p.stop()
-    return results
-
+  ###
+   * Repositions the list view. Checks for boundaries and moves the view
+   * above or below the cursor if needed.
+   * @private
+  ###
   setPosition: ->
-    { left, top } = @editorView.pixelPositionForScreenPosition(@editor.getCursorScreenPosition())
-    height = @outerHeight()
-    potentialTop = top + @editorView.lineHeight
-    potentialBottom = potentialTop - @editorView.scrollTop() + height
+    { left, top } = @editorView.pixelPositionForScreenPosition @editor.getCursorScreenPosition()
+    cursorLeft = left
+    cursorTop = top
 
-    if @aboveCursor or potentialBottom > @editorView.outerHeight()
-      @aboveCursor = true
-      @css(left: left, top: top - height, bottom: 'inherit')
+    # The top position if we would put it below the current line
+    belowPosition = cursorTop + @editorView.lineHeight
+
+    # The top position of the lower edge if we would put it below the current line
+    belowLowerPosition = belowPosition + @outerHeight()
+
+    # The position if we would put it above the line
+    abovePosition = cursorTop
+
+    if belowLowerPosition > @editorView.outerHeight() + @editorView.scrollTop()
+      # We can't put it below - put it above. Using CSS transforms to
+      # move it 100% up so that the lower edge is above the current line
+      @css left: cursorLeft, top: abovePosition
+      @css "-webkit-transform", "translateY(-100%)"
     else
-      @css(left: left, top: potentialTop, bottom: 'inherit')
+      # We can put it below, remove possible previous CSS transforms
+      @css left: cursorLeft, top: belowPosition
+      @css "-webkit-transform", ""
 
   ###
    * Replaces the current prefix with the given match
+   * @param {Object} match
+   * @private
   ###
   replaceTextWithMatch: (match) ->
     selection = @editor.getSelection()
     startPosition = selection.getBufferRange().start
     buffer = @editor.getBuffer()
 
-    selection.deleteSelectedText()
+    # Replace the prefix with the new word
     cursorPosition = @editor.getCursorBufferPosition()
-    buffer.delete(Range.fromPointWithDelta(cursorPosition, 0, -match.prefix.length))
-    @editor.insertText(match.word)
+    buffer.delete Range.fromPointWithDelta(cursorPosition, 0, -match.prefix.length)
+    @editor.insertText match.word
 
-    infixLength = match.word.length - match.prefix.length
-    @editor.setSelectedBufferRange([startPosition, [startPosition.row, startPosition.column + infixLength]])
-
-  ###
-   * Finds and returns the content before the current cursor position
-  ###
-  prefixOfSelection: (selection) ->
-    selectionRange = selection.getBufferRange()
-    lineRange = [[selectionRange.start.row, 0], [selectionRange.end.row, @editor.lineLengthForBufferRow(selectionRange.end.row)]]
-    prefix = ""
-
-    @currentBuffer.scanInRange @wordRegex, lineRange, ({match, range, stop}) ->
-      stop() if range.start.isGreaterThan(selectionRange.end)
-
-      if range.intersectsWith(selectionRange)
-        prefixOffset = selectionRange.start.column - range.start.column
-        prefix = match[0][0...prefixOffset] if range.start.isLessThan(selectionRange.start)
-
-    return prefix
+    # Move the cursor behind the new word
+    suffixLength = match.word.length - match.prefix.length
+    @editor.setSelectedBufferRange [startPosition, [startPosition.row, startPosition.column + suffixLength]]
 
   ###
-   * Finds the last typed word. If newLine is set to true, it looks
-   * for the last word in the previous line.
-  ###
-  lastTypedWord: (newLine) ->
-    selectionRange = @editor.getSelection().getBufferRange()
-    {row} = selectionRange.start
-
-    # The user pressed enter, check previous line
-    if newLine
-      row--
-
-    # The user presed enter, check everything until the end
-    if newLine
-      maxColumn = @editor.lineLengthForBufferRow row
-    else
-      maxColumn = selectionRange.start.column
-
-    lineRange = [[row, 0], [row, maxColumn]]
-
-    lastWord = null
-    @currentBuffer.scanInRange @wordRegex, lineRange, ({match, range, stop}) ->
-      lastWord = match[0]
-
-    return lastWord
-
-  ###
-   * As soon as the list is in the DOM tree, it calculates the
-   * maximum width of all list items and resizes the list so that
-   * all items fit
+   * As soon as the list is in the DOM tree, it calculates the maximum width of
+   * all list items and resizes the list so that all items fit
+   * @param {Boolean} onDom
    *
-   * @todo: Fix this. Doesn't work well yet.
   ###
   afterAttach: (onDom) ->
-    if onDom
-      widestCompletion = parseInt(@css('min-width')) or 0
-      @list.find('span').each ->
-        widestCompletion = Math.max(widestCompletion, $(this).outerWidth())
+    return unless onDom
 
-      @list.width(widestCompletion + 15)
-      @width(@list.outerWidth())
+    widestCompletion = parseInt(@css("min-width")) or 0
+    @list.find("li").each ->
+      wordWidth = $(this).find("span.word").outerWidth()
+      labelWidth = $(this).find("span.label").outerWidth()
+
+      totalWidth = wordWidth + labelWidth + 40
+      widestCompletion = Math.max widestCompletion, totalWidth
+
+    @list.width widestCompletion
+    @width @list.outerWidth()
 
   ###
    * Updates the list's position when populating results
+   * @private
   ###
   populateList: ->
     p = new Perf "Populating list", {@debug}
@@ -320,40 +273,32 @@ class AutocompleteView extends SimpleSelectListView
     super
 
     p.stop()
-
     @setPosition()
 
   ###
-   * Sets the current buffer
+   * Sets the current buffer, starts listening to change events and delegates
+   * them to #onChanged()
+   * @param {TextBuffer}
+   * @private
   ###
   setCurrentBuffer: (@currentBuffer) ->
-    @buildWordList()
     @currentBuffer.on "saved", @onSaved
-
-    if atom.config.get('autocomplete-plus.liveCompletion')
-      @currentBuffer.on "changed", @onChanged
+    @currentBuffer.on "changed", @onChanged
 
   ###
-   * Adds the last typed word to the wordList
+   * Why are we doing this again...?
+   * Might be because of autosave:
+   * http://git.io/iF32wA
+   * @private
   ###
-  addLastWordToList: (newLine) ->
-    lastWord = @lastTypedWord newLine
-    return unless lastWord
-
-    if @wordList.indexOf(lastWord) < 0
-      @wordList.push lastWord
-
-  ###
-   * Defines which key we would like to use for filtering
-  ###
-  getFilterKey: -> 'word'
-
   getModel: -> null
 
+  ###
+   * Clean up, stop listening to events
+   * @public
+  ###
   dispose: ->
-    @editor.off "contents-modified", @contentsModified
     @currentBuffer?.off "changed", @onChanged
     @currentBuffer?.off "saved", @onSaved
-    @editor.off "contents-modified", @contentsModified
     @editor.off "title-changed-subscription-removed", @cancel
     @editor.off "cursor-moved", @cursorMoved
