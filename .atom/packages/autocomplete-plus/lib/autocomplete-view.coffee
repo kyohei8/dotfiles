@@ -35,6 +35,10 @@ class AutocompleteView extends SimpleSelectListView
 
     @subscribeToCommand @editorView, "autocomplete-plus:activate", @runAutocompletion
 
+    @on "autocomplete-plus:select-next", => @selectNextItemView()
+    @on "autocomplete-plus:select-previous", => @selectPreviousItemView()
+    @on "autocomplete-plus:cancel", => @cancel()
+
   ###
    * Checks whether the current file is blacklisted
    * @return {Boolean}
@@ -115,11 +119,12 @@ class AutocompleteView extends SimpleSelectListView
 
   ###
    * Focuses the editor again
+   * @param {Boolean} focus
    * @private
   ###
-  cancel: =>
+  cancel: (focus=true) =>
     super
-    @editorView.focus()
+    @editorView.focus() if focus
 
   ###
    * Finds suggestions for the current prefix, sets the list items,
@@ -127,11 +132,6 @@ class AutocompleteView extends SimpleSelectListView
    * @private
   ###
   runAutocompletion: =>
-    if @active
-      @detach()
-      @list.empty()
-      @editorView.focus()
-
     # Iterate over all providers, ask them to build word lists
     suggestions = []
     for provider in @providers.slice().reverse()
@@ -192,7 +192,8 @@ class AutocompleteView extends SimpleSelectListView
     if e.newText.length is 1 and atom.config.get "autocomplete-plus.enableAutoActivation"
       @contentsModified()
     else
-      @cancel()
+      # Don't refocus since we probably still have focus
+      @cancel focus = false
 
   ###
    * Repositions the list view. Checks for boundaries and moves the view

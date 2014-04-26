@@ -13,7 +13,7 @@ is_ignore(){
 	return 1
 }
 
-
+# dotfileのシンボリックリンクを貼る
 for dotfile in `ls -aF | grep '^\.'`; do
 	is_ignore $dotfile
 	if [ $? -eq 1 ]; then
@@ -23,3 +23,8 @@ for dotfile in `ls -aF | grep '^\.'`; do
 		#ln -s $src_path $HOME/`echo $dotfile | sed -e 's/\/$//'`
 	fi
 done
+
+#brewインストール
+brew bundle
+#Finderを一旦落とす(quicklookを反映するため)
+defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
