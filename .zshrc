@@ -5,7 +5,7 @@ plugins=(git gem rails4)
 
 source $ZSH/oh-my-zsh.sh
 
-# 自動補完設定 
+# 自動補完設定
 #autoload predict-on
 #predict-on
 
@@ -14,7 +14,7 @@ source $ZSH/oh-my-zsh.sh
 #------------------------------------------------------------------------------
 function clone_w(){
 reponame="$(echo $1 | grep / | cut -d/ -f5 | cut -d\. -f1)"
-git clone $1&& wstorm $reponame 
+git clone $1&& wstorm $reponame
 }
 
 #------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ git clone $1&& wstorm $reponame
 #------------------------------------------------------------------------------
 function clone_r(){
 reponame="$(echo $1 | grep / | cut -d/ -f5 | cut -d\. -f1)"
-git clone $1&& mine $reponame 
+git clone $1&& mine $reponame
 }
 
 
@@ -50,6 +50,9 @@ alias gphm='git push heroku master'
 alias glap="git log --abbrev-commit --pretty=oneline"
 alias glog='git log --all --graph --pretty="tformat:%C(yellow)%h%Cblue%d%Creset %s %C(red) %an, %ar%Creset"'
 alias glogp="glog -p"
+
+#hub
+alias git=hub
 
 #------------------------------------------------------------------------------
 # other
@@ -84,13 +87,13 @@ alias lld="ll -aF | grep /"
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
- 
+
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
 
 #------------------------------------------------------------------------------
-# heroku 
+# heroku
 #------------------------------------------------------------------------------
 alias h='heroku'
 alias hps='heroku ps'
@@ -168,7 +171,7 @@ export PATH=$HOME/.node/bin:$PATH
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-## rbenv setting 
+## rbenv setting
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
