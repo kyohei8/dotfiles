@@ -14,6 +14,8 @@ install rbenv || true
 install ruby-build || true
 install rbenv-gemset || true
 install sqlite || true
+install libjpeg || true
+install libjpeg-turbo || true
 
 cask install mailplane || true
 cask install alfred || true
