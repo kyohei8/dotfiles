@@ -28,3 +28,5 @@ done
 brew bundle
 #Finderを一旦落とす(quicklookを反映するため)
 defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
+# java home
+JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
