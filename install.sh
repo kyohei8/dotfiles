@@ -20,7 +20,7 @@ for dotfile in `ls -aF | grep '^\.'`; do
 		src_path=`pwd`/$dotfile
 		echo 'create symbolic link ->'$dotfile
 		# ディレクトリの場合最後のスラッシュを削除
-		#ln -s $src_path $HOME/`echo $dotfile | sed -e 's/\/$//'`
+		ln -s $src_path $HOME/`echo $dotfile | sed -e 's/\/$//'`
 	fi
 done
 

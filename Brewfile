@@ -1,5 +1,6 @@
 tap phinze/cask || true
 tap homebrew/versions|| true
+tap caskroom/versions || true
 update || true
 upgrade || true
 
@@ -41,7 +42,7 @@ cask install webstorm || true
 cask install rubymine || true
 cask install eclipse || true
 cask install google-japanese-ime || true
-cask install java || true
+cask install java7 || true
 cask install sequel-pro || true
 
 # https://github.com/sindresorhus/quick-look-plugins
