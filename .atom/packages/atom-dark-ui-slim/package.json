@@ -1,7 +1,7 @@
 {
   "name": "atom-dark-ui-slim",
   "theme": "ui",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "A slim version of atom-dark-ui",
   "license": "MIT",
   "repository": {
@@ -17,10 +17,10 @@
     "url": "https://github.com/moonsspoon/atom-dark-ui-slim/issues"
   },
   "homepage": "https://github.com/moonsspoon/atom-dark-ui-slim",
-  "_id": "atom-dark-ui-slim@0.3.2",
+  "_id": "atom-dark-ui-slim@0.4.0",
   "dist": {
-    "shasum": "101a428cf302a7f6576730c798792748d0dc0fea"
+    "shasum": "6937ac869a5edcaeb112ddebe29b2ad3b8099f8a"
   },
-  "_resolved": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-114226-7428-288xqt/package.tgz",
-  "_from": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-114226-7428-288xqt/package.tgz"
+  "_resolved": "/var/folders/9l/z4ck_1s532qdv1xt1m1wysjm0000gn/T/d-114611-3961-1ewo8z9/package.tgz",
+  "_from": "/var/folders/9l/z4ck_1s532qdv1xt1m1wysjm0000gn/T/d-114611-3961-1ewo8z9/package.tgz"
 }

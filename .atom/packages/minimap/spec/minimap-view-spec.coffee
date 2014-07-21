@@ -5,9 +5,12 @@ editorView = null
 
 describe "MinimapView", ->
   beforeEach ->
+
     runs ->
       atom.workspaceView = new WorkspaceView
-      atom.workspaceView.openSync('sample.js')
+
+    waitsForPromise ->
+      atom.workspaceView.open('sample.js')
 
     runs ->
       atom.workspaceView.attachToDom()
@@ -16,6 +19,7 @@ describe "MinimapView", ->
 
     waitsForPromise ->
       promise = atom.packages.activatePackage('minimap')
+      atom.config.set 'minimap.lineOverdraw', 10
       atom.workspaceView.trigger 'minimap:toggle'
       promise
 

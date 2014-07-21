@@ -1,5 +1,6 @@
 {Emitter} = require 'emissary'
 Debug = require 'prolix'
+semver = require 'semver'
 
 ViewManagement = require './mixins/view-management'
 PluginManagement = require './mixins/plugin-management'
@@ -79,19 +80,36 @@ class Minimap
   ViewManagement.includeInto(this)
   PluginManagement.includeInto(this)
 
+  # Public: The minimap package version
+  version: require('../package.json').version
+
   # Public: The default minimap settings
   configDefaults:
     plugins: {}
     autoToggle: false
+    displayMinimapOnLeft: false
+    minimapScrollIndicator: true
+    lineOverdraw: 10
+
 
   # Internal: The activation state of the minimap package.
   active: false
 
   # Public: Activates the minimap package.
   activate: ->
+    # Warns user that minimap currently doesn't support the React Editor View
+    # if atom.config.get('core.useReactEditor')
+    #   console.warn("Minimap currently doesn't support the React Editor View experimental feature. Please turn off the `Use React Editor` option in the settings if you want to enable the minimap.")
+    #   return @deactivate()
+
+
     atom.workspaceView.command 'minimap:toggle', => @toggleNoDebug()
     atom.workspaceView.command 'minimap:toggle-debug', => @toggleDebug()
     @toggleNoDebug() if atom.config.get 'minimap.autoToggle'
+    atom.workspaceView.toggleClass 'minimap-on-left', atom.config.get('minimap.displayMinimapOnLeft')
+    atom.config.observe 'minimap.displayMinimapOnLeft', =>
+      atom.workspaceView.toggleClass 'minimap-on-left', atom.config.get('minimap.displayMinimapOnLeft')
+
 
   # Public: Deactivates the minimap package.
   deactivate: ->
@@ -107,6 +125,15 @@ class Minimap
   toggleNoDebug: ->
     @getChannel().deactivate()
     @toggle()
+
+  # Public: Verifies that the passed-in version expression is satisfied by
+  # the current minimap version.
+  #
+  # `expectedVersion` - A [semver]() compatible expression to match against
+  #                     the minimap version.
+  #
+  # Returns `true` if the version matches the expression, `false` otherwise.
+  versionMatch: (expectedVersion) -> semver.satisfies(@version, expectedVersion)
 
   # Public: Returns the char width ratio of the minimap compared to the real
   # editor. **The value is currently hard-coded until we find a good way to

@@ -1,7 +1,7 @@
 {
   "name": "dash",
   "main": "./lib/dash",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "private": true,
   "description": "Dash documentation integration with Atom",
   "repository": {
@@ -12,16 +12,19 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "readme": "# Dash\n\nSimple [dash](http://kapeli.com/dash) documentation integration for [Atom](https://atom.io/packages/dash).\n\n## Installation\n\n```sh\napm install dash\n```\n\n## Usage\n\nLook up the word under the current cursor or any selected text by pressing `ctrl-h`. By default, this will cause a syntax sensitive search (E.g. it'll search based on the current file type). If you want to search all documentation, press `ctrl-alt-h`.\n\n### Adding additional docsets\n\nOpen the Atom config file `Atom -> Open Your Config` and add the docsets to the `dash.grammars` object in the form of `language: [docset, docset]`. For example:\n\n```cson\n'dash':\n  'grammars':\n    'JavaScript': [\n      'nodejs'\n    ]\n```\n\n## License\n\nMIT\n",
+  "dependencies": {
+    "underscore-plus": "^1.2.1"
+  },
+  "readme": "# Dash\n\nSimple [Dash](http://kapeli.com/dash) documentation integration for [Atom](https://atom.io/packages/dash).\n\n## Installation\n\n```sh\napm install dash\n```\n\nAlternatively open `Preferences -> Packages` and search for `dash`.\n\n## Usage\n\nLook up the word under the current cursor or any selected text by pressing `ctrl-h`. By default, this will cause a syntax sensitive search (E.g. it'll search based on the current file type). If you want to search all documentation, press `ctrl-alt-h`.\n\n### Adding additional docsets\n\nOpen the Atom config file `Atom -> Open Your Config` and add the docsets under `dash.grammars` object in the form of `language: [docset, docset]`. For example:\n\n```cson\n'dash':\n  'grammars':\n    'JavaScript': [\n      'nodejs'\n    ]\n```\n\nDocsets defined in your local configuration will override the default settings. Take a look at the [built-in map file](https://github.com/blakeembrey/atom-dash/blob/master/lib/map.coffee) for the default docset configuration.\n\n## License\n\nMIT\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/blakeembrey/atom-dash/issues"
   },
   "homepage": "https://github.com/blakeembrey/atom-dash",
-  "_id": "dash@0.0.3",
+  "_id": "dash@0.0.7",
   "dist": {
-    "shasum": "0a0a4eb3ee55cc34b06770fef652c9df5d8f38db"
+    "shasum": "dd480a07b91fa4f30816e80f0272c42be605a3de"
   },
-  "_resolved": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-114226-7470-pdgkse/package.tgz",
-  "_from": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-114226-7470-pdgkse/package.tgz"
+  "_resolved": "/var/folders/9l/z4ck_1s532qdv1xt1m1wysjm0000gn/T/d-114611-3961-1ffperr/package.tgz",
+  "_from": "/var/folders/9l/z4ck_1s532qdv1xt1m1wysjm0000gn/T/d-114611-3961-1ffperr/package.tgz"
 }

@@ -1,144 +1,181 @@
-.file-icon-rb:before
-{
-  content: "\f047";
-  color: red;
+@import "colors.less";
+@import "fonts.less";
+@import "icons.less";
+@import "items.less";
+
+// Defaults
+.icon-file-text, .icon-file-directory, .icon-file-media, .icon-book {
+  &:before { text-align: center; }
 }
 
-.file-icon-erb:before
-{
-  content: "\f047";
-  color: darken(red, 15%);
-}
+// Github icon
+.icon-file-directory[data-name=".git"]:before { .git-icon; }
 
-.file-icon-Gemfile:before
-{
-  content: "\f047";
-}
+// Package icon
+.icon-file-directory[data-name=".bundle"]:before { .package-icon; }
 
-.file-icon-js:before
-{
-    color: #90c276;
-}
+// Default icon: image
+.icon-file-media[data-name$=".png"]:before { .medium-orange; }
+.icon-file-media[data-name$=".gif"]:before { .medium-yellow; }
+.icon-file-media[data-name$=".jpg"]:before { .medium-green;  }
 
-.file-icon-md:before
-{
-    color: #78b4c4;
-}
+// Default icon: book
+.icon-book[data-name="README.md"]:before,
+.icon-book[data-name="Readme.md"]:before,
+.icon-book[data-name="readme.md"]:before { .medium-blue; }
 
-.file-icon-json:before
-{
-    color: #b17bc7;
-}
+@{pane-tab-selector}, .icon-file-text {
 
-.file-icon-cson:before
-{
-    color: #c67dc9;
-}
+  // Checklist icon
+  &[data-name$="TODO"]:before { .checklist-icon; .medium-yellow; }
 
-.file-icon-npmignore:before
-{
-    color: #c97d7d;
-}
+  // Code icon
+  &[data-name$=".xml"]:before { .code-icon; .medium-blue;   }
 
-.file-icon-gitignore:before
-{
-    color: #c9a07d;
-}
+  // JavaScript icon
+  &[data-name$=".js"]:before  { .js-icon; .medium-yellow; }
+  &[data-name$=".jsx"]:before { .js-icon; .medium-green; }
+  &[data-name$=".ts"]:before  { .js-icon; .medium-purple; }
 
-.file-icon-yml:before
-{
-    color: #bec97d;
-}
+  // Coffee icon
+  &[data-name$=".coffee"]:before    { .coffee-icon; .medium-maroon; }
+  &[data-name$=".litcoffee"]:before { .coffee-icon; .light-maroon;  }
 
-.file-icon-txt:before
-{
-    color: #7dc9c6;
-}
+  // CSS3 icon
+  &[data-name$=".less"]:before { .css3-icon; .dark-blue; }
+  &[data-name$=".css"]:before  { .css3-icon; .medium-blue; }
 
-.file-icon-coffee:before
-{
-    color: #b0734b;
-}
+  // Dashboard icon
+  &[data-name$=".slim"]:before { .dashboard-icon; .medium-orange; }
 
-.file-icon-litcoffee:before
-{
-    color: #b0734b;
-}
+  // Database icon
+  &[data-name$=".json"]:before { .database-icon; .medium-yellow; }
+  &[data-name$=".cson"]:before { .database-icon; .medium-maroon; }
+  &[data-name$=".yml"]:before,
+  &[data-name$=".yaml"]:before { .database-icon; .light-red; }
 
-.file-icon-php:before
-{
-    color: #5991db;
-}
+  // Elixir icon
+  &[data-name$=".ex"]:before        { .elixir-icon;   .dark-purple; }
+  &[data-name$=".exs"]:before       { .elixir-icon; .medium-purple; }
+  &[data-name$="mix.exs"]:before    { .elixir-icon;  .light-purple; }
+  &[data-name$="mix.ex"]:before     { .elixir-icon;  .light-purple; }
 
-.file-icon-less:before
-{
-    color: #78c497;
-}
+  // Erlang icon
+  &[data-name$=".erl"]:before        { .erlang-icon;   .medium-red; }
+  &[data-name$=".beam"]:before       { .erlang-icon;     .dark-red; }
 
-.file-icon-sass:before
-{
-    color: #8078c4;
-}
+  // HTML5 icon
+  &[data-name$=".erb"]:before  { .html5-icon; .medium-red;    }
+  &[data-name$=".html"]:before { .html5-icon; .medium-orange; }
+  &[data-name$=".haml"]:before { .html5-icon; .light-red;     }
+  &[data-name$=".jade"]:before { .html5-icon; .medium-green;  }
+  &[data-name$=".jsp"]:before  { .html5-icon; .medium-purple; }
+  &[data-name$=".ctp"]:before  { .html5-icon; .medium-blue;   }
+  &[data-name$=".ejs"]:before  { .html5-icon; .medium-green; }
 
-.file-icon-scss:before
-{
-    color: #8078c4;
-}
+  // Mustache icon
+  &[data-name$=".hbs"]:before,
+  &[data-name$=".handlebars"]:before,
+  &[data-name$=".mustache"]:before { .hbs-mustache-icon; .medium-orange; }
 
+  // Gear icon
+  &[data-name$=".gitignore"]:before     { .gear-icon;                 }
+  &[data-name$=".gitattributes"]:before { .gear-icon;                 }
+  &[data-name$=".editorconfig"]:before  { .gear-icon; .medium-orange; }
+  &[data-name$=".jshintrc"]:before      { .gear-icon; .medium-yellow; }
+  &[data-name$=".jscsrc"]:before        { .gear-icon; .medium-yellow; }
+  &[data-name$=".module"]:before        { .gear-icon; .medium-blue;   }
+  &[data-name$=".htaccess"]:before      { .gear-icon; .medium-red;    }
 
-.file-icon-css:before
-{
-    color: #c478c3;
-}
+  // Npm icon
+  &[data-name=".npmignore"]:before       { .node-icon; }
+  &[data-name="npm-debug.log"]:before    { .node-icon; .medium-red; }
 
-.file-icon-jshintrc:before
-{
-    color: #c77b9f;
-}
+  // Bower icon
+  &[data-name=".bowerrc"]:before     { .bower-icon; }
+  &[data-name="bower.json"]:before   { .bower-icon; .medium-yellow; }
 
-.file-icon-editorconfig:before
-{
-    color: #c77b81;
-}
+  // Sass icon
+  &[data-name$=".sass"]:before { .sass-icon; .light-purple; }
+  &[data-name$=".scss"]:before { .sass-icon; .dark-purple; }
 
-.file-icon-png:before
-{
-    color: #d5b559;
-}
+  // PHP icon
+  &[data-name$=".php"]:before  { .php-icon; .dark-blue; }
 
-.file-icon-gif:before
-{
-    color: #d6d85b;
-}
+  // Python icon
+  &[data-name$=".py"]:before { .python-icon; .dark-yellow; }
 
-.file-icon-jpg:before
-{
-    color: #c2d85b;
-}
+  // Ruby icon
+  &[data-name$="Gemfile"]:before,
+  &[data-name$="Gemfile.lock"]:before,
+  &[data-name$="Rakefile"]:before,
+  &[data-name$=".gemspec"]:before,
+  &[data-name=".ruby-gemset"]:before,
+  &[data-name=".ruby-version"]:before { .ruby-icon; }
 
-.file-icon-html:before
-{
-    color: #5cb5db;
-    content: "\f0b6";
-}
+  &[data-name$=".rb"]:before,
+  &[data-name$=".opal"]:before   { .ruby-icon; .medium-red; }
 
-.file-icon-sh:before
-{
-    color: #de5ebd;
-}
+  &[data-name$="_spec.rb"]:before { .comment-icon; .medium-green; }
 
-.file-icon-htaccess:before
-{
-    color: #e16178;
-}
+  &[data-name$=".pp"]:before { .puppet-icon; .medium-purple }
 
-.file-icon-module:before
-{
-    color: #e1c761;
-}
+  // Perl icon
+  &[data-name$=".pl"]:before { .perl-icon; .medium-purple; }
+  &[data-name$=".pm"]:before { .perl-icon; .medium-purple; }
 
-.file-icon-xml:before
-{
-    color: #a9e161;
-    content: "\f010";
+  // Java icon
+  &[data-name$=".java"]:before { .java-icon; .medium-purple; }
+
+  // Go
+  &[data-name$=".go"]:before { .go-icon; .light-green; }
+
+  // Scala
+  &[data-name$=".scala"]:before { .scala-icon; .medium-green; }
+
+  // Haskell
+  &[data-name$=".hs"]:before { .haskell-icon; .medium-purple; }
+
+  // Objective-C, C++, C
+  &[data-name$=".c"]:before       { .c-icon; .medium-blue;   }
+  &[data-name$=".h"]:before       { .medium-purple; }
+  &[data-name$=".cpp"]:before     { .cpp-icon; .medium-blue;   }
+  &[data-name$=".m"]:before       { .objc-icon; .medium-blue;   }
+  &[data-name$=".swift"]:before   { .swift-icon; .medium-green;   }
+
+  &[data-name$=".cs"]:before   { .csharp-icon; .medium-blue;   }
+
+  // Secret icon
+  &[data-name$=".secret"]:before { .secret-icon; }
+
+  // Markdown (except readme.md)
+  &[data-name$=".md"]:before  { .markdown-icon; .medium-blue;   }
+
+  // txt
+  &[data-name$=".txt"]:before { .medium-cyan;   }
+
+  // shell
+  &[data-name$=".sh"]:before,
+  &[data-name$=".bash"]:before,
+  &[data-name=".bashrc"]:before { .terminal-icon; .medium-purple; }
+  &[data-name$=".zsh"]:before,
+  &[data-name=".zshrc"]:before { .terminal-icon; .medium-blue; }
+  &[data-name$=".fish"]:before,
+  &[data-name=".fishrc"]:before  { .terminal-icon; .medium-green; }
+
+  // Grunt icon
+  &[data-name="GRUNTFILE.js"]:before,
+  &[data-name="Gruntfile.js"]:before,
+  &[data-name="gruntfile.js"]:before { .grunt-icon; .medium-yellow; }
+  &[data-name="GRUNTFILE.coffee"]:before,
+  &[data-name="Gruntfile.coffee"]:before,
+  &[data-name="gruntfile.coffee"]:before { .grunt-icon; .medium-maroon; }
+
+  // Gulp icon
+  &[data-name="GULPFILE.js"]:before,
+  &[data-name="Gulpfile.js"]:before,
+  &[data-name="gulpfile.js"]:before  { .gulp-icon; .medium-red; }
+  &[data-name="GULPFILE.coffee"]:before,
+  &[data-name="Gulpfile.coffee"]:before,
+  &[data-name="gulpfile.coffee"]:before { .gulp-icon; .medium-maroon; }
 }
