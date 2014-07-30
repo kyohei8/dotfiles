@@ -16,6 +16,10 @@ install rbenv-gemset || true
 install sqlite || true
 install libjpeg || true
 install libjpeg-turbo || true
+# php 5.5
+tap homebrew/dupes
+tap josegonzalez/php
+install php55 || true
 
 cask install mailplane || true
 cask install alfred || true
