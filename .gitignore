@@ -2,6 +2,6 @@
 .vim/bundle/*
 *.swp
 
-.atom/storage
-.atom/.node-gyp
-.atom/compile-cache
+.atom/storage/*
+.atom/.node-gyp/*
+.atom/compile-cache/*
