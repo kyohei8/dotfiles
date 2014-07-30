@@ -1,6 +1,6 @@
 {
   "name": "language-apache",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "description": "Syntax and snippet support for Apache configuration files",
   "repository": {
@@ -18,9 +18,10 @@
     "url": "https://github.com/jacobbednarz/atom-language-apache/issues"
   },
   "homepage": "https://github.com/jacobbednarz/atom-language-apache",
-  "_id": "language-apache@1.1.0",
+  "_id": "language-apache@1.2.0",
   "dist": {
-    "shasum": "fdb257fd8ddb61fe55b93d0ecfb0496ff76ad918"
+    "shasum": "f07da89a1acf2f3f08dd9ff0745a0ebaf51237b1"
   },
-  "_from": "/Users/ktsukuda/.atom/.node-gyp/.atom/.apm/language-apache/1.1.0/package.tgz"
+  "_resolved": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-11467-4755-ivi92w/package.tgz",
+  "_from": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-11467-4755-ivi92w/package.tgz"
 }

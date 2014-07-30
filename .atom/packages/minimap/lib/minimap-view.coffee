@@ -1,17 +1,21 @@
-{$, View} = require 'atom'
+{$, View, EditorView} = require 'atom'
+Debug = require 'prolix'
+Delegato = require 'delegato'
 
 MinimapEditorView = require './minimap-editor-view'
 MinimapIndicator = require './minimap-indicator'
-Debug = require 'prolix'
-
 CONFIGS = require './config'
 
 module.exports =
 class MinimapView extends View
   Debug('minimap').includeInto(this)
+  Delegato.includeInto(this)
+
+  @delegatesMethods 'getLineHeight', 'getLinesCount', 'getMinimapHeight', 'getMinimapScreenHeight', 'getMinimapHeightInLines', 'getFirstVisibleScreenRow', 'getLastVisibleScreenRow', 'addLineClass', 'removeLineClass', 'removeAllLineClasses', toProperty: 'miniEditorView'
 
   @content: ->
     @div class: 'minimap', =>
+      @div outlet: 'miniScroller', class: "minimap-scroller"
       @div outlet: 'miniWrapper', class: "minimap-wrapper", =>
         @div outlet: 'miniUnderlayer', class: "minimap-underlayer"
         @subview 'miniEditorView', new MinimapEditorView()
@@ -23,7 +27,10 @@ class MinimapView extends View
 
   # VIEW CREATION/DESTRUCTION
 
-  constructor: (@paneView) ->
+  constructor: (@editorView) ->
+    @editor = @editorView.getEditor()
+    @paneView = @editorView.getPane()
+
     super
 
     @scaleX = 0.2
@@ -37,6 +44,16 @@ class MinimapView extends View
     @offsetTop = 0
     @indicator = new MinimapIndicator()
 
+    @scrollView = @editorView.scrollView
+    @scrollViewLines = @scrollView.find('.lines')
+
+    @subscribeToEditor()
+
+    @miniEditorView.minimapView = this
+    @miniEditorView.setEditorView(@editorView)
+
+    @updateMinimapView()
+
   initialize: ->
     @on 'mousewheel', @onMouseWheel
     @on 'mousedown', @onMouseDown
@@ -44,6 +61,9 @@ class MinimapView extends View
     @on 'mousedown', '.minimap-visible-area', @onDragStart
 
     @subscribe @paneView.model.$activeItem, @onActiveItemChanged
+    # Fixed item move to other pane.
+    @subscribe @paneView.model, 'item-removed', (item) -> item.off? '.minimap'
+
     @subscribe @miniEditorView, 'minimap:updated', @updateMinimapView
 
     @subscribe $(window), 'resize:end', @onScrollViewResized
@@ -53,72 +73,52 @@ class MinimapView extends View
       @configs.theme = atom.config.get(themeProp) ? CONFIGS.theme
       @updateTheme()
 
+    @miniScrollVisible = atom.config.get('minimap.minimapScrollIndicator')
+    @miniScroller.toggleClass 'visible', @miniScrollVisible
+    atom.config.observe 'minimap.minimapScrollIndicator', =>
+      @miniScrollVisible = atom.config.get('minimap.minimapScrollIndicator')
+      @miniScroller.toggleClass 'visible', @miniScrollVisible
+
+    atom.config.observe 'minimap.useHardwareAcceleration', =>
+      @updateScroll() if @ScrollView?
 
   destroy: ->
     @off()
     @unsubscribe()
 
-    @deactivatePaneViewMinimap()
+    @detachFromPaneView()
     @miniEditorView.destroy()
     @remove()
 
   # MINIMAP DISPLAY MANAGEMENT
 
-  attachToPaneView: -> @paneView.append(this)
-  detachFromPaneView: -> @detach()
-
-  activatePaneViewMinimap: ->
+  attachToPaneView: ->
     @paneView.addClass('with-minimap')
-    @attachToPaneView()
+    @paneView.append(this)
 
-  deactivatePaneViewMinimap: ->
+  detachFromPaneView: ->
     @paneView.removeClass('with-minimap')
-    @detachFromPaneView()
+    @detach()
 
-  activeViewSupportMinimap: -> @getEditor()?
+
   minimapIsAttached: -> @paneView.find('.minimap').length is 1
 
   # EDITOR VIEW MANAGEMENT
-
-  storeActiveEditor: ->
-    @editorView = @getEditorView()
-    @editor = @editorView.getEditor()
-
-    @unsubscribeFromEditor()
-
-    @scrollView = @editorView.scrollView
-    @scrollViewLines = @scrollView.find('.lines')
-
-    @subscribeToEditor()
 
   unsubscribeFromEditor: ->
     @unsubscribe @editor, '.minimap' if @editor?
     @unsubscribe @scrollView, '.minimap' if @scrollView?
 
   subscribeToEditor: ->
-    @subscribe @editor, 'screen-lines-changed.minimap', @updateMinimapEditorView
     @subscribe @editor, 'scroll-top-changed.minimap', @updateScrollY
     # Hacked scroll-left
     @subscribe @scrollView, 'scroll.minimap', @updateScrollX
-
-  # See /Applications/Atom.app/Contents/Resources/app/src/pane-view.js#349
-  # pane-view's private api
-  # `paneView.activeView` and `paneView.activeItem`
-  getEditorView: -> @paneView.viewForItem(@activeItem)
 
   getEditorViewClientRect: -> @scrollView[0].getBoundingClientRect()
 
   getScrollViewClientRect: -> @scrollViewLines[0].getBoundingClientRect()
 
   getMinimapClientRect: -> @[0].getBoundingClientRect()
-
-  # See Atom's API /api/classes/Pane.html#getActiveEditor-instance
-  # Returns an Editor if the pane item is an Editor, or null otherwise.
-  getEditor: -> @paneView.model.getActiveEditor()
-
-  setMinimapEditorView: ->
-    # update minimap-editor
-    setImmediate => @miniEditorView.setEditorView(@editorView)
 
   # UPDATE METHODS
 
@@ -144,6 +144,11 @@ class MinimapView extends View
     evw = editorViewRect.width
     evh = editorViewRect.height
 
+    minimapVisibilityRatio = miniScrollViewRect.height / height
+
+    @miniScroller.height(evh / minimapVisibilityRatio)
+    @miniScroller.toggleClass 'visible', minimapVisibilityRatio > 1 and @miniScrollVisible
+
     @miniWrapper.css {width}
 
     # VisibleArea's size
@@ -163,7 +168,12 @@ class MinimapView extends View
     # Compute boundary
     @indicator.updateBoundary()
 
-    setImmediate => @updateScroll()
+    return if @frameRequested
+
+    @frameRequested = true
+    webkitRequestAnimationFrame =>
+      @updateScroll()
+      @frameRequested = false
 
   updateScrollY: (top) =>
     # Need scroll-top value when in find pane or on Vim mode(`gg`, `shift+g`).
@@ -185,28 +195,36 @@ class MinimapView extends View
   updateScroll: =>
     @updateScrollX()
     @updateScrollY()
+    @trigger 'minimap:scroll'
 
   updatePositions: ->
     @transform @miniVisibleArea[0], @translate(@indicator.x, @indicator.y)
     @transform @miniWrapper[0], @minimapScale + @translate(@indicator.scroller.x, @indicator.scroller.y)
+    @miniEditorView.scrollTop @indicator.scroller.y * -1
+
+    @updateScrollerPosition()
+
+  updateScrollerPosition: ->
+    height = @miniScroller.height()
+    totalHeight = @height()
+
+    scrollRange = totalHeight - height
+
+    @transform @miniScroller[0], @translate(0, @indicator.ratioY * scrollRange)
 
   # EVENT CALLBACKS
 
   onActiveItemChanged: (item) =>
     # Fix called twice when opening minimap!
-    return if item is @activeItem
-    @activeItem = item
 
-    if @activeViewSupportMinimap()
-      @log 'minimap is supported by the current tab'
-      @activatePaneViewMinimap() unless @minimapIsAttached()
-      @storeActiveEditor()
-      @setMinimapEditorView()
+    activeView = @paneView.viewForItem(item)
+    if activeView is @editorView
+      @attachToPaneView() if @parent().length is 0
+      @updateMinimapEditorView()
       @updateMinimapView()
     else
-      # Ignore any tab that is not an editor
-      @deactivatePaneViewMinimap()
-      @log 'minimap is not supported by the current tab'
+      @detachFromPaneView() if @parent().length is 1
+      @paneView.addClass('with-minimap') if activeView?.hasClass('editor')
 
   onMouseWheel: (e) =>
     return if @isClicked
@@ -249,6 +267,11 @@ class MinimapView extends View
   # OTHER PRIVATE METHODS
 
   scale: (x=1,y=1) -> "scale(#{x}, #{y}) "
-  translate: (x=0,y=0) -> "translate3d(#{x}px, #{y}px, 0)"
+  translate: (x=0,y=0) ->
+    if atom.config.get 'minimap.useHardwareAcceleration'
+      "translate3d(#{x}px, #{y}px, 0)"
+    else
+      "translate(#{x}px, #{y}px)"
+
   transform: (el, transform) ->
     el.style.webkitTransform = el.style.transform = transform

@@ -1,7 +1,7 @@
 {
   "name": "highlight-line",
   "main": "./lib/highlight-line-view",
-  "version": "0.6.0",
+  "version": "0.7.6",
   "description": "Highlights the current line in the editor",
   "repository": {
     "type": "git",
@@ -16,12 +16,12 @@
     "url": "https://github.com/richrace/highlight-line/issues"
   },
   "homepage": "https://github.com/richrace/highlight-line",
-  "readme": "# Highlight Line Package\n\nHighlights the current line in the editor; really simple.\n\n![screenshot](http://i.imgur.com/fa32Wtr.png)\n\nNow also supports multi-line selections!\n\n![screenshot](http://i.imgur.com/Y3sstsF.gif)\n\nYou can now also underline the the current lines thanks to\n[@sniperbat](https://github.com/sniperbat). This isn't enabled by default, and\nyou can edit the colour and type of line.\n\n![screenshot](http://i.imgur.com/lIYBxQX.png)\n\n\nI've added some basic options to change the colour and opacity for the line.\nAlso, It's now possible to Enable and Disable the line.\n\nYou can now toggle the highlighted line by:  ```cmd+alt+H```\n\nYou can now toggle the underline by:  ```cmd+alt+U```\n",
+  "readme": "# Highlight Line Package\n\nHighlights the current line in the editor; really simple.\n\n![screenshot](http://i.imgur.com/fa32Wtr.png)\n\nNow also supports multi-line selections!\n\n![screenshot](http://i.imgur.com/Y3sstsF.gif)\n\nYou can now also underline the the current lines thanks to\n[@sniperbat](https://github.com/sniperbat). This isn't enabled by default, and\nyou can edit the colour and type of line.\n\n![screenshot](http://i.imgur.com/lIYBxQX.png)\n\n\nWhen selecting more than one line of text, you can enable selection borders at\nthe top and bottom of the selections. This isn't enabled by default.\nCourtesy of [@djak250](https://github.com/djak250)\n\n![screenshot](http://i.imgur.com/G1b8eAJ.png)\nI've added some basic options to change the colour and opacity for the line.\nAlso, It's now possible to Enable and Disable the line.\n\nYou can now toggle the highlighted line by:  ```cmd+alt+H```\nYou can now toggle the hiding the highlight on selecting text by:  ```cmd+shift+alt+H```\n\nYou can now toggle the underline by:  ```cmd+alt+U```\nYou can now toggle the selection borders by:  ```cmd+shift+alt+U```\n",
   "readmeFilename": "README.md",
-  "_id": "highlight-line@0.6.0",
+  "_id": "highlight-line@0.7.6",
   "dist": {
-    "shasum": "804920bf9de1b340e12dfcfd9332b90203a2508f"
+    "shasum": "4453ee2e97499871bdf60f92f4dfc79efd5de97e"
   },
-  "_resolved": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-11439-9935-11ktx4q/package.tgz",
-  "_from": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-11439-9935-11ktx4q/package.tgz"
+  "_resolved": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-114630-6102-1chwppe/package.tgz",
+  "_from": "/var/folders/ss/3wkr6_5536b3m0xdy62_m57n74gkb0/T/d-114630-6102-1chwppe/package.tgz"
 }

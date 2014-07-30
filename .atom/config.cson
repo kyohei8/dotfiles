@@ -1,19 +1,15 @@
 'editor':
   'softTabs': false
   'showIndentGuide': true
-  'fontSize': 18
+  'preferredLineLength': 140
 'core':
   'themes': [
     'atom-dark-ui-slim'
     'monokai'
   ]
-  'ignoredNames': [
-    '.git'
-    '.svn'
-    '.DS_Store'
-  ]
   'disabledPackages': [
     'autocomplete-plus'
+    'csslint'
   ]
 'exception-reporting':
   'userId': '049106df-b07b-47fd-e628-8f61faf124f1'
@@ -35,7 +31,17 @@
   ]
 'highlight-line':
   'hideHighlightOnSelect': true
+  'backgroundRgbColor': '120,120,180'
+  'opacity': '35%'
 'autocomplete-plus':
   'liveCompletion': false
   'enableAutoActivation': false
 'autocomplete': {}
+'csslint': {}
+'jsformat': {}
+'minimap': {}
+'docblockr':
+  'auto_add_method_tag': true
+'slack-chat':
+  'token': 'xoxp-2169355663-2169355779-2357171996-8b604c'
+  'username': 'kyohei-atom'

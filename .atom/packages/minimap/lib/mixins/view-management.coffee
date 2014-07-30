@@ -1,5 +1,7 @@
+{EditorView} = require 'atom'
 Mixin = require 'mixto'
 MinimapView = require '../minimap-view'
+MinimapReactView = require '../minimap-react-view'
 
 # Public: Provides methods to manage minimap views per pane.
 module.exports =
@@ -11,63 +13,71 @@ class ViewManagement extends Mixin
   updateAllViews: ->
     view.onScrollViewResized() for id,view of @minimapViews
 
-  # Public: Returns the {MinimapView} object associated to the pane containing
-  # the passed-in {EditorView}.
+  # Public: Returns the {MinimapView} object associated to the
+  # passed-in {EditorView}.
   #
   # editorView - An {EditorView} instance
   #
-  # Returns the {MinimapView} object associated to the pane containing
-  # the passed-in {EditorView}.
+  # Returns the {MinimapView} object associated to the passed-in {EditorView}.
   minimapForEditorView: (editorView) ->
-    @minimapForPaneView(editorView?.getPane())
+    @minimapForEditor(editorView?.getEditor())
 
-  # Public: Returns the {MinimapView} object associated to the passed-in
-  # {PaneView} object.
+  # Public: Returns the {MinimapView} object associated to the
+  # passed-in {Editor}.
   #
-  # paneView - A {PaneView} instance
+  # editorView - An {Editor} instance
   #
-  # Returns the {MinimapView} object associated to the passed-in
-  # {PaneView} object.
-  minimapForPaneView: (paneView) -> @minimapForPane(paneView?.model)
+  # Returns the {MinimapView} object associated to the passed-in {Editor}.
+  minimapForEditor: (editor) ->
+    @minimapViews[editor.id] if editor?
 
-  # Public: Returns the {MinimapView} object associated to the passed-in
-  # {Pane} object.
+  # Public: Calls `iterator` for each present and future minimap views.
   #
-  # pane - A {Pane} instance
+  # iterator - A {Function} to call for each minimap view. It will receive
+  #            an object with the following property:
+  #            * view - The {MinimapView} instance
   #
-  # Returns the {MinimapView} object associated to the passed-in
-  # {Pane} object.
-  minimapForPane: (pane) -> @minimapViews[pane.id] if pane?
+  # Returns a subscription object with a `off` method so that it is possible to
+  # unsubscribe the iterator from being called for future views.
+  eachMinimapView: (iterator) ->
+    return unless iterator?
+    iterator({view: minimapView}) for id,minimapView of @minimapViews
+    createdCallback = (minimapView) -> iterator(minimapView)
+    @on('minimap-view:created', createdCallback)
+    off: => @off('minimap-view:created', createdCallback)
 
   # Internal: Destroys all views currently in use.
   destroyViews: ->
     view.destroy() for id, view of @minimapViews
-    @eachPaneViewSubscription?.off()
+    @eachEditorViewSubscription?.off()
     @minimapViews = {}
 
   # Internal: Registers to each pane view existing or to be created and creates
   # a {MinimapView} instance for each.
   createViews: ->
-    # When toggled we'll look for each existing and future pane thanks to
-    # the `eachPaneView` method. It returns a subscription object so we'll
+    # When toggled we'll look for each existing and future editors thanks to
+    # the `eacheditorView` method. It returns a subscription object so we'll
     # store it and it will be used in the `deactivate` method to removes
     # the callback.
-    @eachPaneViewSubscription = atom.workspaceView.eachPaneView (paneView) =>
-      paneId = paneView.model.id
-      view = new MinimapView(paneView)
-      view.onActiveItemChanged(paneView.getActiveItem())
-      @updateAllViews()
+    @eachEditorViewSubscription = atom.workspaceView.eachEditorView (editorView) =>
+      editorId = editorView.editor.id
+      paneView = editorView.getPane()
 
-      @minimapViews[paneId] = view
+      view = new MinimapView(editorView)
+
+      @minimapViews[editorId] = view
       @emit('minimap-view:created', {view})
 
-      paneView.model.on 'destroyed', =>
-        view = @minimapViews[paneId]
+      view.updateMinimapEditorView()
+
+      editorView.editor.on 'destroyed', =>
+        view = @minimapViews[editorId]
 
         if view?
           @emit('minimap-view:will-be-destroyed', {view})
 
           view.destroy()
-          delete @minimapViews[paneId]
+          delete @minimapViews[editorId]
           @emit('minimap-view:destroyed', {view})
-          @updateAllViews()
+
+          paneView.addClass('with-minimap') if paneView.activeView?.hasClass('editor')

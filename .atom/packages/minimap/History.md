@@ -1,4 +1,103 @@
-0.9.3 / 2014/04-25
+1.6.0 / 2014-07-09
+==================
+
+* add a `Use Hardware Acceleration` option that allow to choose between `translate` or `translate3d` for the minimap scroll offset
+* fix a weird rendering issue where many update of the minimap were done with various offset
+
+1.5.2 / 2014-07-09
+==================
+
+* fix an unexpected offset on the right side of the editor contents
+
+1.5.1 / 2014-07-09
+==================
+
+* fix with-minimap decoration removed on tab change when react editor is enabled
+* fix pane styles with minimap and react editor enabled
+* fix minimap line-height with react editor enabled
+* fix error raised when closing the last tab in a pane
+
+1.5.0 / 2014-07-07
+==================
+
+* add support for react editor mode
+
+1.4.0 / 2014-06-28
+==================
+
+* fix error on line classlist access
+
+1.3.0 / 2014-05-21
+==================
+
+* fix broken minimap when `useReactEditor` is enabled
+* 🐎  remove forced hardware acceleration on minimap
+
+1.2.0 / 2014-05-20
+==================
+
+* add a `Display Minimap On Left` setting allowing for the minimap to be placed on the left of the editor view
+* add a line on the right edge of the minimap indicating how much of the buffer is displayed by the minimap. This line is only displayed if the minimap can scroll.
+* add a `lineOverdraw` setting that allow to change the number of additional lines to render in the minimap. Bigger values will increase render time but will reduce the number of redraws during scrolling.
+
+1.1.0 / 2014-05-16
+==================
+
+* removes obsolete minimap contextual menu
+
+1.0.2 / 2014-05-15
+==================
+
+* fix inconsistent arguments passed to `eachMinimapView` callbacks for already existing minimaps
+
+1.0.1 / 2014-05-12
+==================
+
+* fix with-minimap class removed from pane on tab close
+
+
+1.0.0 / 2014-05-11
+==================
+
+* minimap views are now created for each editor and not for each pane
+* add a `eachMinimapView` subscription method in `Minimap` class
+* add a view aware minimap rendering, it speeds up rendering and updates for large files
+* add delegation of `MinimapEditorView` methods in `MinimapView`, allowing to manipulate most of its API directory from a minimap view
+* add a lines API on `MinimapEditorView` allowing to decorates lines with classes even when they are not rendered yet
+
+
+0.10.0 / 2014-05-11
+===================
+
+* add Minimap.versionMatch method allowing plugins to test against minimap version
+
+0.9.8 / 2014-05-08
+==================
+
+* add Customizing Style to Readme
+
+0.9.7 / 2014-05-08
+==================
+
+* better rendering for ASCII characters, fix #69
+
+0.9.6 / 2014-05-07
+==================
+
+* fix error on closing an image view pane
+* add Travis CI
+
+0.9.5 / 2014-05-04
+==================
+
+* add reference to the new highlight-selected plugin
+
+0.9.4 / 2014-05-01
+==================
+
+* fix item move to other pane, both panes's minimap updates #65
+
+0.9.3 / 2014-04-25
 ==================
 
 * Properly stick to the editor line height

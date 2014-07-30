@@ -41,6 +41,9 @@ module.exports = ->
     # `markersUpdated` method and replace the corresponding method
     # on the fly.
     markersUpdated: (markers) ->
+      minimap = @getMinimap()
       super(markers)
       for k,marker of @markerViews
-        marker.intersectsRenderedScreenRows = -> true
+        marker.intersectsRenderedScreenRows = (range) ->
+          return false unless minimap?
+          range.intersectsRowRange(minimap.miniEditorView.firstRenderedScreenRow, minimap.miniEditorView.lastRenderedScreenRow)
