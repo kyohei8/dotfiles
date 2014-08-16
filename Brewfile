@@ -17,6 +17,7 @@ install rbenv-gemset || true
 install sqlite || true
 install libjpeg || true
 install libjpeg-turbo || true
+install wget || true
 # php 5.5
 tap homebrew/dupes
 tap josegonzalez/php
