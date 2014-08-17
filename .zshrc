@@ -1,7 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="miloshadzic"
 
-plugins=(git gem rails4)
+plugins=(git gem rails bower npm nyan osx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -26,9 +26,7 @@ git clone $1&& mine $reponame
 }
 
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# aliases
 #------------------------------------------------------------------------------
 # Applications
 #------------------------------------------------------------------------------
@@ -166,7 +164,12 @@ alias hrrtg="heroku run rake timey:get_article"
 export PATH=/opt/local/bin:/opt/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:usr/local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/include:$PATH
+# npm
 export PATH=$HOME/.node/bin:$PATH
+
+# phalcon-tools
+export PATH=$PATH:$HOME/work/phalcon-tools
+export PTOOLSPATH=$HOME/work/phalcon-tools
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
