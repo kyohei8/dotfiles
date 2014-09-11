@@ -11,5 +11,5 @@ https://itunes.apple.com/us/app/flycut-clipboard-manager/id442160987?mt=12
 
 * link atom files  
 ```bash
-$ cd ~ && rm -rf .atom && ln -s ~/Dropbox/private/atom ~/.atom
+$ rm -rf ~/.atom && ln -s ~/Dropbox/private/atom ~/.atom
 ```
