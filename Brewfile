@@ -63,4 +63,6 @@ cask install betterzipql || true
 cask install webp-quicklook || true
 cask install suspicious-package || true
 
+cask alfred link
+
 cleanup
