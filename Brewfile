@@ -49,6 +49,7 @@ cask install eclipse-ide || true
 cask install google-japanese-ime || true
 cask install java6 || true
 cask install sequel-pro || true
+cask install keyremap4macbook || true
 
 # https://github.com/sindresorhus/quick-look-plugins
 # $ defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
