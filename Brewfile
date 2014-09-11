@@ -45,7 +45,7 @@ cask install tinkertool || true
 cask install startninja || true
 cask install webstorm || true
 cask install rubymine || true
-cask install eclipse || true
+cask install eclipse-ide || true
 cask install google-japanese-ime || true
 cask install java6 || true
 cask install sequel-pro || true
