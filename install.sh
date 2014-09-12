@@ -38,3 +38,10 @@ JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
 
 #isntall oh-my-zsh
 curl -L http://install.ohmyz.sh | sh
+
+#install npm
+mkdir ~/.node
+brew postinstall node
+
+#install node packages
+npm i grunt coffee-script gulp bower yo -g
