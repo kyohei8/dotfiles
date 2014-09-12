@@ -1,18 +1,33 @@
-# Mac
+# Setup New Mac
+
+Macを買ったら最初にすること
 
 * setting to System Preferences
  * setup trackPad
  * change language(ja->en)
- 
+
+* generate ssh-key(and add key to Github)
+
+
+* install packages
+
+```
+$ cd ~
+$ git clone [this rep]
+$ sh dotfiles/install.sh
+```
 
 * Manual install
  * magical  
  http://www.charcoaldesign.co.uk/magical
- * flycut  
- https://itunes.apple.com/us/app/flycut-clipboard-manager/id442160987?mt=12
  * adium  
  http://sourceforge.net/projects/adium/files/latest/download
 
+* for AppStore
+ * flycut
+ * FreeMan
+ * CodeRunner
+ * SourceTree  
 
 * link atom files  
 ```bash
