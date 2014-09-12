@@ -31,7 +31,7 @@ git clone $1&& mine $reponame
 # Applications
 #------------------------------------------------------------------------------
 alias cot='open -g -a CotEditor'
-
+alias atom='atom'
 #------------------------------------------------------------------------------
 # git
 #------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ alias gpom="git push origin master"
 alias garc='git archive --format=zip HEAD '
 alias gronce="git reset --soft HEAD~1"
 alias gphm='git push heroku master'
-
+alias grmall='git rm $(git ls-files --deleted)'
 # git log
 alias glap="git log --abbrev-commit --pretty=oneline"
 alias glog='git log --all --graph --pretty="tformat:%C(yellow)%h%Cblue%d%Creset %s %C(red) %an, %ar%Creset"'
