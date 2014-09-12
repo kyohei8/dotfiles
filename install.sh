@@ -35,3 +35,6 @@ brew bundle
 defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
 # java home
 JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
+
+#isntall oh-my-zsh
+curl -L http://install.ohmyz.sh | sh

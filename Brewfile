@@ -45,10 +45,11 @@ cask install tinkertool || true
 cask install startninja || true
 cask install webstorm || true
 cask install rubymine || true
-cask install eclipse || true
+cask install eclipse-ide || true
 cask install google-japanese-ime || true
 cask install java6 || true
 cask install sequel-pro || true
+cask install Karabiner || true
 
 # https://github.com/sindresorhus/quick-look-plugins
 # $ defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
@@ -61,5 +62,7 @@ cask install quicklook-csv || true
 cask install betterzipql || true
 cask install webp-quicklook || true
 cask install suspicious-package || true
+
+cask alfred link
 
 cleanup
