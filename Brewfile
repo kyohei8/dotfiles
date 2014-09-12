@@ -18,6 +18,7 @@ install sqlite || true
 install libjpeg || true
 install libjpeg-turbo || true
 install wget || true
+install node
 # php 5.5
 tap homebrew/dupes
 tap josegonzalez/php
@@ -51,6 +52,7 @@ cask install java6 || true
 cask install sequel-pro || true
 cask install Karabiner || true
 cask install slack
+cask install hipchat
 
 # https://github.com/sindresorhus/quick-look-plugins
 # $ defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
