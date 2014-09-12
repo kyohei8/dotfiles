@@ -27,7 +27,8 @@ done
 # add "global gitignore" alias
 ln -s `pwd`/'_gitignore' $HOME/'.gitignore'
 echo 'create symbolic link -> .gitignore'
-
+#install brew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 #brewインストール
 brew bundle
 #Finderを一旦落とす(quicklookを反映するため)
