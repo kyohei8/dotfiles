@@ -50,6 +50,7 @@ cask install google-japanese-ime || true
 cask install java6 || true
 cask install sequel-pro || true
 cask install Karabiner || true
+cask install slack
 
 # https://github.com/sindresorhus/quick-look-plugins
 # $ defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
