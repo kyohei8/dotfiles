@@ -4,35 +4,36 @@
 
 "Bundles {
   filetype off
-  set rtp+=~/dotfiles/.vim/vundle.git/
-  call vundle#rc()
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
 
-  Bundle 'Shougo/neocomplcache'
-  Bundle 'Shougo/neosnippet.git'
-  Bundle 'Shougo/unite.vim'
-  Bundle 'scrooloose/nerdtree'
+  Plugin 'Shougo/neocomplcache'
+  Plugin 'Shougo/neosnippet.git'
+  Plugin 'Shougo/unite.vim'
+  Plugin 'scrooloose/nerdtree'
 
-  Bundle 'pivotal/jasmine'
-  Bundle 'tomtom/tcomment_vim'
-  Bundle 'pekepeke/titanium-vim'
-  Bundle 'taglist.vim'
-  Bundle 'ZenCoding.vim'
-  Bundle 'vim-coffee-script'
-  Bundle 'tpope/vim-surround'
-  Bundle 'tpope/vim-haml'
-  Bundle 'tpope/vim-rails'
-  Bundle 'nathanaelkane/vim-indent-guides'
-  Bundle 'Source-Explorer-srcexpl.vim'
-  Bundle 'thinca/vim-ref'
-  Bundle 'thinca/vim-quickrun'
+  Plugin 'pivotal/jasmine'
+  Plugin 'tomtom/tcomment_vim'
+  Plugin 'pekepeke/titanium-vim'
+  Plugin 'taglist.vim'
+  Plugin 'ZenCoding.vim'
+  Plugin 'vim-coffee-script'
+  Plugin 'tpope/vim-surround'
+  Plugin 'tpope/vim-haml'
+  Plugin 'tpope/vim-rails'
+  Plugin 'nathanaelkane/vim-indent-guides'
+  Plugin 'Source-Explorer-srcexpl.vim'
+  Plugin 'thinca/vim-ref'
+  Plugin 'thinca/vim-quickrun'
   "js環境
-  Bundle 'JavaScript-syntax'
-  Bundle 'pangloss/vim-javascript'
+  Plugin 'JavaScript-syntax'
+  Plugin 'pangloss/vim-javascript'
   "jqueryリファレンス
-  Bundle 'soh335/vim-ref-jquery'
+  Plugin 'soh335/vim-ref-jquery'
   "powerline
-  Bundle 'Lokaltog/vim-powerline'
-  Bundle 'Lokaltog/powerline-fonts'
+  Plugin 'Lokaltog/vim-powerline'
+  Plugin 'Lokaltog/powerline-fonts'
+  call vundle#end()
   filetype plugin indent on     " required!
 "}
 
@@ -86,7 +87,7 @@ set backspace=indent,eol,start "インデントを削除
 set wildmenu "コマンドライン補完するときに補完候補を表示する
 au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
 au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
-set colorcolumn=100 "100列目を強調表示 
+set colorcolumn=100 "100列目を強調表示
 
 "keymapping{{{
   ".vimrcを開くコマンド<Space+.>
@@ -102,7 +103,7 @@ set colorcolumn=100 "100列目を強調表示
   inoremap <silent> jj <ESC>
   inoremap <silent> kk <ESC>
   inoremap <ESC> <ESC>
-  
+
   "も:
   nmap ; :
 
@@ -110,11 +111,11 @@ set colorcolumn=100 "100列目を強調表示
   map  sa :saveas ~/Dropbox/private/vimdata
 
   "検索語が画面の真ん中に来るようにする
-  nmap n nzz 
-  nmap N Nzz 
-  nmap * *zz 
-  nmap # #zz 
-  nmap g* g*zz 
+  nmap n nzz
+  nmap N Nzz
+  nmap * *zz
+  nmap # #zz
+  nmap g* g*zz
   nmap g# g#zz
 
   " カーソルを自動的に()の中へ
