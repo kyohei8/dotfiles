@@ -33,3 +33,11 @@ $ sh dotfiles/install.sh
 ```bash
 $ rm -rf ~/.atom && ln -s ~/Dropbox/private/atom ~/.atom
 ```
+
+### for Yosemite
+
+disable the Character Accent Menu.
+
+```
+$ defaults write -g ApplePressAndHoldEnabled -bool false
+```
