@@ -19,6 +19,7 @@ install libjpeg || true
 install libjpeg-turbo || true
 install wget || true
 install node
+install z
 # php 5.5
 tap homebrew/dupes
 tap josegonzalez/php
