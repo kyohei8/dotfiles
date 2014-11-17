@@ -22,6 +22,8 @@ $ sh dotfiles/install.sh
  http://www.charcoaldesign.co.uk/magical
  * adium  
  http://sourceforge.net/projects/adium/files/latest/download
+ * Hosts
+ https://github.com/specialunderwear/Hosts.prefpane/downloads
 
 * for AppStore
  * flycut
