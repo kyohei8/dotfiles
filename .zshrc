@@ -1,9 +1,16 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="miloshadzic"
 
-plugins=(git gem rails bower npm nyan osx)
+#------------------------------------------------------------------------------
+# plugins
+# zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting
+#------------------------------------------------------------------------------
+plugins=(git gem rails bower npm nyan osx zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+
+# z https://github.com/rupa/z
+. `brew --prefix`/Cellar/z/1.8/etc/profile.d/z.sh
 
 # 自動補完設定
 #autoload predict-on
@@ -48,9 +55,6 @@ alias grmall='git rm $(git ls-files --deleted)'
 alias glap="git log --abbrev-commit --pretty=oneline"
 alias glog='git log --all --graph --pretty="tformat:%C(yellow)%h%Cblue%d%Creset %s %C(red) %an, %ar%Creset"'
 alias glogp="glog -p"
-
-#hub
-alias git=hub
 
 #------------------------------------------------------------------------------
 # other
@@ -140,6 +144,9 @@ export PATH=$PATH:$JAVA_HOME/bin
 alias rtg="rake timey:get_article"
 alias hrrtg="heroku run rake timey:get_article"
 
+#------------------------------------------------------------------------------
+# other
+#------------------------------------------------------------------------------
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
