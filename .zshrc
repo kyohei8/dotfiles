@@ -34,93 +34,10 @@ git clone $1&& mine $reponame
 
 
 # aliases
-#------------------------------------------------------------------------------
-# Applications
-#------------------------------------------------------------------------------
-alias cot='open -g -a CotEditor'
-alias atom='atom'
-#------------------------------------------------------------------------------
-# git
-#------------------------------------------------------------------------------
-alias gs="git status -s"
-alias gft="git fetch"
-alias gupdate="git fetch && git merge origin/master"
-alias gdi='gd --ignore-space-change'
-alias gpom="git push origin master"
-alias garc='git archive --format=zip HEAD '
-alias gronce="git reset --soft HEAD~1"
-alias gphm='git push heroku master'
-alias grmall='git rm $(git ls-files --deleted)'
-# git log
-alias glap="git log --abbrev-commit --pretty=oneline"
-alias glog='git log --all --graph --pretty="tformat:%C(yellow)%h%Cblue%d%Creset %s %C(red) %an, %ar%Creset"'
-alias glogp="glog -p"
-
-#------------------------------------------------------------------------------
-# other
-#------------------------------------------------------------------------------
-alias c="clear"
-alias sz="source ~/.zshrc"
-alias mz="m ~/.zshrc"
-#alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias mvim='open -a  /Applications/MacVim.app'
-alias m='mvim'
-
-alias l="ls -lah"
-alias s="l"
-
-alias md='mkdir $1'
-alias ..='cd ..'
-
-alias rm="rm -i"
-alias mv="mv -i"
-
-# grunt
-alias gt='grunt $1'
-
-# SL!!!
-alias sll='/usr/local/bin/sl'
-
-
-# ファイルのみを表示
-alias llf="ll -aF | grep -v /"
-# ディレクトリのみを表示
-alias lld="ll -aF | grep /"
-
-# sudo の後のコマンドでエイリアスを有効にする
-alias sudo='sudo '
-
-# グローバルエイリアス
-alias -g L='| less'
-alias -g G='| grep'
-
-#------------------------------------------------------------------------------
-# heroku
-#------------------------------------------------------------------------------
-alias h='heroku'
-alias hps='heroku ps'
-alias hl='heroku logs'
-alias hr='heroku restart'
-alias hc='heroku config'
-alias hm='heroku maintenance '
-alias hsql='heroku pg:psql'
-alias hpgi='heroku pg:info'
-
-#------------------------------------------------------------------------------
-# bower
-#------------------------------------------------------------------------------
-alias bw='bower'
-alias bwi='bower install'
-alias bwif='bower info'
-alias bws='bower search'
-alias bwl='bower list'
-
-#------------------------------------------------------------------------------
-# npm
-#------------------------------------------------------------------------------
-alias n='npm'
-alias nl='npm list'
-alias nl0='npm list --depth=0 "$@" 2>/dev/null'
+for file in ~/.{zshrc-local,aliases}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
 
 
 #------------------------------------------------------------------------------
@@ -135,18 +52,9 @@ export GRADLE_HOME=/project/gradle-1.7
 export PATH="$GRADLE_HOME/bin:$PATH"
 
 # java home
+#export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
 export PATH=$PATH:$JAVA_HOME/bin
-
-#------------------------------------------------------------------------------
-# timey
-#------------------------------------------------------------------------------
-alias rtg="rake timey:get_article"
-alias hrrtg="heroku run rake timey:get_article"
-
-#------------------------------------------------------------------------------
-# other
-#------------------------------------------------------------------------------
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -173,10 +81,6 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/include:$PATH
 # npm
 export PATH=$HOME/.node/bin:$PATH
-
-# phalcon-tools
-export PATH=$PATH:$HOME/work/phalcon-tools
-export PTOOLSPATH=$HOME/work/phalcon-tools
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

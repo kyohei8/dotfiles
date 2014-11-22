@@ -3,3 +3,4 @@
 *.swp
 
 .atom/*
+.zshrc-local
