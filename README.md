@@ -25,6 +25,8 @@ $ sh dotfiles/install.sh
  * Hosts
  https://github.com/specialunderwear/Hosts.prefpane/downloads
 
+ * [Today Scripts](https://github.com/SamRothCA/Today-Scripts/releases)
+ 
 * for AppStore
  * flycut
  * FreeMan
@@ -43,3 +45,4 @@ disable the Character Accent Menu.
 ```
 $ defaults write -g ApplePressAndHoldEnabled -bool false
 ```
+
