@@ -26,7 +26,8 @@ $ sh dotfiles/install.sh
  https://github.com/specialunderwear/Hosts.prefpane/downloads
 
  * [Today Scripts](https://github.com/SamRothCA/Today-Scripts/releases)
- 
+ * [z](https://github.com/rupa/z)
+
 * for AppStore
  * flycut
  * FreeMan
