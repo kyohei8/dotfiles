@@ -41,9 +41,16 @@ $ rm -rf ~/.atom && ln -s ~/Dropbox/private/atom ~/.atom
 
 ### for Yosemite
 
-disable the Character Accent Menu.
+#### disable the Character Accent Menu.
 
 ```
 $ defaults write -g ApplePressAndHoldEnabled -bool false
 ```
+
+#### '\' key generate '\' (not '¥')
+
+Preference > keybord > inputSource
+
+![bsimg](https://dl.dropboxusercontent.com/u/25442177/backslash.png)
+
 
