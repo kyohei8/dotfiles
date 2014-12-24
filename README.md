@@ -82,6 +82,8 @@ $ defaults write -g NSWindowResizeTime -float 0.001
 $ defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
 # Turn off full screen animations
 $ defaults write -g NSToolbarFullScreenAnimationDuration -float 0
+# disable finder animations
+$ defaults write com.apple.finder DisableAllAnimations -bool true
 #(then reboot your mac)
 
 ```
