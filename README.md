@@ -54,3 +54,36 @@ System Preferences > Keybord > inputSource
 ![bsimg](https://dl.dropboxusercontent.com/u/25442177/backslash.png)
 
 
+# Turn off animations
+
+```bash
+# Turn off Quick Look pop-out animations
+$ defaults write com.apple.finder QLPanelAnimationDuration -int 0
+$ killall Finder
+
+# Turn off Mission Control animations
+$ defaults write com.apple.dock expose-animation-duration -float 0
+# Turn off Launchpad animations
+$ defaults write com.apple.dock springboard-show-duration -float 0
+$ defaults write com.apple.dock springboard-hide-duration -float 0
+$ defaults write com.apple.dock springboard-page-duration -float 0
+# Turn off Dock hiding animations
+$ defaults write com.apple.dock autohide-delay -float 0
+$ defaults write com.apple.dock autohide-time-modifier -int 0
+# then
+$ killall Dock
+
+# opening and closing windows and popovers
+$ defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+# disable smooth scrolling
+$ defaults write -g NSScrollAnimationEnabled -bool false
+# Turn off resize animations
+$ defaults write -g NSWindowResizeTime -float 0.001
+$ defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
+# Turn off full screen animations
+$ defaults write -g NSToolbarFullScreenAnimationDuration -float 0
+#(then reboot your mac)
+
+```
+
+
