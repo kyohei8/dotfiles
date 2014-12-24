@@ -45,3 +45,18 @@ brew postinstall node
 
 #install node packages
 npm i grunt coffee-script gulp bower yo -g
+
+#change screenshot default filename
+# via http://apple.stackexchange.com/questions/53422/save-screenshot-with-my-own-name
+defaults write com.apple.screencapture name "Screenshot"
+f=/System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings
+f2=~/Desktop/ScreenCapture.strings
+sudo cp $f $f2
+sudo chown $USER $f2
+plutil -convert xml1 $f2
+sed "s/<string>%@ %@ at %@<\/string>/<string>%@ %@%@<\/string>/" $f2 > $f2
+sed "s/<string>.<\/string>/<string>-<\/string>/" $f2 > $f2
+sudo chown root $f2
+sudo cp $f2 $f
+killall SystemUIServer
+
