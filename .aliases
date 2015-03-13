@@ -23,6 +23,9 @@ alias grmall='git rm $(git ls-files --deleted)'
 alias glap="git log --abbrev-commit --pretty=oneline"
 alias glog='git log --all --graph --pretty="tformat:%C(yellow)%h%Cblue%d%Creset %s %C(red) %an, %ar%Creset"'
 alias glogp="glog -p"
+# other
+alias gmm="git merge master"
+alias gfr="git fetch && git rebase origin/master"
 
 #------------------------------------------------------------------------------
 # other
