@@ -39,6 +39,18 @@ for file in ~/.{zshrc-local,aliases}; do
 done;
 unset file;
 
+#------------------------------------------------------------------------------
+# Visual Studio Code
+#------------------------------------------------------------------------------
+code () {
+  if [[ $# = 0 ]]
+  then
+    open -a "Visual Studio Code"
+  else
+    [[ $1 = /* ]] && F="$1" || F="$PWD/${1#./}"
+    open -a "Visual Studio Code" --args "$F"
+  fi
+}
 
 #------------------------------------------------------------------------------
 # rvm
@@ -52,8 +64,9 @@ export GRADLE_HOME=/project/gradle-1.7
 export PATH="$GRADLE_HOME/bin:$PATH"
 
 # java home
+#export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
 #export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export PATH=$PATH:$JAVA_HOME/bin
 
 # Set to this to use case-sensitive completion

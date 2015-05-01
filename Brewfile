@@ -18,6 +18,7 @@ install sqlite || true
 install libjpeg || true
 install libjpeg-turbo || true
 install wget || true
+install thefuck || true
 install node
 install z
 # php 5.5

@@ -95,3 +95,8 @@ alias bwl='bower list'
 alias n='npm'
 alias nl='npm list'
 alias nl0='npm list --depth=0 "$@" 2>/dev/null'
+
+#------------------------------------------------------------------------------
+# the fuck
+#------------------------------------------------------------------------------
+alias fuck='eval $(thefuck $(fc -ln -1))'
