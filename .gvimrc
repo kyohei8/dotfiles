@@ -1,20 +1,19 @@
-"カラー
 colorscheme molokai
+
 set cmdheight=1
 set guioptions-=T
-"縦幅
-set lines=40
-"横幅
-set columns=120
-set lsp=1
-" タブサイズ
-set shiftwidth=2
-" フォント設定
-set guifontwide=Ricty:h14
-set guifont =Ricty:h14
+set guioptions+=b                   "水平スクロールバーを表示
+
+set lines=40                  "縦幅
+set columns=120               "横幅
+set lsp=1                     "行間
+set shiftwidth=2              "タブサイズ
+
+set guifontwide=Menlo:h14     " フォント設定
+set guifont =Menlo:h14
 
 "全角スペースを視覚化
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#a66f66
 au BufNewFile,BufRead * match ZenkakuSpace /　/
 "常にタブを表示
 set showtabline=2
@@ -22,7 +21,6 @@ set showtabline=2
 set transparency=0
 map  gw :macaction selectNextWindow:
 map  gW :macaction selectPreviousWindow:i
-
 
 "------------------------------------
 " indent_guides
