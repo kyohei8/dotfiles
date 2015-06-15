@@ -9,8 +9,8 @@ set columns=120               "横幅
 set lsp=1                     "行間
 set shiftwidth=2              "タブサイズ
 
-set guifontwide=Ricty Diminished:h14     " フォント設定
-set guifont=Ricty Diminished:h14
+set guifontwide=Ricty\ Diminished:h14     " フォント設定
+set guifont=Ricty\ Diminished:h14
 
 "全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#a66f66
