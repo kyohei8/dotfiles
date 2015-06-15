@@ -3,7 +3,7 @@
     set t_Co=256
     set nowrap                          "折り返さない
     set wildmenu                        "コマンドライン補完するときに補完候補を表示する
-
+    set noundofile                      "undoファイルを無効化
 
     set autoindent                      "新しい行のインデントを現在行と同じにする;
     set backupdir=$HOME/.vimbackup      "バックアップファイルを作るディレクトリ
@@ -33,6 +33,38 @@
     au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
     au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
 
+
+" }}}
+
+" NeoBundle {{{
+
+  if 0 | endif
+
+  if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+  endif
+
+  call neobundle#begin(expand('~/.vim/bundle/'))
+
+  NeoBundleFetch 'Shougo/neobundle.vim'
+
+  " plugins ---------------------------------------
+  " Theme
+  NeoBundle 'tomasr/molokai'
+  " Plugin
+  NeoBundle 'scrooloose/nerdtree'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'nathanaelkane/vim-indent-guides'
+  " -----------------------------------------------
+
+  call neobundle#end()
+
+  " Required:
+  filetype plugin indent on
+
+   " If there are uninstalled bundles found on startup,
+   " this will conveniently prompt you to install them.
+   NeoBundleCheck
 
 " }}}
 
@@ -67,6 +99,15 @@ set foldlevel=100
   inoremap <silent> kk <ESC>
   inoremap <ESC> <ESC>
 
+  " 挿入モードでのカーソル移動
+  inoremap <C-j> <Down>
+  inoremap <C-k> <Up>
+  inoremap <C-h> <Left>
+  inoremap <C-l> <Right>
+
+  " ;も:
+  nmap ; :
+
   "検索語が画面の真ん中に来るようにする
   nmap n nzz
   nmap N Nzz
@@ -76,14 +117,14 @@ set foldlevel=100
   nmap g# g#zz
 
   " カーソルを自動的に()の中へ
-  imap {} {}<Left>
-  imap [] []<Left>
-  imap () ()<Left>
+  imap { {}<Left>
+  imap [ []<Left>
+  imap ( ()<Left>
   imap "" ""<Left>
   imap '' ''<Left>
   imap <> <><Left>
-  imap // //<left>
-  imap /// ///<left>
+" imap // //<left>
+" imap /// ///<left>
 
   "eclipseのあの動き
   map <silent> <A-Up> dd<Up>P
@@ -101,14 +142,33 @@ set foldlevel=100
   " コンマの後に自動的にスペースを挿入
   inoremap , ,<Space>
 
-  " 線を引く
+  " 'F8'で線を引く
   inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
+
   " 外部で変更のあったファイルを自動的に再読み込みする
   " http://vim-users.jp/2011/03/hack206/
   augroup vimrc-checktime
     autocmd!
     autocmd WinEnter * checktime
   augroup END
+
   "行を次の行の末尾につける(コメントなどに使う)
   map ff ddpkJ
 "}}}
+
+"------------------------------------------------------
+"NERDtree(ファイルツリー)の設定
+"------------------------------------------------------
+let file_name = expand("%")
+"let g:NERDTreeDirArrows=0
+if has('vim_starting') &&  file_name == ""
+  autocmd VimEnter * NERDTree ./
+  autocmd VimEnter  <C-w>wi
+endif
+"Ctrl+eで開閉
+nmap <silent> <C-e>      :NERDTreeToggle<CR>
+vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+omap <silent> <C-e>      :NERDTreeToggle<CR>
+imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
+
