@@ -4,6 +4,8 @@
     set nowrap                          "折り返さない
     set wildmenu                        "コマンドライン補完するときに補完候補を表示する
     set noundofile                      "undoファイルを無効化
+    "set cursorline                      "カーソルの強調表示
+    set imdisable                       "コマンドモードでIMEを無効化(kaoriya限定)
 
     set autoindent                      "新しい行のインデントを現在行と同じにする;
     set backupdir=$HOME/.vimbackup      "バックアップファイルを作るディレクトリ
@@ -25,7 +27,7 @@
     set whichwrap=b,s,h,l,<,>,[,]       "カーソルを行頭、行末で止まらないようにする
     "set nowrapscan                     "検索をファイルの先頭へループしない
 
-    set history=50                      "履歴を50件に
+    set history=120                      "履歴を50件に
 
     set colorcolumn=100                 "100列目を強調表示
     set backspace=indent,eol,start      "インデントを削除
@@ -155,6 +157,8 @@ set foldlevel=100
 
   "行を次の行の末尾につける(コメントなどに使う)
   map ff ddpkJ
+  " その場に改行を挿入
+  nmap <CR> i<CR><ESC><Right>
 "}}}
 
 "------------------------------------------------------
