@@ -9,8 +9,8 @@ set columns=120               "横幅
 set lsp=1                     "行間
 set shiftwidth=2              "タブサイズ
 
-set guifontwide=Source\ Han\ Code\ JP\ Normal:h14       " フォント設定
-set guifont=Source\ Han\ Code\ JP\ Normal:h14
+set guifontwide=Source\ Han\ Code\ JP\ Normal:h12       " フォント設定
+set guifont=Source\ Han\ Code\ JP\ Normal:h12
 
 "全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#a66f66
