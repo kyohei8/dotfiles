@@ -164,6 +164,10 @@ set foldlevel=100
 "------------------------------------------------------
 "NERDtree(ファイルツリー)の設定
 "------------------------------------------------------
+let NERDTreeShowHidden=0
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=0
+let NERDTreeAutoCenter=1
 let file_name = expand("%")
 "let g:NERDTreeDirArrows=0
 if has('vim_starting') &&  file_name == ""
