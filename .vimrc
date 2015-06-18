@@ -55,6 +55,7 @@
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'nathanaelkane/vim-indent-guides'
+  NeoBundle 'mattn/emmet-vim'
   " -----------------------------------------------
 
   call neobundle#end()
