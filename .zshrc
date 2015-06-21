@@ -58,6 +58,17 @@ code () {
 source ~/.nvm/nvm.sh
 
 #------------------------------------------------------------------------------
+# powerline
+#-----------------------------------------------------------------------------
+export PATH=$PATH:~/Library/Python/2.7/bin
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+POWERLINE_NO_SHELL_ABOVE=1
+. ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
+
+
+#------------------------------------------------------------------------------
 # rvm
 #-----------------------------------------------------------------------------
 #alias rvm='rvm use'

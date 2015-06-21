@@ -36,6 +36,14 @@ defaults write com.apple.finder QLEnableTextSelection -bool true && killall Find
 # java home
 JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
 
+# install python & pip
+brew install python
+# pythonの設定
+echo '[install]\nprefix=' > ~/.pydistutils.cfg
+
+# install powerline
+pip install --user powerline-status
+
 #isntall oh-my-zsh
 curl -L http://install.ohmyz.sh | sh
 
