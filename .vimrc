@@ -7,6 +7,8 @@
     "set cursorline                      "カーソルの強調表示
     set imdisable                       "コマンドモードでIMEを無効化(kaoriya限定)
 
+    set helplang=ja,en                  "日本語のヘルプを表示
+
     set autoindent                      "新しい行のインデントを現在行と同じにする;
     set backupdir=$HOME/.vimbackup      "バックアップファイルを作るディレクトリ
     set browsedir=buffer                "ファイル保存ダイアログの初期ディレクトリをバッファファイル位置に設定
@@ -35,7 +37,6 @@
     au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
     au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
 
-
 " }}}
 
 " NeoBundle {{{
@@ -58,9 +59,12 @@
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'nathanaelkane/vim-indent-guides'
   NeoBundle 'mattn/emmet-vim'
+  NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
   " -----------------------------------------------
 
+
   call neobundle#end()
+
 
   " Required:
   filetype plugin indent on
@@ -85,81 +89,15 @@ set fdc=4
 let perl_fold=1
 set foldlevel=100
 
+"キーマップ
+source ~/.vim/startup/mapping.vim
 
-
-"keymapping{{{
-  ".vimrcを開くコマンド<Space+.>
-  nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
-  "vimrcを再読み込み <Space+,>
-  nnoremap <Space>, :<C-u>source $MYVIMRC<Return>
-
-  "ノーマルモードのIMEを無効化
-  nnoremap <silent> <C-^> <Nop>
-  "Ctrl+cでも抜ける
-  "inoremap <C-c> <Esc>
-  " insertモードから抜ける
-  inoremap <silent> jj <ESC>
-  inoremap <silent> kk <ESC>
-  inoremap <ESC> <ESC>
-
-  " 挿入モードでのカーソル移動
-  inoremap <C-j> <Down>
-  inoremap <C-k> <Up>
-  inoremap <C-h> <Left>
-  inoremap <C-l> <Right>
-
-  " ;も:
-  nmap ; :
-
-  "検索語が画面の真ん中に来るようにする
-  nmap n nzz
-  nmap N Nzz
-  nmap * *zz
-  nmap # #zz
-  nmap g* g*zz
-  nmap g# g#zz
-
-  " カーソルを自動的に()の中へ
-  imap { {}<Left>
-  imap [ []<Left>
-  imap ( ()<Left>
-  imap "" ""<Left>
-  imap '' ''<Left>
-  imap <> <><Left>
-" imap // //<left>
-" imap /// ///<left>
-
-  "eclipseのあの動き
-  map <silent> <A-Up> dd<Up>P
-  map <silent> <D-A-Up> yyP
-  map <silent> <A-Down> ddp
-  map <silent> <D-A-Down> yyp
-
-  "tabの動き
-  nnoremap <D-right> :tabnext<CR>
-  nnoremap <D-left> :tabprev<CR>
-
-  "Cmd+Enterでフルスクリーン
-  map <D-enter> :set fullscreen! <CR>
-
-  " コンマの後に自動的にスペースを挿入
-  inoremap , ,<Space>
-
-  " 'F8'で線を引く
-  inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
-
-  " 外部で変更のあったファイルを自動的に再読み込みする
-  " http://vim-users.jp/2011/03/hack206/
-  augroup vimrc-checktime
-    autocmd!
-    autocmd WinEnter * checktime
-  augroup END
-
-  "行を次の行の末尾につける(コメントなどに使う)
-  map ff ddpkJ
-  " その場に改行を挿入
-  nmap <CR> i<CR><ESC><Right>
-"}}}
+" 外部で変更のあったファイルを自動的に再読み込みする
+" http://vim-users.jp/2011/03/hack206/
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
 
 "------------------------------------------------------
 "NERDtree(ファイルツリー)の設定
@@ -180,4 +118,5 @@ vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 omap <silent> <C-e>      :NERDTreeToggle<CR>
 imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
-
+" powerline
+let g:Powerline_symbols = 'compatible'
