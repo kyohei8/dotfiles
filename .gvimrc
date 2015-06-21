@@ -11,10 +11,10 @@ set shiftwidth=2              "タブサイズ
 
 
 "
-set guifontwide=Source\ Code\ Pro\ for\ Powerline:h14       " フォント設定
-set guifont=Source\ Code\ Pro\ for\ Powerline:h14
-"set guifontwide=Source\ Han\ Code\ JP\ Normal:h12       " フォント設定
-"set guifont=Source\ Han\ Code\ JP\ Normal:h12
+"set guifontwide=Source\ Code\ Pro\ for\ Powerline:h12       " フォント設定
+"set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+set guifontwide=Source\ Han\ Code\ JP\ Normal:h12       " フォント設定
+set guifont=Source\ Han\ Code\ JP\ Normal:h12
 
 "全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#a66f66

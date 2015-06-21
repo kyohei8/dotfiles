@@ -59,7 +59,8 @@
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'nathanaelkane/vim-indent-guides'
   NeoBundle 'mattn/emmet-vim'
-  NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+  NeoBundle 'itchyny/lightline.vim'
+  "NeoBundle 'ryanoasis/vim-webdevicons'
   " -----------------------------------------------
 
 
@@ -80,7 +81,7 @@
 set enc=utf-8
 set fenc=utf-8
 set fencs=iso-2022-jp,euc-jp,cp932
-
+set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 " }}}
 
 "折りたたみ設定
@@ -118,5 +119,11 @@ vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 omap <silent> <C-e>      :NERDTreeToggle<CR>
 imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
-" powerline
-let g:Powerline_symbols = 'compatible'
+"デフォルトでブックマークを表示
+let g:NERDTreeShowBookmarks=1
+
+
+"lightline
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ }
