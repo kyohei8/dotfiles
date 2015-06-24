@@ -52,16 +52,6 @@ nmap g# g#zz
 "highlighting を無効
 map <C-n> :noh<CR>
 
-"カーソルを自動的に()の中へ
-imap { {}<Left>
-imap [ []<Left>
-imap ( ()<Left>
-imap "" ""<Left>
-imap '' ''<Left>
-imap <> <><Left>
-" imap // //<left>
-" imap /// ///<left>
-
 "eclipseのあの動き
 map <silent> <A-Up> dd<Up>P
 map <silent> <D-A-Up> yyP

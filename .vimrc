@@ -1,5 +1,6 @@
+scriptencoding utf-8
+
 " Basics {{{
-    set nocompatible
     set t_Co=256
     set nowrap                          "折り返さない
     set wildmenu                        "コマンドライン補完するときに補完候補を表示する
@@ -60,8 +61,10 @@
   NeoBundle 'nathanaelkane/vim-indent-guides'
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'itchyny/lightline.vim'
+  NeoBundle 'jiangmiao/auto-pairs'
   "NeoBundle 'ryanoasis/vim-webdevicons'
   " -----------------------------------------------
+  
 
 
   call neobundle#end()
@@ -122,8 +125,28 @@ cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
 "デフォルトでブックマークを表示
 let g:NERDTreeShowBookmarks=1
 
+"------------------------------------
+" indent_guides
+"------------------------------------
+" インデントの深さに色を付ける
+let g:indent_guides_start_level=2
+let g:indent_guides_auto_colors=0
+let g:indent_guides_enable_on_vim_startup=0
+let g:indent_guides_color_change_percent=20
+let g:indent_guides_guide_size=1
+let g:indent_guides_space_guides=1
 
-"lightline
+hi IndentGuidesOdd  ctermbg=249
+hi IndentGuidesEven ctermbg=235
+au FileType coffee,ruby,javascript,python,haml,eruby IndentGuidesEnable
+nmap <silent><Leader>ig <Plug>IndentGuidesToggle
+
+
+"------------------------------------
+" lightline
+"------------------------------------
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ }
+
+
