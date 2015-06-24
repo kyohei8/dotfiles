@@ -63,6 +63,7 @@ scriptencoding utf-8
   NeoBundle 'itchyny/lightline.vim'
   NeoBundle 'jiangmiao/auto-pairs'
   "NeoBundle 'ryanoasis/vim-webdevicons'
+  NeoBundle 'heavenshell/vim-jsdoc'
   " -----------------------------------------------
   
 
@@ -149,4 +150,8 @@ let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ }
 
-
+"------------------------------------
+" vim jsdoc
+"------------------------------------
+let g:jsdoc_default_mapping = 0
+nnoremap <silent> <Space>J :JsDoc<CR>
