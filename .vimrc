@@ -35,6 +35,7 @@ scriptencoding utf-8
     set colorcolumn=100                 "100列目を強調表示
     set backspace=indent,eol,start      "インデントを削除
 
+    set noerrorbells visualbell t_vb=   "ベルを無効
     au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
     au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
 
