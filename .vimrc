@@ -1,6 +1,9 @@
 scriptencoding utf-8
 
 " Basics {{{
+    syntax on
+    set nocompatible
+
     set t_Co=256
     set nowrap                          "折り返さない
     set wildmenu                        "コマンドライン補完するときに補完候補を表示する
@@ -59,7 +62,7 @@ scriptencoding utf-8
   " Plugin
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'nathanaelkane/vim-indent-guides'
+  NeoBundle 'Yggdroot/indentLine'
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'itchyny/lightline.vim'
   NeoBundle 'jiangmiao/auto-pairs'
@@ -67,9 +70,9 @@ scriptencoding utf-8
   NeoBundle 'heavenshell/vim-jsdoc'
   NeoBundle 'tomtom/tcomment_vim'
   " NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'pangloss/vim-javascript'
-  NeoBundleLazy 'mxw/vim-jsx'
-  NeoBundleLazy 'kchmck/vim-coffee-script'
+  NeoBundle 'pangloss/vim-javascript'
+  NeoBundle 'mxw/vim-jsx'
+  NeoBundle 'kchmck/vim-coffee-script'
   " -----------------------------------------------
   call neobundle#end()
 
@@ -83,11 +86,10 @@ scriptencoding utf-8
 " }}}
 
 " Encode {{{
-
-set enc=utf-8
-set fenc=utf-8
-set fencs=iso-2022-jp,euc-jp,cp932
-set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+  set encoding=utf-8
+  set fenc=utf-8
+  set fencs=iso-2022-jp,euc-jp,cp932
+  set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 " }}}
 
 "折りたたみ設定
@@ -127,22 +129,6 @@ imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
 "デフォルトでブックマークを表示
 let g:NERDTreeShowBookmarks=1
-
-"------------------------------------
-" indent_guides
-"------------------------------------
-" インデントの深さに色を付ける
-let g:indent_guides_start_level=2
-let g:indent_guides_auto_colors=0
-let g:indent_guides_enable_on_vim_startup=0
-let g:indent_guides_color_change_percent=20
-let g:indent_guides_guide_size=1
-let g:indent_guides_space_guides=1
-
-hi IndentGuidesOdd  ctermbg=249
-hi IndentGuidesEven ctermbg=235
-au FileType coffee,ruby,javascript,python,haml,eruby IndentGuidesEnable
-nmap <silent><Leader>ig <Plug>IndentGuidesToggle
 
 
 "------------------------------------

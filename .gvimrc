@@ -30,17 +30,10 @@ set transparency=0
 map  gw :macaction selectNextWindow:
 map  gW :macaction selectPreviousWindow:i
 
-"------------------------------------
-" indent_guides
-" colorlist : http://choorucode.wordpress.com/2011/07/29/vim-chart-of-color-names/
-"------------------------------------
-" インデントの深さに色を付ける
-let g:indent_guides_start_level=1
-let g:indent_guides_auto_colors=0
-let g:indent_guides_enable_on_vim_startup=0
-let g:indent_guides_color_change_percent=20
-let g:indent_guides_guide_size=2
-let g:indent_guides_space_guides=1
 
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray10
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray20
+"------------------------------------
+" indentLine
+"------------------------------------
+let g:indentLine_color_gui = '#292929'
+nmap <silent><Leader>i <Plug>IndentLinesToggle
+"let g:indentLine_char = '¦'

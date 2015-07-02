@@ -1,3 +1,6 @@
+"<Leader>キーの設定
+map \ <Leader>               
+
 ".vimrcを開くコマンド<Space+.>
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 "vimrcを再読み込み <Space+,>
@@ -92,5 +95,5 @@ map ff ddpkJ
 nmap <CR> i<CR><ESC><Right>
 
 " tcomment
-nmap <C-c> gcc 
+nmap <C-c> gcc
 vmap <C-c> gcj
