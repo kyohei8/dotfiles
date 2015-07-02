@@ -35,8 +35,8 @@ vno <up> <Nop>
 nnoremap <C-h>      :<C-u>help<Space>
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 
-" qqで閉じる
-nmap qq :q<CR>
+" C-qで閉じる
+nmap <C-q> :q<CR>
 
 " ;も:
 nmap ; :
@@ -69,6 +69,7 @@ nnoremap <D-left> :tabprev<CR>
 "バッファ移動
 nnoremap <Space>n :bn<CR>
 nnoremap <Space>p :bp<CR>
+nnoremap <Space>q :bd<CR>
 
 "バッファ画面移動
 nnoremap <D-h> <C-w>h
@@ -90,4 +91,6 @@ map ff ddpkJ
 " その場に改行を挿入
 nmap <CR> i<CR><ESC><Right>
 
-
+" tcomment
+nmap <C-c> gcc 
+vmap <C-c> gcj

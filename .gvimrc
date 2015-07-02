@@ -9,6 +9,9 @@ set columns=120               "横幅
 set lsp=1                     "行間
 set shiftwidth=2              "タブサイズ
 
+" auto-pairsでIMEが効かなくなるのを修正
+" http://qiita.com/amagawawaw/items/4a46d08f6c3e456e18d0
+set imdisable
 
 "
 "set guifontwide=Source\ Code\ Pro\ for\ Powerline:h12       " フォント設定
@@ -18,7 +21,8 @@ set guifont=Source\ Han\ Code\ JP\ Normal:h12
 
 "全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#a66f66
-au BufNewFile,BufRead * match ZenkakuSpace /　/
+autocmd BufNewFile,BufRead * match ZenkakuSpace /　/
+
 "常にタブを表示
 set showtabline=2
 "透明度を変更

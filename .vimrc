@@ -65,12 +65,13 @@ scriptencoding utf-8
   NeoBundle 'jiangmiao/auto-pairs'
   "NeoBundle 'ryanoasis/vim-webdevicons'
   NeoBundle 'heavenshell/vim-jsdoc'
+  NeoBundle 'tomtom/tcomment_vim'
+  " NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy 'pangloss/vim-javascript'
+  NeoBundleLazy 'mxw/vim-jsx'
+  NeoBundleLazy 'kchmck/vim-coffee-script'
   " -----------------------------------------------
-  
-
-
   call neobundle#end()
-
 
   " Required:
   filetype plugin indent on
