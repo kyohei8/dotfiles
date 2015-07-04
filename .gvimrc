@@ -1,4 +1,4 @@
-colorscheme molokai
+colorscheme jellybeans 
 
 set cmdheight=1
 set guioptions-=T

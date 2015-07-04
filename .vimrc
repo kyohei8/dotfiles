@@ -59,6 +59,9 @@ scriptencoding utf-8
   " plugins ---------------------------------------
   " Theme
   NeoBundle 'tomasr/molokai'
+  NeoBundle 'MPiccinato/wombat256'
+  NeoBundle 'lsdr/monokai'
+  NeoBundle 'nanotech/jellybeans.vim'
   " Plugin
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'Shougo/unite.vim'
