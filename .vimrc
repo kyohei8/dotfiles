@@ -73,6 +73,10 @@ scriptencoding utf-8
   NeoBundle 'pangloss/vim-javascript'
   NeoBundle 'mxw/vim-jsx'
   NeoBundle 'kchmck/vim-coffee-script'
+  NeoBundle 'rizzatti/dash.vim'
+  NeoBundle 'tpope/vim-git'
+  NeoBundle 'tpope/vim-fugitive'
+  NeoBundle 'airblade/vim-gitgutter'
   " -----------------------------------------------
   call neobundle#end()
 
@@ -129,14 +133,13 @@ imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
 "デフォルトでブックマークを表示
 let g:NERDTreeShowBookmarks=1
+let g:NERDTreeWinSize=25
 
 
 "------------------------------------
 " lightline
 "------------------------------------
-let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
-      \ }
+source ~/.vim/startup/lightline.vim
 
 "------------------------------------
 " vim jsdoc

@@ -1,5 +1,5 @@
 "<Leader>キーの設定
-map \ <Leader>               
+map \ <Leader>
 
 ".vimrcを開くコマンド<Space+.>
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
@@ -97,3 +97,6 @@ nmap <CR> i<CR><ESC><Right>
 " tcomment
 nmap <C-c> gcc
 vmap <C-c> gcj
+
+" Dash.vim
+nmap <silent> <C-d> <Plug>DashSearch
