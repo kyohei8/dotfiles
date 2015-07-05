@@ -81,6 +81,7 @@ scriptencoding utf-8
   NeoBundle 'tpope/vim-fugitive'
   NeoBundle 'airblade/vim-gitgutter'
   NeoBundle 'kana/vim-submode'
+  NeoBundle 'tpope/vim-surround'
   " -----------------------------------------------
   call neobundle#end()
 
