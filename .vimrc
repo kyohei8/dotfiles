@@ -66,22 +66,25 @@ scriptencoding utf-8
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'Yggdroot/indentLine'
-  NeoBundle 'mattn/emmet-vim'
-  NeoBundle 'itchyny/lightline.vim'
-  NeoBundle 'jiangmiao/auto-pairs'
-  "NeoBundle 'ryanoasis/vim-webdevicons'
-  NeoBundle 'heavenshell/vim-jsdoc'
-  NeoBundle 'tomtom/tcomment_vim'
-  " NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-  NeoBundle 'pangloss/vim-javascript'
-  NeoBundle 'mxw/vim-jsx'
-  NeoBundle 'kchmck/vim-coffee-script'
-  NeoBundle 'rizzatti/dash.vim'
   NeoBundle 'tpope/vim-git'
   NeoBundle 'tpope/vim-fugitive'
   NeoBundle 'airblade/vim-gitgutter'
-  NeoBundle 'kana/vim-submode'
+  NeoBundle 'itchyny/lightline.vim'
+  " input extend
   NeoBundle 'tpope/vim-surround'
+  NeoBundle 'tomtom/tcomment_vim'
+  NeoBundle 'kana/vim-submode'
+  NeoBundle 'jiangmiao/auto-pairs'
+  NeoBundle 'nelstrom/vim-visual-star-search'
+  " Langage
+  NeoBundle 'mattn/emmet-vim'
+  NeoBundle 'pangloss/vim-javascript'
+  NeoBundle 'heavenshell/vim-jsdoc'
+  NeoBundle 'mxw/vim-jsx'
+  NeoBundle 'kchmck/vim-coffee-script'
+  " Tool
+  NeoBundle 'rizzatti/dash.vim'
+
   " -----------------------------------------------
   call neobundle#end()
 
