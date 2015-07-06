@@ -74,7 +74,7 @@ scriptencoding utf-8
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'kana/vim-submode'
-  NeoBundle 'jiangmiao/auto-pairs'
+  "NeoBundle 'jiangmiao/auto-pairs'
   NeoBundle 'nelstrom/vim-visual-star-search'
   " Langage
   NeoBundle 'mattn/emmet-vim'
