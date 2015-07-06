@@ -83,9 +83,6 @@ nnoremap <D-l> <C-w>l
 "Cmd+Enterでフルスクリーン
 map <D-enter> :set fullscreen! <CR>
 
-" コンマの後に自動的にスペースを挿入
-inoremap , ,<Space>
-
 " 'F8'で線を引く
 inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
 
