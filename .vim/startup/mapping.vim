@@ -86,8 +86,6 @@ map <D-enter> :set fullscreen! <CR>
 " 'F8'で線を引く
 inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
 
-"行を次の行の末尾につける(コメントなどに使う)
-map ff ddpkJ
 " その場に改行を挿入
 nmap <CR> i<CR><ESC><Right>
 
