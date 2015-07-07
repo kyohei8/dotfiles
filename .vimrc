@@ -70,6 +70,7 @@ scriptencoding utf-8
   NeoBundle 'tpope/vim-fugitive'
   NeoBundle 'airblade/vim-gitgutter'
   NeoBundle 'itchyny/lightline.vim'
+  NeoBundle 'moll/vim-bbye'
   " input extend
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'

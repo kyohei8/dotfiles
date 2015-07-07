@@ -72,7 +72,7 @@ nnoremap <D-left> :tabprev<CR>
 "バッファ移動
 nnoremap <Space>n :bn<CR>
 nnoremap <Space>p :bp<CR>
-nnoremap <Space>q :bd<CR>
+nnoremap <Space>q :Bdelete<CR>
 
 "バッファ画面移動
 nnoremap <D-h> <C-w>h
