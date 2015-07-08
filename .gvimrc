@@ -1,4 +1,7 @@
-colorscheme jellybeans 
+colorscheme jellybeans
+
+" カーソル行の背景を変える
+hi CursorLine guibg=#3c3c3c
 
 set cmdheight=1
 set guioptions-=T
