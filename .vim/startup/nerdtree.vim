@@ -1,6 +1,11 @@
 "------------------------------------------------------
 "NERDtree(ファイルツリー)の設定
 "------------------------------------------------------
+let NERDTreeIgnore =
+            \ ['\.pyc', '\.git$', '\~$', 
+            \  '\.swo$', '\.hg', '\.svn', 
+            \  '\.bzr', '\.DS_Store', '\.sass-cache',
+            \  '\.idea']
 let NERDTreeShowHidden=0
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=0
