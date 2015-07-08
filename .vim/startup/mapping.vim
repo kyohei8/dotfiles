@@ -41,9 +41,6 @@ nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 " C-qで閉じる
 nmap <C-q> :q<CR>
 
-" ;も:
-nmap ; :
-
 "検索語が画面の真ん中に来るようにする
 nmap n nzz
 nmap N Nzz
@@ -72,13 +69,10 @@ nnoremap <D-left> :tabprev<CR>
 "バッファ移動
 nnoremap <Space>n :bn<CR>
 nnoremap <Space>p :bp<CR>
+" ウィンドウごとバッファを閉じる
+nnoremap <Space>Q :bd<CR>
+" ウィンドウは閉じずバッファを閉じる
 nnoremap <Space>q :Bdelete<CR>
-
-"バッファ画面移動
-nnoremap <D-h> <C-w>h
-nnoremap <D-j> <C-w>j
-nnoremap <D-k> <C-w>k
-nnoremap <D-l> <C-w>l
 
 "Cmd+Enterでフルスクリーン
 map <D-enter> :set fullscreen! <CR>
