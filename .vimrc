@@ -64,7 +64,9 @@ scriptencoding utf-8
   NeoBundle 'nanotech/jellybeans.vim'
   " Plugin
   NeoBundle 'scrooloose/nerdtree'
+  NeoBundle 'Xuyuanp/nerdtree-git-plugin'
   NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/neomru.vim'
   NeoBundle 'Yggdroot/indentLine'
   NeoBundle 'tpope/vim-git'
   NeoBundle 'tpope/vim-fugitive'
@@ -125,6 +127,11 @@ augroup END
 "NERDtree(ファイルツリー)の設定
 "------------------------------------------------------
 source ~/.vim/startup/nerdtree.vim
+
+"------------------------------------------------------
+" Unite
+"------------------------------------------------------
+source ~/.vim/startup/unite.vim
 
 "------------------------------------
 " lightline
