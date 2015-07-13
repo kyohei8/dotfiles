@@ -77,8 +77,14 @@ scriptencoding utf-8
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'kana/vim-submode'
-  "NeoBundle 'jiangmiao/auto-pairs'
   NeoBundle 'nelstrom/vim-visual-star-search'
+  " NeoBundle 'marijnh/tern_for_vim'
+  NeoBundle 'Valloric/YouCompleteMe'
+  " -> then
+  "   cd ~/.vim/bundle/YouCompleteMe
+  "   ./install.sh
+
+
   " Langage
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'pangloss/vim-javascript'
@@ -122,6 +128,18 @@ augroup vimrc-checktime
   autocmd!
   autocmd WinEnter * checktime
 augroup END
+
+iabbrev rcc <Esc>B"zde"_xi
+\var <Esc>"zpa = React.createClass({<Enter>
+\<Tab>render: function() {<Enter>
+\<Tab>return (<Enter>
+\);<Enter>
+\<C-D>}<Enter>
+\<C-D>});<Enter>
+\<Enter>
+\module.exports = <Esc>"zpa;
+\<Esc>?return<Enter>o<Tab>
+\<Esc>"_xa
 
 "------------------------------------------------------
 "NERDtree(ファイルツリー)の設定
