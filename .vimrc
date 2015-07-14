@@ -88,6 +88,8 @@ scriptencoding utf-8
   " Langage
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'pangloss/vim-javascript'
+  NeoBundle 'einars/js-beautify'
+  NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript','html','css']}}
   NeoBundle 'heavenshell/vim-jsdoc'
   NeoBundle 'mxw/vim-jsx'
   NeoBundle 'kchmck/vim-coffee-script'
