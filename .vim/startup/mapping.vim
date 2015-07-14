@@ -5,21 +5,19 @@ map \ <Leader>
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 "vimrcを再読み込み <Space+,>
 nnoremap <Space>, :<C-u>source $MYVIMRC<Return>
+" key mappingを開く
+nnoremap <Space>\ :<C-u>tabedit ~/.vim/startup/mapping.vim<Return>
+
+" semantic color
+nnoremap <Space>s :<C-u>SemanticHighlightToggle<Return>
 
 "ノーマルモードのIMEを無効化
 nnoremap <silent> <C-^> <Nop>
-"Ctrl+cでも抜ける
-"inoremap <C-c> <Esc>
 " insertモードから抜ける
 inoremap <silent> jj <ESC>
 inoremap <silent> kk <ESC>
 inoremap <ESC> <ESC>
 
-" 挿入モードでのカーソル移動
-"inoremap <C-j> <Down>
-"inoremap <C-k> <Up>
-"inoremap <C-h> <Left>
-"inoremap <C-l> <Right>
 " カーソルキーを無効化
 no <down> <Nop>
 no <left> <Nop>
@@ -38,7 +36,7 @@ vno <up> <Nop>
 nnoremap <C-h>      :<C-u>help<Space>
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 
-" C-qで閉じる
+" Ctrl-qで閉じる
 nmap <C-q> :q<CR>
 
 "検索語が画面の真ん中に来るようにする
@@ -136,3 +134,25 @@ call submode#map('bufmove', 'n', '', '>', '<C-w>>')
 call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+
+" snippets 
+
+iabbrev rcc <Esc>B"zde"_xi
+\var <Esc>"zpa = React.createClass({<Enter>
+\<Tab>render: function() {<Enter>
+\<Tab>return (<Enter>
+\);<Enter>
+\<C-D>}<Enter>
+\<C-D>});<Enter>
+\<Enter>
+\module.exports = <Esc>"zpa;
+\<Esc>?return<Enter>o<Tab>
+\<Esc>"_xa
+
+iabbrev ccls <Esc>B"zde"_xi
+      \class <Esc>"zpa<Enter>
+      \constructor: () -><Enter>
+      \<C-D><C-D>module.exports = <Esc>"zpa;
+      \<Esc>?constructor:<Enter>o<Tab>
+      \<Esc>"_xa
+
