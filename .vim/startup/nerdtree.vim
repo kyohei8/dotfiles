@@ -3,7 +3,7 @@
 "------------------------------------------------------
 let NERDTreeIgnore =
             \ ['\.pyc', '\.git$', '\~$', 
-            \  '\.swo$', '\.hg', '\.svn', 
+            \  '\.swo$', '\.hg', '\.svn', '\.swp',
             \  '\.bzr', '\.DS_Store', '\.sass-cache',
             \  '\.idea']
 let NERDTreeShowHidden=0
