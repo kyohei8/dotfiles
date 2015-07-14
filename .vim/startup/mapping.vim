@@ -48,6 +48,10 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
+" 行コピー
+nmap yy Y
+
+map <F7> :call JsBeautify()<CR>
 
 "highlighting を無効
 map <C-n> :noh<CR>
