@@ -77,7 +77,8 @@ nnoremap <Space>p :bp<CR>
 nnoremap <Space>Q :bd<CR>
 " ウィンドウは閉じずバッファを閉じる
 nnoremap <Space>q :Bdelete<CR>
-
+" 整形
+nnoremap <Space>= gg=G''zz
 "Cmd+Enterでフルスクリーン
 map <D-enter> :set fullscreen! <CR>
 
@@ -140,21 +141,21 @@ call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 " snippets 
 
 iabbrev rcc <Esc>B"zde"_xi
-\var <Esc>"zpa = React.createClass({<Enter>
-\<Tab>render: function() {<Enter>
-\<Tab>return (<Enter>
-\);<Enter>
-\<C-D>}<Enter>
-\<C-D>});<Enter>
-\<Enter>
-\module.exports = <Esc>"zpa;
-\<Esc>?return<Enter>o<Tab>
-\<Esc>"_xa
+      \var <Esc>"zpa = React.createClass({<Enter>
+      \<Tab>render: function() {<Enter>
+      \<Tab>return (<Enter>
+      \);<Enter>
+      \<C-D>}<Enter>
+      \<C-D>});<Enter>
+      \<Enter>
+      \module.exports = <Esc>"zpa;
+      \<Esc>?return<Enter>o<Tab>
+      \<Esc>"_xa
 
 iabbrev ccls <Esc>B"zde"_xi
       \class <Esc>"zpa<Enter>
       \constructor: () -><Enter>
-      \<C-D><C-D>module.exports = <Esc>"zpa;
+      \<C-D><C-D>module.exports = <Esc>"zpa
       \<Esc>?constructor:<Enter>o<Tab>
       \<Esc>"_xa
-
+      \<Esc>:noh<Enter>
