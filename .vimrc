@@ -81,9 +81,10 @@ scriptencoding utf-8
   " NeoBundle 'marijnh/tern_for_vim'
   NeoBundle 'Valloric/YouCompleteMe'
   " -> then
-  "   cd ~/.vim/bundle/YouCompleteMe
-  "   ./install.sh
-
+  "  $ cd ~/.vim/bundle/YouCompleteMe
+  "  $ git submodule update --init --recursive
+  "  $ ./install.sh
+  " vimが起動しな起動しなくなるので brew unlink python する
 
   " Langage
   NeoBundle 'mattn/emmet-vim'
@@ -131,17 +132,6 @@ augroup vimrc-checktime
   autocmd WinEnter * checktime
 augroup END
 
-iabbrev rcc <Esc>B"zde"_xi
-\var <Esc>"zpa = React.createClass({<Enter>
-\<Tab>render: function() {<Enter>
-\<Tab>return (<Enter>
-\);<Enter>
-\<C-D>}<Enter>
-\<C-D>});<Enter>
-\<Enter>
-\module.exports = <Esc>"zpa;
-\<Esc>?return<Enter>o<Tab>
-\<Esc>"_xa
 
 "------------------------------------------------------
 "NERDtree(ファイルツリー)の設定
@@ -163,3 +153,4 @@ source ~/.vim/startup/lightline.vim
 "------------------------------------
 let g:jsdoc_default_mapping = 0
 nnoremap <silent> <Space>J :JsDoc<CR>
+
