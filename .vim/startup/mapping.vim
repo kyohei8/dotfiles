@@ -7,6 +7,8 @@ nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <Space>, :<C-u>source $MYVIMRC<Return>
 " key mappingを開く
 nnoremap <Space>\ :<C-u>tabedit ~/.vim/startup/mapping.vim<Return>
+" ヘルプを無効化
+nmap <F1> <nop>
 
 " semantic color
 nnoremap <Space>s :<C-u>SemanticHighlightToggle<Return>
@@ -86,7 +88,7 @@ inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
 nmap <CR> i<CR><ESC><Right>
 
 " tcomment
-nmap <C-c> gcc
+nmap <C-c> gccj
 vmap <C-c> gcj
 
 " Dash.vim
