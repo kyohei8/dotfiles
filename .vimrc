@@ -115,7 +115,6 @@ au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
 " Encode {{{
 set encoding=utf-8
 set fenc=utf-8
-set fencs=iso-2022-jp,euc-jp,cp932
 set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 " }}}
 
@@ -124,6 +123,12 @@ set foldmethod=indent
 set fdc=4
 let perl_fold=1
 set foldlevel=100
+
+"------------------------------------------------------
+" emmet
+"------------------------------------------------------
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 "------------------------------------------------------
 "キーマップ

@@ -1,20 +1,36 @@
 "<Leader>キーの設定
-map \ <Leader>
 
+" ヘルプを無効化
+nmap <F1> <nop>
+
+" spaceからの ----------------------------------------------------------------
 ".vimrcを開くコマンド<Space+.>
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 "vimrcを再読み込み <Space+,>
 nnoremap <Space>, :<C-u>source $MYVIMRC<Return>
 " key mappingを開く
 nnoremap <Space>\ :<C-u>tabedit ~/.vim/startup/mapping.vim<Return>
-" ヘルプを無効化
-nmap <F1> <nop>
 
+" カーソルの移動を変える
+noremap <Space>h  ^
+noremap <Space>l  $
+nnoremap <Space>/  *
+"バッファ移動
+nnoremap <Space>n :bn<CR>
+nnoremap <Space>p :bp<CR>
+" ウィンドウごとバッファを閉じる
+nnoremap <Space>Q :bd<CR>
+" ウィンドウは閉じずバッファを閉じる
+nnoremap <Space>q :Bdelete<CR>
+" 整形
+nnoremap <Space>= gg=G''zz
 " semantic color
 nnoremap <Space>s :<C-u>SemanticHighlightToggle<Return>
+" -------------------------------------------------------------------------------
 
 "ノーマルモードのIMEを無効化
 nnoremap <silent> <C-^> <Nop>
+
 " insertモードから抜ける
 inoremap <silent> jj <ESC>
 inoremap <silent> kk <ESC>
@@ -62,31 +78,21 @@ map <silent> <D-A-Up> yyP
 map <silent> <A-Down> ddp
 map <silent> <D-A-Down> yyp
 
-" カーソルの移動を変える
-noremap <Space>h  ^
-noremap <Space>l  $
-nnoremap <Space>/  *
 
+"Cmd+Enterでフルスクリーン
+map <D-enter> :set fullscreen! <CR>
 "tabの動き
 nnoremap <D-right> :tabnext<CR>
 nnoremap <D-left> :tabprev<CR>
-"バッファ移動
-nnoremap <Space>n :bn<CR>
-nnoremap <Space>p :bp<CR>
-" ウィンドウごとバッファを閉じる
-nnoremap <Space>Q :bd<CR>
-" ウィンドウは閉じずバッファを閉じる
-nnoremap <Space>q :Bdelete<CR>
-" 整形
-nnoremap <Space>= gg=G''zz
-"Cmd+Enterでフルスクリーン
-map <D-enter> :set fullscreen! <CR>
 
 " 'F8'で線を引く
 inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
 
 " その場に改行を挿入
 nmap <CR> i<CR><ESC><Right>
+
+" Emmet
+imap <C-f> <C-y>,
 
 " tcomment
 nmap <C-c> gccj
