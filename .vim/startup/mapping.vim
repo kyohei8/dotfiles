@@ -3,7 +3,7 @@
 " ヘルプを無効化
 nmap <F1> <nop>
 
-" spaceからの ----------------------------------------------------------------
+" spaceからの〜 ----------------------------------------------------------------
 ".vimrcを開くコマンド<Space+.>
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 "vimrcを再読み込み <Space+,>
@@ -36,19 +36,19 @@ inoremap <silent> jj <ESC>
 inoremap <silent> kk <ESC>
 inoremap <ESC> <ESC>
 
-" カーソルキーを無効化
-no <down> <Nop>
-no <left> <Nop>
-no <right> <Nop>
-no <up> <Nop>
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-ino <up> <Nop>
-vno <down> <Nop>
-vno <left> <Nop>
-vno <right> <Nop>
-vno <up> <Nop>
+" カーソルキーを無効化(Hard mode)
+vnoremap  <Up>     <nop>
+vnoremap  <Down>   <nop>
+vnoremap  <Left>   <nop>
+vnoremap  <Right>  <nop>
+inoremap  <Up>     <nop>
+inoremap  <Down>   <nop>
+inoremap  <Left>   <nop>
+inoremap  <Right>  <nop>
+noremap   <Up>     <nop>
+noremap   <Down>   <nop>
+noremap   <Left>   <nop>
+noremap   <Right>  <nop>
 
 " helpを表示
 nnoremap <C-h>      :<C-u>help<Space>
