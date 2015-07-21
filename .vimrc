@@ -36,6 +36,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'nelstrom/vim-visual-star-search'
+NeoBundle 'AndrewRadev/switch.vim'
 " NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'Valloric/YouCompleteMe'
 " -> then
@@ -167,3 +168,7 @@ let g:indentLine_color_gui = '#424242'
 nmap <silent><Leader>i <Plug>IndentLinesToggle
 "let g:indentLine_char = '¦'
 
+"------------------------------------
+" by filetype
+"------------------------------------
+source ~/.vim/startup/filetype.vim

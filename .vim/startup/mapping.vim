@@ -144,24 +144,3 @@ call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
-" snippets 
-
-iabbrev rcc <Esc>B"zde"_xi
-      \var <Esc>"zpa = React.createClass({<Enter>
-      \<Tab>render: function() {<Enter>
-      \<Tab>return (<Enter>
-      \);<Enter>
-      \<C-D>}<Enter>
-      \<C-D>});<Enter>
-      \<Enter>
-      \module.exports = <Esc>"zpa;
-      \<Esc>?return<Enter>o<Tab>
-      \<Esc>"_xa
-
-iabbrev ccls <Esc>B"zde"_xi
-      \class <Esc>"zpa<Enter>
-      \constructor: () -><Enter>
-      \<C-D><C-D>module.exports = <Esc>"zpa
-      \<Esc>?constructor:<Enter>o<Tab>
-      \<Esc>"_xa
-      \<Esc>:noh<Enter>
