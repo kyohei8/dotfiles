@@ -97,7 +97,7 @@ set smartindent                     "新しい行を作ったときに高度な�
 set smarttab                        "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
 "set tabstop=4                      "ファイル内の  が対応する空白の数
 set whichwrap=b,s,h,l,<,>,[,]       "カーソルを行頭、行末で止まらないようにする
-"set nowrapscan                     "検索をファイルの先頭へループしない
+set wrapscan                        "検索をファイルの先頭へループ
 
 set history=1200                    "履歴件数
 set infercase                       "マッチした単語の大文字小文字を区別しない
@@ -129,7 +129,8 @@ set foldlevel=100
 " emmet
 "------------------------------------------------------
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,ejs,css,sass,scss,stylus,less EmmetInstall
+
 
 "------------------------------------------------------
 "キーマップ
