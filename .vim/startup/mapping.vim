@@ -15,6 +15,7 @@ nnoremap <Space>\ :<C-u>tabedit ~/.vim/startup/mapping.vim<Return>
 noremap <Space>h  ^
 noremap <Space>l  $
 nnoremap <Space>/  *
+
 "バッファ移動
 nnoremap <Space>n :bn<CR>
 nnoremap <Space>p :bp<CR>
@@ -22,6 +23,7 @@ nnoremap <Space>p :bp<CR>
 nnoremap <Space>Q :bd<CR>
 " ウィンドウは閉じずバッファを閉じる
 nnoremap <Space>q :Bdelete<CR>
+
 " 整形
 nnoremap <Space>= gg=G''zz
 " semantic color
@@ -72,13 +74,6 @@ map <F7> :call JsBeautify()<CR>
 "highlighting を無効
 map <C-n> :noh<CR>
 
-"eclipseのあの動き
-map <silent> <A-Up> dd<Up>P
-map <silent> <D-A-Up> yyP
-map <silent> <A-Down> ddp
-map <silent> <D-A-Down> yyp
-
-
 "Cmd+Enterでフルスクリーン
 map <D-enter> :set fullscreen! <CR>
 "tabの動き
@@ -106,8 +101,8 @@ nnoremap <silent> <Space>gb :Gblame<CR>
 nnoremap <silent> <Space>gd :Gdiff<CR>
 nnoremap <silent> <Space>gs :Gstatus<CR>
 
-" Vimの便利な画面分割＆タブページと、それを更に便利にする方法 " - Qiita http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca
-
+" Vimの便利な画面分割＆タブページと、それを更に便利にする方法
+" - Qiita http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca
 nnoremap s <Nop>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
@@ -117,23 +112,23 @@ nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
-nnoremap sn gt
-nnoremap sp gT
+nnoremap sN gt
+nnoremap sP gT
 nnoremap sr <C-w>r
 nnoremap s= <C-w>=
 nnoremap sw <C-w>w
 nnoremap so <C-w>_<C-w>|
 nnoremap sO <C-w>=
-nnoremap sN :<C-u>bn<CR>
-nnoremap sP :<C-u>bp<CR>
+nnoremap sn :<C-u>bn<CR>
+nnoremap sp :<C-u>bp<CR>
 nnoremap st :<C-u>tabnew<CR>
 nnoremap sT :<C-u>Unite tab<CR>
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
-nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
-nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+nnoremap sB :<C-u>Unite buffer_tab -buffer-name=file<CR>
+nnoremap sb :<C-u>Unite buffer -buffer-name=file<CR>
 
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')

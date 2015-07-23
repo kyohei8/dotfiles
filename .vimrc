@@ -31,6 +31,8 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'moll/vim-bbye'
+NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'tmhedberg/matchit'
 " input extend
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tomtom/tcomment_vim'
