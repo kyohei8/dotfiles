@@ -24,6 +24,12 @@ NeoBundle 'NLKNguyen/papercolor-theme'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'tpope/vim-git'
@@ -33,6 +39,12 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'moll/vim-bbye'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tmhedberg/matchit'
+NeoBundle 'wincent/Command-T'
+" <- command-t install ->
+" $ cd dotfiles/.vim/bundle/Command-T/ruby/command-t
+" $ ruby extconf.rb
+" $ make
+
 " input extend
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tomtom/tcomment_vim'
@@ -127,17 +139,25 @@ set fdc=4
 let perl_fold=1
 set foldlevel=100
 
-"------------------------------------------------------
-" emmet
-"------------------------------------------------------
-let g:user_emmet_install_global = 0
-autocmd FileType html,ejs,css,sass,scss,stylus,less EmmetInstall
-
 
 "------------------------------------------------------
 "キーマップ
 "------------------------------------------------------
 source ~/.vim/startup/mapping.vim
+
+"------------------------------------------------------
+" emmet
+"------------------------------------------------------
+let g:user_emmet_install_global = 0
+autocmd FileType html,ejs,css,sass,scss,stylus,less EmmetInstall
+" Emmet keymap
+imap <C-f> <C-y>,
+
+"------------------------------------------------------
+" command-T
+"------------------------------------------------------
+nnoremap <Space>t :CommandT<Enter>
+let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/dist/*,**/node_modules/*,*.png,*.jpg,*.gif,*.svg,*.map"
 
 "------------------------------------------------------
 "NERDtree(ファイルツリー)の設定
@@ -156,13 +176,15 @@ source ~/.vim/startup/lightline.vim
 
 "------------------------------------
 " vim jsdoc
+" Speac -> J でjsdocを生成
 "------------------------------------
 let g:jsdoc_default_mapping = 0
 nnoremap <silent> <Space>J :JsDoc<CR>
 
+"------------------------------------
 " highlight line
+"------------------------------------
 let g:PaperColor_Dark_CursorLine = "#37474F"
-
 
 "------------------------------------
 " indentLine
@@ -175,3 +197,4 @@ nmap <silent><Leader>i <Plug>IndentLinesToggle
 " by filetype
 "------------------------------------
 source ~/.vim/startup/filetype.vim
+

@@ -1,7 +1,24 @@
-"<Leader>キーの設定
+"       コマンド                    モード
+"  連鎖する  連鎖しない  無効化
+"  ----------------------------------------------------------------------------
+"  :map      :noremap    :unmap     ノーマル、ビジュアル、選択、演算待ち状態
+"  :nmap     :nnoremap   :nunmap    ノーマル
+"  :vmap     :vnoremap   :vunmap    ビジュアル、選択
+"  :smap     :snoremap   :sunmap    選択
+"  :xmap     :xnoremap   :xunmap    ビジュアル
+"  :omap     :onoremap   :ounmap    演算待ち状態
+"  :map!     :noremap!   :unmap!    挿入、コマンドライン
+"  :imap     :inoremap   :iunmap    挿入
+"  :lmap     :lnoremap   :lunmap    挿入、コマンドライン、Lang-Arg
+"  :cmap     :cnoremap   :cunmap    コマンドライン
+"  ----------------------------------------------------------------------------
 
-" ヘルプを無効化
-nmap <F1> <nop>
+"<Leader>キーの設定
+let mapleader=","
+" ヘルプを無効化(Escにする）
+nmap <F1> <Nop>
+map <F1> <Esc>
+imap <F1> <Esc>
 
 " spaceからの〜 ----------------------------------------------------------------
 ".vimrcを開くコマンド<Space+.>
@@ -26,8 +43,6 @@ nnoremap <Space>q :Bdelete<CR>
 
 " 整形
 nnoremap <Space>= gg=G''zz
-" semantic color
-nnoremap <Space>s :<C-u>SemanticHighlightToggle<Return>
 " -------------------------------------------------------------------------------
 
 "ノーマルモードのIMEを無効化
@@ -85,9 +100,6 @@ inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
 
 " その場に改行を挿入
 nmap <CR> i<CR><ESC><Right>
-
-" Emmet
-imap <C-f> <C-y>,
 
 " tcomment
 nmap <C-c> gccj
