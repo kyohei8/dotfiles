@@ -23,13 +23,6 @@ NeoBundle 'NLKNguyen/papercolor-theme'
 " Plugin
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'tpope/vim-git'
@@ -163,11 +156,6 @@ let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/dist/*,**/node
 "NERDtree(ファイルツリー)の設定
 "------------------------------------------------------
 source ~/.vim/startup/nerdtree.vim
-
-"------------------------------------------------------
-" Unite
-"------------------------------------------------------
-source ~/.vim/startup/unite.vim
 
 "------------------------------------
 " lightline
