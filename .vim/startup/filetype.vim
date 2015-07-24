@@ -1,24 +1,24 @@
 " JavaScript ------------------------------------------------------------------
-autocmd FileType javascript inoremap <buffer> iff if () {<cr>}<esc>k$2hi
-autocmd FileType javascript inoremap <buffer> elif else if () {<cr>}<esc>k$2hi
-autocmd FileType javascript inoremap <buffer> ifelif if () {<cr>}<cr>else if () {<cr>}<esc>3k$2hi
-autocmd FileType javascript inoremap <buffer> ifelse if () {<cr>}<cr>else {<cr>}<esc>3k$2hi
-autocmd FileType javascript inoremap <buffer> ifeiel if () {<cr>}<cr>else if () {<cr>}<cr>else {<cr>}<esc>5k$2hi
-autocmd FileType javascript inoremap <buffer> eelse else {<cr>}<esc>O
-autocmd FileType javascript inoremap <buffer> ffor for () {<cr>}<esc>k$2hi
-autocmd FileType javascript inoremap <buffer> wwhile while () {<cr>}<esc>k$2hi
-autocmd FileType javascript inoremap <buffer> trca try {<cr>}<cr>catch (e) {<cr>}<esc>2kO
-autocmd FileType javascript inoremap <buffer> afun function() {<cr>}<esc>k$2hi
-autocmd FileType javascript inoremap <buffer> gafun function *() {<cr>}<esc>k$2hi
-autocmd FileType javascript inoremap <buffer> nfun function () {<cr>}<esc>k$3hi
-autocmd FileType javascript inoremap <buffer> gfun function *() {<cr>}<esc>k$3hi
-autocmd FileType javascript inoremap <buffer> vfun var  = function() {<cr>};<esc>k$14hi
-autocmd FileType javascript inoremap <buffer> efun exports. = function() {<cr>};<esc>k$14hi
-autocmd FileType javascript inoremap <buffer> gefun exports. = function *() {<cr>};<esc>k$16hi
-autocmd FileType javascript inoremap <buffer> funmod (function() {<cr>}());<esc>O<esc>0i<Space>
-autocmd FileType javascript inoremap <buffer> ddef define([], function() {<cr>});<esc>k$14hi
-autocmd FileType javascript iabbrev  <buffer> ret return;<esc>i
-autocmd FileType javascript iabbrev  <buffer> us 'use strict';
+autocmd FileType javascript iabbrev <buffer> iff if(){<cr>}<esc>k$2hi
+autocmd FileType javascript iabbrev <buffer> elif else if(){<cr>}<esc>k$2hi
+autocmd FileType javascript iabbrev <buffer> ifelif if(){<cr>}else if(){<cr>}<esc>3k$2hi
+autocmd FileType javascript iabbrev <buffer> ifelse if(){<cr>}else{<cr>}<esc>3k$2hi
+autocmd FileType javascript iabbrev <buffer> ifeiel if(){<cr>}else if(){<cr>}else{<cr>}<esc>5k$2hi
+autocmd FileType javascript iabbrev <buffer> eelse else{<cr>}<esc>O
+autocmd FileType javascript iabbrev <buffer> ffor for(){<cr>}<esc>k$2hi
+autocmd FileType javascript iabbrev <buffer> wwhile while(){<cr>}<esc>k$2hi
+autocmd FileType javascript iabbrev <buffer> trca try{<cr>}<cr>catch (e) {<cr>}<esc>2kO
+autocmd FileType javascript iabbrev <buffer> afun function(){<cr>}<esc>k$2hi
+autocmd FileType javascript iabbrev <buffer> gafun function *() {<cr>}<esc>k$2hi
+autocmd FileType javascript iabbrev <buffer> nfun function (){<cr>}<esc>k$3hi
+autocmd FileType javascript iabbrev <buffer> gfun function *() {<cr>}<esc>k$3hi
+autocmd FileType javascript iabbrev <buffer> vfun var = function(){<cr>};<esc>k$13hi
+autocmd FileType javascript iabbrev <buffer> efun exports. = function() {<cr>};<esc>k$14hi
+autocmd FileType javascript iabbrev <buffer> gefun exports. = function *() {<cr>};<esc>k$16hi
+autocmd FileType javascript iabbrev <buffer> funmod (function() {<cr>}());<esc>O<esc>0i<Space>
+autocmd FileType javascript iabbrev <buffer> ddef define([], function() {<cr>});<esc>k$14hi
+autocmd FileType javascript iabbrev <buffer> ret return;<esc>i
+autocmd FileType javascript iabbrev <buffer> us 'use strict';
 
 " JavaScript OOP Class
 autocmd FileType javascript iabbrev cls <Esc>B"zde"_xi
@@ -43,6 +43,13 @@ autocmd FileType javascript iabbrev clse <Esc>B"zde"_xi
       \<Esc>6ko<C-d><Tab>
       \<Esc>"_xa
 
+" proto
+autocmd FileType javascript iabbrev proto <Esc>B"zde"_xi
+      \<Esc>"zpa.prototype. = function(){<Enter>
+      \};<Enter>
+      \<Esc>2ko<C-d><Tab>
+      \<Esc>"_xa
+
 " React createCalss
 autocmd FileType javascript iabbrev rcc <Esc>B"zde"_xi
       \var <Esc>"zpa = React.createClass({<Enter>
@@ -56,7 +63,19 @@ autocmd FileType javascript iabbrev rcc <Esc>B"zde"_xi
       \<Esc>?return<Enter>o<Tab>
       \<Esc>"_xa
 
-" CoffeeScript ----------------------------------------------------------------
+" ES2015 syntax
+autocmd FileType javascript iabbrev <buffer> lobj let = {};<esc>4hi
+autocmd FileType javascript iabbrev <buffer> arf () => {<cr>};<esc>k$5hi
+autocmd FileType javascript iabbrev <buffer> imp import from '';<esc>8hi
+autocmd FileType javascript iabbrev <buffer> cls6 <Esc>B"zde"_xi
+      \class <Esc>"zpa{<Enter>
+      \constructor(){<Enter>}<Enter>
+      \<C-D>}<Enter>
+      \<Esc>?constructor(<Enter>
+      \<Esc>:noh<Enter>
+      \o
+
+"coffeeScript ----------------------------------------------------------------
 " coffee Class
 autocmd FileType coffee iabbrev ccls <Esc>B"zde"_xi
       \class <Esc>"zpa<Enter>
