@@ -98,6 +98,7 @@ set list                            "タブ文字、行末など不可視文字�
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:< "listで表示される文字のフォーマットを指定する
 set incsearch                       "インクリメンタルサーチを行う
 set number                          "行番号を表示する
+set relativenumber                  "相対行番号を有効にする
 set showmatch                       "閉じ括弧が入力されたとき、対応する括弧を表示する
 set smartcase                       "検索時に大文字を含んでいたら大/小を区別
 set smartindent                     "新しい行を作ったときに高度な自動インデントを行う
@@ -186,3 +187,13 @@ nmap <silent><Leader>i <Plug>IndentLinesToggle
 "------------------------------------
 source ~/.vim/startup/filetype.vim
 
+" unuglyfy function
+function! UnUglyfy()
+  %s/!0/true/gc
+  %s/!1/false/gc
+  %s/},/};\r\r/gc
+  %s/,/;\r/gc
+  %s/void 0/undefined/gc
+  noh
+endfunction
+nmap <silent> <F9> :call UnUglyfy()<CR>
