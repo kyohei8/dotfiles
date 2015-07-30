@@ -193,6 +193,7 @@ function! UnUglyfy()
   %s/!1/false/gc
   %s/},/};\r\r/gc
   %s/,/;\r/gc
+  %s/,/;\rvar /gc
   %s/void 0/undefined/gc
   noh
 endfunction
