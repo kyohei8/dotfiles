@@ -69,8 +69,10 @@ autocmd FileType javascript iabbrev <buffer> arf () => {<cr>};<esc>k$5hi
 autocmd FileType javascript iabbrev <buffer> imp import from '';<esc>8hi
 autocmd FileType javascript iabbrev <buffer> cls6 <Esc>B"zde"_xi
       \class <Esc>"zpa{<Enter>
-      \constructor(){<Enter>}<Enter>
+      \constructor(){<Enter>
+      \}<Enter>
       \<C-D>}<Enter>
+      \export default <Esc>"zpa;
       \<Esc>?constructor(<Enter>
       \<Esc>:noh<Enter>
       \o
