@@ -216,6 +216,11 @@ function! UnUglyfy()
   noh
 endfunction
 
+function! Var2class()
+  normal f";gevb"zy0W*N
+  execute "%s//" . @z . "/gc"
+endfunction
+
 nmap <silent> <C-F9> :call UnUglyfyfirst()<CR>
 nmap <silent> <F9> :call UnUglyfy()<CR>
-
+nmap <silent> <F10> :call Var2class()<CR>
