@@ -99,7 +99,7 @@ nnoremap <D-left> :tabprev<CR>
 inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
 
 " その場に改行を挿入
-nmap <CR> i<CR><ESC><Right>
+nmap <CR> a<CR><ESC><Right>
 
 " tcomment
 nmap <C-c> gccj

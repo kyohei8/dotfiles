@@ -192,14 +192,30 @@ nmap <silent><Leader>i <Plug>IndentLinesToggle
 "------------------------------------
 source ~/.vim/startup/filetype.vim
 
+function! UnUglyfyfirst()
+  normal gg
+  1,.d
+  normal G
+  .,$d
+endfunction
+
+
+
 " unuglyfy function
 function! UnUglyfy()
   %s/!0/true/gc
   %s/!1/false/gc
   %s/},/};\r\r/gc
   %s/,/;\r/gc
-  %s/,/;\rvar /gc
+  %s/,/;\rvar/gc
   %s/void 0/undefined/gc
+  /\v(.+)\&\&(.+;)
+  %s//if(\1){\r\2\r}/gc
+  /\v(.+)\|\|(.+;)
+  %s//if(!\1){\r\2\r}/gc
   noh
 endfunction
+
+nmap <silent> <C-F9> :call UnUglyfyfirst()<CR>
 nmap <silent> <F9> :call UnUglyfy()<CR>
+
