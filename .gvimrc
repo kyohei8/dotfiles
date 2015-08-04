@@ -15,9 +15,8 @@ set lsp=1                     "行間
 set shiftwidth=2              "タブサイズ
 
 
-"set guifontwide=Source\ Code\ Pro\ for\ Powerline:h12       " フォント設定
-"set guifont=Source\ Code\ Pro\ for\ Powerline:h12
-set guifontwide=Source\ Han\ Code\ JP\ Normal:h12       " フォント設定
+" フォント設定
+"set guifontwide=Source\ Han\ Code\ JP\ Normal:h12 こっちを設定すると⌘+で日本語が大きくならない
 set guifont=Source\ Han\ Code\ JP\ Normal:h12
 
 "全角スペースを視覚化

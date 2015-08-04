@@ -122,9 +122,9 @@ au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
 "==============================================================================>
 
 " Encode {{{
-set encoding=utf-8
-set fenc=utf-8
-set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+" set encoding=utf-8
+" set fenc=utf-8
+" set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 " }}}
 
 "折りたたみ設定
@@ -133,11 +133,16 @@ set fdc=4
 let perl_fold=1
 set foldlevel=100
 
-
 "------------------------------------------------------
-"キーマップ
+" キーマップ
 "------------------------------------------------------
 source ~/.vim/startup/mapping.vim
+
+"------------------------------------------------------
+" YouCompleteMe
+"------------------------------------------------------
+let g:ycm_key_list_select_completion = ['<TAB>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>']
 
 "------------------------------------------------------
 " emmet
@@ -183,7 +188,7 @@ nmap <silent><Leader>i <Plug>IndentLinesToggle
 "let g:indentLine_char = '¦'
 
 "------------------------------------
-" by filetype
+" by filetype w/snippets
 "------------------------------------
 source ~/.vim/startup/filetype.vim
 
