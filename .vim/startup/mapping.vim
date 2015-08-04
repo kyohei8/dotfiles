@@ -24,7 +24,7 @@ imap <F1> <Esc>
 ".vimrcを開くコマンド<Space+.>
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 "vimrcを再読み込み <Space+,>
-nnoremap <Space>, :<C-u>source $MYVIMRC<Return>
+nnoremap <Space>, :<C-u>source $MYVIMRC<Return>:so ~/.gvimrc<Return>
 " key mappingを開く
 nnoremap <Space>\ :<C-u>tabedit ~/.vim/startup/mapping.vim<Return>
 
