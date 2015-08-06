@@ -205,6 +205,7 @@ endfunction
 function! UnUglyfy()
   %s/!0/true/gc
   %s/!1/false/gc
+  %s/\v(\s)(\.\d+)/\10\2/gc
   %s/},/};\r\r/gc
   %s/,/;\r/gc
   %s/,/;\rvar/gc
@@ -224,3 +225,5 @@ endfunction
 nmap <silent> <C-F9> :call UnUglyfyfirst()<CR>
 nmap <silent> <F9> :call UnUglyfy()<CR>
 nmap <silent> <F10> :call Var2class()<CR>
+nmap <silent> <space><space> f,r;a<CR><Esc>
+nmap <silent> <space>f Vj]}<space>=

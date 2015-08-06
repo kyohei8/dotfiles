@@ -67,6 +67,7 @@ autocmd FileType javascript iabbrev rcc <Esc>B"zde"_xi
 autocmd FileType javascript iabbrev <buffer> lobj let = {};<esc>4hi
 autocmd FileType javascript iabbrev <buffer> arf () => {<cr>};<esc>k$5hi
 autocmd FileType javascript iabbrev <buffer> imp import from '';<esc>8hi
+autocmd FileType javascript iabbrev <buffer> exp export default
 autocmd FileType javascript iabbrev <buffer> cls6 <Esc>B"zde"_xi
       \class <Esc>"zpa{<Enter>
       \constructor(){<Enter>
