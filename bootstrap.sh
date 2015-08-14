@@ -5,23 +5,23 @@ _IGNORE_DOT_FILE=(./ ../ .DS_Store .gitignore .git/)
 
 # 不要なファイルかどうか
 is_ignore(){
-	for ignore in ${_IGNORE_DOT_FILE[@]}; do
-    	if [ $ignore == $1 ]; then
-    		return 0
-    	fi
-	done
-	return 1
+  for ignore in ${_IGNORE_DOT_FILE[@]}; do
+    if [ $ignore == $1 ]; then
+      return 0
+    fi
+  done
+  return 1
 }
 
 # dotfileのシンボリックリンクを貼る
 for dotfile in `ls -aF | grep '^\.'`; do
-	is_ignore $dotfile
-	if [ $? -eq 1 ]; then
-		src_path=`pwd`/$dotfile
-		# ディレクトリの場合最後のスラッシュを削除
-		ln -s $src_path $HOME/`echo $dotfile | sed -e 's/\/$//'`
-		echo 'create symbolic link ->'$dotfile
-	fi
+  is_ignore $dotfile
+  if [ $? -eq 1 ]; then
+    src_path=`pwd`/$dotfile
+    # ディレクトリの場合最後のスラッシュを削除
+    ln -s $src_path $HOME/`echo $dotfile | sed -e 's/\/$//'`
+    echo 'create symbolic link ->'$dotfile
+  fi
 done
 
 # add "global gitignore" alias
