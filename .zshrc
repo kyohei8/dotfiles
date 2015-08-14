@@ -104,10 +104,6 @@ export PATH=$HOME/.node/bin:$PATH
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-## rbenv setting
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 # MySQL Path Setting
 export PATH=$PATH:/usr/local/mysql/bin
 
