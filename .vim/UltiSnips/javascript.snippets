@@ -1,0 +1,98 @@
+snippet glinit "gl.shaderSource" b
+const c = document.getElementById('${1:id}');
+c.width = window.innerWidth;
+c.height = window.innerHeight;
+
+const gl = c.getContext('webgl');
+gl.clearColor(0.0, 0.0, 0.0, 1.0);
+gl.clear(gl.COLOR_BUFFER_BIT);
+endsnippet
+
+snippet glARB "gl.ARRAY_BUFFER" b
+gl.ARRAY_BUFFER
+endsnippet
+
+snippet glcB "gl.createBuffer" b
+const $1 = gl.createBuffer();$0
+endsnippet
+
+snippet glbB "gl.bindBuffer" b
+gl.bindBuffer(gl.ARRAY_BUFFER, ${1:bufferObj});$0
+endsnippet
+
+snippet glbD "gl.bufferData" b
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array($1), gl.STATIC_DRAW);$0
+endsnippet
+
+#
+# Programs and Shaders
+#
+
+snippet glcrSv "gl.createShader(vertex)" b
+const ${1:obj} = gl.createShader(gl.VERTEX_SHADER);$0
+endsnippet
+
+snippet glcrSf "gl.createShader(fragment)" b
+const ${1:obj} = gl.createShader(gl.FRAGMENT_SHADER);$0
+endsnippet
+
+snippet glcrP "gl.createProgram" b
+const ${1:obj} = gl.createProgram();
+endsnippet
+
+snippet glsS "gl.shaderSource" b
+gl.shaderSource(${1:shader}, ${2:source});$0
+endsnippet
+
+snippet glcompS "gl.compileShader" b
+gl.compileShader(${1:shader});$0
+endsnippet
+
+snippet glatS "gl.attachShader" b
+gl.attachShader(${1:program}, ${2:shader});$0
+endsnippet
+
+snippet gllP "gl.linkPrograms" b
+gl.linkProgram(${1:program});$0
+endsnippet
+
+snippet gluP "gl.useProgram" b
+gl.useProgram(${1:program});$0
+endsnippet
+
+#
+# Uniforms and Attributes
+#
+snippet glgattrLoc "gl.getAttribLocation" b
+const $1 = gl.getAttribLocation(${2:program}, '${3:name}');$0
+endsnippet
+
+snippet glenvrtxAttrA "gl.enableVertexAttribArray" b
+gl.enableVertexAttribArray(${1:index});$0
+endsnippet
+
+snippet glvtxAttrP "gl.vertexAttribPointer" b
+gl.vertexAttribPointer(${1:index}, ${2:size}, gl.FLOAT, false, ${3:stride}, ${4:offset});$0
+endsnippet
+
+#
+# Writing to the Draw Buffer
+#
+snippet glT "gl.TRIANGLES" b
+gl.TRIANGLES$0
+endsnippet
+
+snippet gldA "gl.drawArrays" b
+gl.drawArrays(${1:mode}, ${2:fist}, ${3:count});$0
+endsnippet
+
+#
+# Special Functions
+#
+snippet glf "gl.flush" b
+gl.flush();
+endsnippet
+
+# snippet gl "gl." b
+# endsnippet
+

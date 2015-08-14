@@ -52,6 +52,11 @@ NeoBundle 'Valloric/YouCompleteMe'
 "  $ ./install.sh
 " vimが起動しな起動しなくなるので brew unlink python する
 
+" snippets
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+
+
 " Langage
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'pangloss/vim-javascript'
@@ -138,6 +143,18 @@ set foldlevel=100
 "------------------------------------------------------
 source ~/.vim/startup/mapping.vim
 
+"------------------------------------
+" ultisnips
+"------------------------------------
+let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<c-space>"
+let g:UltiSnipsJumpForwardTrigger="<c-h>"
+let g:UltiSnipsJumpBackwardTrigger="<c-l>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 "------------------------------------------------------
 " YouCompleteMe
 "------------------------------------------------------
@@ -186,7 +203,6 @@ let g:PaperColor_Dark_CursorLine = "#37474F"
 let g:indentLine_color_gui = '#424242'
 nmap <silent><Leader>i <Plug>IndentLinesToggle
 "let g:indentLine_char = '¦'
-
 "------------------------------------
 " by filetype w/snippets
 "------------------------------------
@@ -206,6 +222,9 @@ function! UnUglyfy()
   %s/!0/true/gc
   %s/!1/false/gc
   %s/\v(\s)(\.\d+)/\10\2/gc
+  %s/e3/000/gc
+  %s/e4/0000/gc
+  %s/e5/00000/gc
   %s/},/};\r\r/gc
   %s/,/;\r/gc
   %s/,/;\rvar/gc
