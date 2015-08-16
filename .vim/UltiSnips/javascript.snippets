@@ -8,6 +8,10 @@ gl.clearColor(0.0, 0.0, 0.0, 1.0);
 gl.clear(gl.COLOR_BUFFER_BIT);
 endsnippet
 
+snippet glclr "gl.clear" b
+gl.clear(gl.COLOR_BUFFER_BIT);
+endsnippet
+
 snippet glARB "gl.ARRAY_BUFFER" b
 gl.ARRAY_BUFFER
 endsnippet
@@ -24,10 +28,16 @@ snippet glbD "gl.bufferData" b
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array($1), gl.STATIC_DRAW);$0
 endsnippet
 
-#
-# Programs and Shaders
-#
 
+snippet glibo "create index buffer object" b
+const ibo = gl.createBuffer();
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
+gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Int16Array(${1:index buffer array}), gl.STATIC_DRAW);
+endsnippet
+
+###############################################################################
+# Programs and Shaders
+###############################################################################
 snippet glcrSv "gl.createShader(vertex)" b
 const ${1:obj} = gl.createShader(gl.VERTEX_SHADER);$0
 endsnippet
@@ -60,9 +70,17 @@ snippet gluP "gl.useProgram" b
 gl.useProgram(${1:program});$0
 endsnippet
 
-#
+snippet glgSP "gl.getShaderParameter" b
+const ${1:bool} = gl.getShaderParameter(${2:shader}, gl.COMPILE_STATUS);$0
+endsnippet
+
+snippet glgPP "gl.getProgramParameter" b
+const ${1:bool} = gl.getProgramParameter(${2:shader}, gl.LINK_STATUS);$0
+endsnippet
+
+###############################################################################
 # Uniforms and Attributes
-#
+###############################################################################
 snippet glgattrLoc "gl.getAttribLocation" b
 const $1 = gl.getAttribLocation(${2:program}, '${3:name}');$0
 endsnippet
@@ -75,10 +93,10 @@ snippet glvtxAttrP "gl.vertexAttribPointer" b
 gl.vertexAttribPointer(${1:index}, ${2:size}, gl.FLOAT, false, ${3:stride}, ${4:offset});$0
 endsnippet
 
-#
+###############################################################################
 # Writing to the Draw Buffer
-#
-snippet glT "gl.TRIANGLES" b
+###############################################################################
+snippet glTR "gl.TRIANGLES" b
 gl.TRIANGLES$0
 endsnippet
 
@@ -86,9 +104,13 @@ snippet gldA "gl.drawArrays" b
 gl.drawArrays(${1:mode}, ${2:fist}, ${3:count});$0
 endsnippet
 
-#
+snippet gldE "gl.drawElements" b
+gl.drawElements(${1:mode}, ${2:count}, ${3:type}, ${4:offset});$0
+endsnippet
+
+###############################################################################
 # Special Functions
-#
+###############################################################################
 snippet glf "gl.flush" b
 gl.flush();
 endsnippet
