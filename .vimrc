@@ -227,7 +227,7 @@ function! UnUglyfy()
   %s/e5/00000/gc
   %s/},/};\r\r/gc
   %s/,/;\r/gc
-  %s/,/;\rvar/gc
+  " %s/,/;\rvar/gc
   %s/void 0/undefined/gc
   /\v(.+)\&\&(.+;)
   %s//if(\1){\r\2\r}/gc
