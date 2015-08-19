@@ -20,6 +20,8 @@ NeoBundle 'MPiccinato/wombat256'
 NeoBundle 'lsdr/monokai'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'NLKNguyen/papercolor-theme'
+NeoBundle 'dfxyz/CandyPaper.vim'
+NeoBundle 'Wutzara/vim-materialtheme'
 " Plugin
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
@@ -191,11 +193,6 @@ source ~/.vim/startup/lightline.vim
 "------------------------------------
 let g:jsdoc_default_mapping = 0
 nnoremap <silent> <Space>J :JsDoc<CR>
-
-"------------------------------------
-" highlight line
-"------------------------------------
-let g:PaperColor_Dark_CursorLine = "#37474F"
 
 "------------------------------------
 " indentLine
