@@ -95,6 +95,9 @@ map <D-enter> :set fullscreen! <CR>
 nnoremap <D-right> :tabnext<CR>
 nnoremap <D-left> :tabprev<CR>
 
+" 置換 ⌘ +r
+nnoremap <D-r> <S-*>:%s///gc<left><left><left>
+
 " 'F8'で線を引く
 inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
 
