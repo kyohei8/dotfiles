@@ -39,6 +39,7 @@ NeoBundle 'wincent/Command-T'
 " $ cd dotfiles/.vim/bundle/Command-T/ruby/command-t
 " $ ruby extconf.rb
 " $ make
+NeoBundle 't9md/vim-smalls'
 
 " input extend
 NeoBundle 'tpope/vim-surround'
@@ -176,6 +177,14 @@ imap <C-f> <C-y>,
 "------------------------------------------------------
 nnoremap <Space>t :CommandT<Enter>
 let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/dist/*,**/node_modules/*,*.png,*.jpg,*.gif,*.svg,*.map"
+
+"------------------------------------------------------
+" smalls
+"------------------------------------------------------
+nmap <c-s> <Plug>(smalls)
+omap <c-s> <Plug>(smalls)
+xmap <c-s> <Plug>(smalls)
+" set ignorecase smartcase
 
 "------------------------------------------------------
 "NERDtree(ファイルツリー)の設定
