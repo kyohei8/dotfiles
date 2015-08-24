@@ -22,6 +22,7 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'NLKNguyen/papercolor-theme'
 NeoBundle 'dfxyz/CandyPaper.vim'
 NeoBundle 'Wutzara/vim-materialtheme'
+NeoBundle 'w0ng/vim-hybrid'
 " Plugin
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
