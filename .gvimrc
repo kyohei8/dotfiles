@@ -1,5 +1,5 @@
 set background=dark
-colorscheme hybrid
+colorscheme sandydune
 
 set cmdheight=1
 set guioptions-=T                   " ツールバーを表示しない

@@ -14,15 +14,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 " plugins --------------------------------
-" Theme
-NeoBundle 'tomasr/molokai'
-NeoBundle 'MPiccinato/wombat256'
-NeoBundle 'lsdr/monokai'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'NLKNguyen/papercolor-theme'
-NeoBundle 'dfxyz/CandyPaper.vim'
-NeoBundle 'Wutzara/vim-materialtheme'
-NeoBundle 'w0ng/vim-hybrid'
 " Plugin
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
@@ -64,6 +55,8 @@ NeoBundle 'honza/vim-snippets'
 " Langage
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'einars/js-beautify'
 NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript','html','css']}}
 NeoBundle 'heavenshell/vim-jsdoc'
@@ -72,6 +65,16 @@ NeoBundle 'kchmck/vim-coffee-script'
 " Tool
 NeoBundle 'rizzatti/dash.vim'
 
+" Theme
+NeoBundle 'tomasr/molokai'
+NeoBundle 'MPiccinato/wombat256'
+NeoBundle 'lsdr/monokai'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'NLKNguyen/papercolor-theme'
+NeoBundle 'dfxyz/CandyPaper.vim'
+NeoBundle 'Wutzara/vim-materialtheme'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'idbrii/vim-sandydune'
 " ---------------------------------------
 call neobundle#end()
 
