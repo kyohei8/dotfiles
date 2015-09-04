@@ -104,7 +104,7 @@ inoremap <F8> <C-R>=repeat('-', 80 - virtcol('.'))<CR>
 " その場に改行を挿入
 nmap <CR> a<CR><ESC><Right>
 
-" tcomment
+" tcomment コメントアウト
 nmap <C-c> gccj
 vmap <C-c> gcj
 

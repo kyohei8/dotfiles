@@ -46,6 +46,7 @@ NeoBundle 'Valloric/YouCompleteMe'
 "  $ git submodule update --init --recursive
 "  $ ./install.sh
 " vimが起動しな起動しなくなるので brew unlink python する
+NeoBundle 'thinca/vim-visualstar'
 
 " snippets
 NeoBundle 'SirVer/ultisnips'
