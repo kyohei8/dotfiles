@@ -63,6 +63,7 @@ NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript','
 NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'sophacles/vim-processing'
 " Tool
 NeoBundle 'rizzatti/dash.vim'
 
@@ -157,8 +158,8 @@ source ~/.vim/startup/mapping.vim
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger="<c-space>"
-let g:UltiSnipsJumpForwardTrigger="<c-h>"
-let g:UltiSnipsJumpBackwardTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -257,3 +258,4 @@ nmap <silent> <F9> :call UnUglyfy()<CR>
 nmap <silent> <F10> :call Var2class()<CR>
 nmap <silent> <space><space> f,r;a<CR><Esc>
 nmap <silent> <space>f Vj]}<space>=
+nmap <silent> <space>g F(lvf)h:s/\v(.+) (.+\=) (.+)/\3 \2 \1/gc<CR>
