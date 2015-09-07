@@ -1,3 +1,9 @@
+snippet extend "extend class" b
+${1:Child}.prototype = Object.create(${2:Parent}.prototype);
+$1.prototype.constructor = $1;
+$0
+endsnippet
+
 snippet glinit "gl.shaderSource" b
 const c = document.getElementById('${1:id}');
 c.width = window.innerWidth;
