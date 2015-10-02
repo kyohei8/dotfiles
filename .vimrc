@@ -31,7 +31,7 @@ NeoBundle 'wincent/Command-T'
 " $ cd dotfiles/.vim/bundle/Command-T/ruby/command-t
 " $ ruby extconf.rb
 " $ make
-NeoBundle 't9md/vim-smalls'
+NeoBundle 't9md/vim-smalls' "easymotion的なやつ
 
 " input extend
 NeoBundle 'tpope/vim-surround'
@@ -64,6 +64,7 @@ NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'sophacles/vim-processing'
+NeoBundle 'digitaltoad/vim-jade'
 " Tool
 NeoBundle 'rizzatti/dash.vim'
 
