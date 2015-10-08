@@ -4,6 +4,9 @@ $1.prototype.constructor = $1;
 $0
 endsnippet
 
+# -----------------------------------------------------------------------------
+# Es6
+# -----------------------------------------------------------------------------
 snippet cls "generate class for ES5" b
 /**
  * $1
@@ -19,7 +22,48 @@ $1.prototype.method = function(){};
 module.exports = $1;
 endsnippet
 
+# Promise
+snippet promise "generate Promise func" b
+return new Promise((resolve, reject) => {
+  resolve();
+  // or
+  reject(Error('err'));
+});
+endsnippet
 
+snippet then "generate Promise '.then' func" b
+.then((${1:result}) => {
+  console.log($1);
+  $0
+}, (err) => {
+  console.log(err);
+});
+endsnippet
+
+snippet imgLoad "load Image with Promise" b
+return new Promise((resolve, reject) => {
+  const img = new Image();
+  const onLoad = (data) => {
+   img.removeEventListener('load', onLoad);
+   img.removeEventListener('error', onError);
+   resolve(data);
+  };
+
+  const onError = (e) => {
+    img.removeEventListener('load', onLoad);
+    img.removeEventListener('error', onError);
+    reject(e);
+  };
+
+  img.addEventListener('load', onLoad);
+  img.addEventListener('error', onError);
+  img.src = url;
+});
+endsnippet
+
+##################
+# WebGL
+##################
 snippet glinit "gl.shaderSource" b
 const c = document.getElementById('${1:id}');
 c.width = window.innerWidth;
