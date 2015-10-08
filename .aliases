@@ -68,6 +68,10 @@ alias sudo='sudo '
 alias -g L='| less'
 alias -g G='| grep'
 
+# get ip address
+alias ip="ifconfig en0 | awk ' NR==4 {print \$2}'"
+alias ipc="myip=`ip`|myip|pbcopy|echo `myip` -> ip address copyed!!"
+
 #------------------------------------------------------------------------------
 # heroku
 #------------------------------------------------------------------------------
