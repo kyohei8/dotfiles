@@ -4,6 +4,29 @@ $1.prototype.constructor = $1;
 $0
 endsnippet
 
+# React用snippets
+snippet rcls "React.Component Class" b
+/**
+ * $1
+ */
+class ${1:name} extends React.Component{
+  constructor(){
+    super();
+    $0;
+  }
+
+  render(){
+    return <div></div>;
+  }
+}
+export default $1;
+endsnippet
+
+# canvas
+snippet raf "requestAnimationFrame()" b
+window.requestAnimationFrame(step);
+endsnippet
+
 # -----------------------------------------------------------------------------
 # Es6
 # -----------------------------------------------------------------------------
