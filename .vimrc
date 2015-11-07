@@ -208,6 +208,8 @@ source ~/.vim/startup/lightline.vim
 " Speac -> J でjsdocを生成
 "------------------------------------
 let g:jsdoc_default_mapping = 0
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_enable_es6 = 1
 nnoremap <silent> <Space>J :JsDoc<CR>
 
 "------------------------------------
@@ -260,3 +262,14 @@ nmap <silent> <F10> :call Var2class()<CR>
 nmap <silent> <space><space> f,r;a<CR><Esc>
 nmap <silent> <space>f Vj]}<space>=
 nmap <silent> <space>g F(lvf)h:s/\v(.+) (.+\=) (.+)/\3 \2 \1/gc<CR>
+
+function! ToEs6()
+  %s/\vvar (\a+) \= require\(('(\w|.)+')\);/import \1 from \2;/g
+  %s/\vvar ([A-Z]\a+) \= function\(\)/class \1/gc
+  %s/\v[A-Z]\a+\.prototype.(\a+) \= f\a+/\1/g
+  %s/\vmodule.exports \= /export default /g
+
+
+endfunction
+
+nmap <silent> <F6> :call ToEs6()<CR>
