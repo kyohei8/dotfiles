@@ -4,23 +4,51 @@ $1.prototype.constructor = $1;
 $0
 endsnippet
 
+snippet err "throwing JavaScript errors" b
+throw new Error(${1:"Something bad happened."})
+endsnippet
+
 # React用snippets
 snippet rcls "React.Component Class" b
+import React, { Component, PropTypes } from 'react';
+
 /**
  * $1
  */
-class ${1:name} extends React.Component{
+class ${1:name} extends Component{
   constructor(){
     super();
     $0;
   }
 
   render(){
-    return <div></div>;
+    return (
+      <div>
+      </div>
+    );
   }
 }
 export default $1;
 endsnippet
+
+snippet rclss "React stateless Component" b
+/**
+ * $1
+ */
+const $1 = (props) => {
+  return (
+    <div>
+      $0{props.name}
+    </div>
+  );
+};
+endsnippet
+
+# Redux
+snippet rd:at "redux action const" b
+export const ${1:name} = '$1';
+endsnippet
+
 
 # canvas
 snippet raf "requestAnimationFrame()" b
