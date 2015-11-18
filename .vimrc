@@ -28,7 +28,7 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tmhedberg/matchit'
 NeoBundle 'wincent/Command-T'
 " <- command-t install ->
-" $ cd dotfiles/.vim/bundle/Command-T/ruby/command-t
+" $ cd ~/dotfiles/.vim/bundle/Command-T/ruby/command-t
 " $ ruby extconf.rb
 " $ make
 NeoBundle 't9md/vim-smalls' "easymotion的なやつ
