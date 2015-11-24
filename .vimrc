@@ -65,6 +65,9 @@ NeoBundle 'mxw/vim-jsx'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'sophacles/vim-processing'
 NeoBundle 'digitaltoad/vim-jade'
+" YouCompleteMeのJS改善
+NeoBundle 'ternjs/tern_for_vim', {'build': {'mac': 'npm install'}}
+
 " Tool
 NeoBundle 'rizzatti/dash.vim'
 
