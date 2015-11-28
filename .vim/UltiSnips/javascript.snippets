@@ -68,11 +68,18 @@ describe('$0', () => {
 });
 endsnippet
 
-snippet it "describe" b
+snippet it "it " b
 it('$0', () => {
 });
 endsnippet
 
+snippet ae "assert.equal()" i
+assert.equal($1, $2);
+endsnippet
+
+snippet ade "assert.deepEqual()" i
+assert.deepEqual($1, $2);
+endsnippet
 
 # -----------------------------------------------------------------------------
 # Es6
