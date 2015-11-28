@@ -4,7 +4,7 @@ $1.prototype.constructor = $1;
 $0
 endsnippet
 
-snippet err "throwing JavaScript errors" b
+snippet err "throwing JavaScript errors"
 throw new Error(${1:"Something bad happened."})
 endsnippet
 
@@ -12,13 +12,16 @@ endsnippet
 snippet rcls "React.Component Class" b
 import React, { Component, PropTypes } from 'react';
 
+const propTypes = {};
+const defaultProps = {};
+
 /**
  * $1
  */
 class ${1:name} extends Component{
   constructor(){
     super();
-    $0;
+    $0
   }
 
   render(){
@@ -28,6 +31,10 @@ class ${1:name} extends Component{
     );
   }
 }
+
+$1.propTypes = propTypes;
+$1.defaultProps = defaultProps;
+
 export default $1;
 endsnippet
 
@@ -54,6 +61,18 @@ endsnippet
 snippet raf "requestAnimationFrame()" b
 window.requestAnimationFrame(step);
 endsnippet
+
+# test
+snippet desc "describe" b
+describe('$0', () => {
+});
+endsnippet
+
+snippet it "describe" b
+it('$0', () => {
+});
+endsnippet
+
 
 # -----------------------------------------------------------------------------
 # Es6
