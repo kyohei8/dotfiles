@@ -21,12 +21,14 @@ map <F1> <Esc>
 imap <F1> <Esc>
 
 " spaceからの〜 ----------------------------------------------------------------
-".vimrcを開くコマンド<Space+.>
-nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
+".vimrcを開くコマンド<Space+,>
+nnoremap <Space>, :<C-u>tabedit $MYVIMRC<CR>
 "vimrcを再読み込み <Space+,>
-nnoremap <Space>, :<C-u>source $MYVIMRC<Return>:so ~/.gvimrc<Return>
+nnoremap <Space>. :<C-u>source $MYVIMRC<Return>:so ~/.gvimrc<Return>
 " key mappingを開く
 nnoremap <Space>\ :<C-u>tabedit ~/.vim/startup/mapping.vim<Return>
+" snippetを開く
+nnoremap <Space>] :<C-u>tabedit ~/.vim/UltiSnips/javascript.snippets<Return>
 
 " カーソルの移動を変える
 noremap <Space>h  ^
