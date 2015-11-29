@@ -21,7 +21,7 @@ autocmd FileType javascript iabbrev <buffer> ret return;<esc>i
 autocmd FileType javascript iabbrev <buffer> us 'use strict';
 " CommonJS
 autocmd FileType javascript iabbrev <buffer> me module.exports =
-autocmd FileType javascript iabbrev <buffer> req var = require('');<esc>Fala
+" autocmd FileType javascript iabbrev <buffer> req var = require('');<esc>Fala
 
 " JavaScript OOP Class
 autocmd FileType javascript iabbrev cls <Esc>B"zde"_xi
