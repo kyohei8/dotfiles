@@ -82,7 +82,7 @@ assert.deepEqual($1, $2);
 endsnippet
 
 # -----------------------------------------------------------------------------
-# Es6
+# Es5
 # -----------------------------------------------------------------------------
 snippet cls "generate class for ES5" b
 /**
@@ -98,6 +98,23 @@ $1.prototype.method = function(){};
 
 module.exports = $1;
 endsnippet
+
+# -----------------------------------------------------------------------------
+# Es6
+# -----------------------------------------------------------------------------
+snippet cls6 "generate class for ES6" b
+/**
+ * $1
+ */
+class ${1:Name}{
+  constructor(){
+    $0
+  }
+}
+
+export default $1;
+endsnippet
+
 
 # Promise
 snippet promise "generate Promise func" b
