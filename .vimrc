@@ -32,6 +32,8 @@ NeoBundle 'wincent/Command-T'
 " $ ruby extconf.rb
 " $ make
 NeoBundle 't9md/vim-smalls' "easymotion的なやつ
+NeoBundle 'ap/vim-css-color'
+NeoBundle 'KabbAmine/vCoolor.vim'
 
 " input extend
 NeoBundle 'tpope/vim-surround'
@@ -57,6 +59,7 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'elzr/vim-json'
+NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'einars/js-beautify'
 NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript','html','css']}}
