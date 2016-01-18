@@ -61,13 +61,6 @@ code () {
 source ~/.nvm/nvm.sh
 nvm use stable
 
-#------------------------------------------------------------------------------
-# rvm
-#-----------------------------------------------------------------------------
-#alias rvm='rvm use'
-#alias r193='rvm use 1.9.3@rails32'
-#alias r200='rvm use 2.0.0@rails4'
-
 # path gradle
 export GRADLE_HOME=/project/gradle-1.7
 export PATH="$GRADLE_HOME/bin:$PATH"
