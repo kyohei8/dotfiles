@@ -14,7 +14,7 @@ endsnippet
 
 # React用snippets
 snippet rcls "React.Component Class" b
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 const propTypes = {};
 const defaultProps = {};
@@ -43,16 +43,27 @@ export default $1;
 endsnippet
 
 snippet rclss "React stateless Component" b
+import React, { PropTypes } from 'react';
+
+const propTypes = {};
+const defaultProps = {};
+
 /**
  * $1
  */
 const $1 = (props) => {
+  const { name } = props;
   return (
     <div>
-      $0{props.name}
+      {name}$0
     </div>
   );
 };
+
+$1.propTypes = propTypes;
+$1.defaultProps = defaultProps;
+
+export default $1;
 endsnippet
 
 # Redux
