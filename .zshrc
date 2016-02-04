@@ -33,11 +33,6 @@ git clone $1&& mine $reponame
 }
 
 
-# aliases
-for file in ~/.{zshrc-local,aliases}; do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
 
 #------------------------------------------------------------------------------
 # Visual Studio Code
@@ -110,5 +105,11 @@ eval "$(grunt --completion=zsh)"
 typeset -U path cdpath fpath manpath
 
 export LANG=ja_JP.UTF-8
+
+# aliases
+for file in ~/.{zshrc-local,aliases}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
 
 date
