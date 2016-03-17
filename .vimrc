@@ -190,7 +190,12 @@ imap <C-f> <C-y>,
 " command-T
 "------------------------------------------------------
 nnoremap <Space>t :CommandT<Enter>
-let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/dist/*,**/node_modules/*,*.png,*.jpg,*.gif,*.svg,*.map"
+nnoremap <Space>b :CommandTBuffer<Enter>
+let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/dist/*,**/node_modules/*,*.png,*.jpg,*.gif,*.svg,*.map, **/vendor/*"
+let s:commandTHeight=15 " 検索結果を同じ高さにする
+let g:CommandTMaxHeight=s:commandTHeight
+let g:CommandTMinHeight=s:commandTHeight
+let g:CommandTMaxFiles=100
 
 "------------------------------------------------------
 " smalls
