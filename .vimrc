@@ -2,100 +2,79 @@ syntax on
 filetype off
 set nocompatible
 
+" <plug =======================================================================
+call plug#begin('~/.vim/plugged')
 
-" <NeoBundle===================================================================
-if 0 | endif
-
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-" plugins --------------------------------
 " Plugin
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'tpope/vim-git'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'moll/vim-bbye'
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'tmhedberg/matchit'
-NeoBundle 'wincent/Command-T'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+Plug 'moll/vim-bbye'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'tmhedberg/matchit'
+Plug 'wincent/Command-T'
 " <- command-t install ->
-" $ cd ~/dotfiles/.vim/bundle/Command-T/ruby/command-t
+" $ cd ~/dotfiles/.vim/plugged/Command-T/ruby/command-t
 " $ ruby extconf.rb
 " $ make
-NeoBundle 't9md/vim-smalls' "easymotion的なやつ
-NeoBundle 'ap/vim-css-color'
-NeoBundle 'KabbAmine/vCoolor.vim'
+Plug 't9md/vim-smalls' "easymotion的なやつ
+
+Plug 'ap/vim-css-color'
+Plug 'KabbAmine/vCoolor.vim'
 
 " input extend
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'kana/vim-submode'
-NeoBundle 'nelstrom/vim-visual-star-search'
-NeoBundle 'AndrewRadev/switch.vim'
-" NeoBundle 'marijnh/tern_for_vim'
-NeoBundle 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'kana/vim-submode'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'AndrewRadev/switch.vim'
+Plug 'Valloric/YouCompleteMe'
 " -> then
-"  $ cd ~/.vim/bundle/YouCompleteMe
+"  $ cd ~/.vim/plugged/YouCompleteMe
 "  $ git submodule update --init --recursive
 "  $ ./install.sh
 " vimが起動しな起動しなくなるので brew unlink python する
-NeoBundle 'thinca/vim-visualstar'
+Plug 'thinca/vim-visualstar'
 
 " snippets
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 
 " Langage
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'einars/js-beautify'
-NeoBundleLazy 'maksimr/vim-jsbeautify', {'autoload':{'filetypes':['javascript','html','css']}}
-NeoBundle 'heavenshell/vim-jsdoc'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'sophacles/vim-processing'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'slim-template/vim-slim'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'einars/js-beautify'
+Plug 'maksimr/vim-jsbeautify', { 'for': ['javascript','html','css'] }
+Plug 'heavenshell/vim-jsdoc'
+Plug 'mxw/vim-jsx'
+Plug 'kchmck/vim-coffee-script'
+Plug 'sophacles/vim-processing'
+Plug 'digitaltoad/vim-jade'
+Plug 'slim-template/vim-slim'
 " YouCompleteMeのJS改善
-NeoBundle 'ternjs/tern_for_vim', {'build': {'mac': 'npm install'}}
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 " Tool
-NeoBundle 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim'
 
 " Theme
-NeoBundle 'tomasr/molokai'
-NeoBundle 'MPiccinato/wombat256'
-NeoBundle 'lsdr/monokai'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'NLKNguyen/papercolor-theme'
-NeoBundle 'dfxyz/CandyPaper.vim'
-NeoBundle 'Wutzara/vim-materialtheme'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'idbrii/vim-sandydune'
-" ---------------------------------------
-call neobundle#end()
+Plug 'nanotech/jellybeans.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'dfxyz/CandyPaper.vim'
+Plug 'Wutzara/vim-materialtheme'
+Plug 'idbrii/vim-sandydune'
 
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+call plug#end()
 "==============================================================================>
-
+"
 "<Basics========================================================================
 " set shell=/usr/local/bin/zsh\ -i  "遅い・・・
 set shell=/bin/bash
