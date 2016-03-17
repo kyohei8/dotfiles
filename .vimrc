@@ -97,7 +97,8 @@ NeoBundleCheck
 "==============================================================================>
 
 "<Basics========================================================================
-set shell=/usr/local/bin/zsh\ -i
+" set shell=/usr/local/bin/zsh\ -i  "遅い・・・
+set shell=/bin/bash
 
 set t_Co=256
 set nowrap                          "折り返さない
