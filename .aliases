@@ -46,9 +46,6 @@ alias ..='cd ..'
 alias rm="rm -i"
 alias mv="mv -i"
 
-# grunt
-alias gt='grunt $1'
-
 # パスをコピー
 alias copypath='pwd|pbcopy'
 
@@ -99,6 +96,7 @@ alias bwl='bower list'
 #------------------------------------------------------------------------------
 # npm
 #------------------------------------------------------------------------------
+alias npm=gifi
 alias n='npm'
 alias nl='npm list'
 alias nl0='npm list --depth=0 "$@" 2>/dev/null'
