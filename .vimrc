@@ -69,7 +69,6 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'sophacles/vim-processing'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'slim-template/vim-slim'
-NeoBundle 'csscomb/vim-csscomb'
 " YouCompleteMeのJS改善
 NeoBundle 'ternjs/tern_for_vim', {'build': {'mac': 'npm install'}}
 
@@ -233,12 +232,6 @@ nnoremap <silent> <Space>J :JsDoc<CR>
 let g:indentLine_color_gui = '#424242'
 nmap <silent><Leader>i <Plug>IndentLinesToggle
 "let g:indentLine_char = '¦'
-
-"------------------------------------
-" CSScomb
-"------------------------------------
-autocmd FileType css noremap <buffer> <space>c :CSScomb<CR>
-" autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :CSScomb
 
 "------------------------------------
 " by filetype w/snippets
