@@ -48,17 +48,17 @@ Plug 'honza/vim-snippets'
 " Langage
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'elzr/vim-json'
+Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'einars/js-beautify'
 Plug 'maksimr/vim-jsbeautify', { 'for': ['javascript','html','css'] }
 Plug 'heavenshell/vim-jsdoc'
-Plug 'mxw/vim-jsx'
-Plug 'kchmck/vim-coffee-script'
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'sophacles/vim-processing'
-Plug 'digitaltoad/vim-jade'
-Plug 'slim-template/vim-slim'
+Plug 'digitaltoad/vim-jade', { 'for': 'jade' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
 " YouCompleteMeのJS改善
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
