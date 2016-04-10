@@ -57,8 +57,10 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'sophacles/vim-processing'
-Plug 'digitaltoad/vim-jade', { 'for': 'jade' }
+Plug 'digitaltoad/vim-jade'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
+Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
+Plug 'nicklasos/vim-jsx-riot'
 " YouCompleteMeのJS改善
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
@@ -120,6 +122,7 @@ set noerrorbells visualbell t_vb=   "ベルを無効
 
 au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
 au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
+au BufNewFile,BufRead *.tag setlocal ft=javascript " Riotjsの読込設定
 
 "==============================================================================>
 
@@ -128,6 +131,7 @@ au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
 " set fenc=utf-8
 " set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 " }}}
+"
 
 "折りたたみ設定
 set foldmethod=indent
@@ -139,6 +143,15 @@ set foldlevel=100
 " キーマップ
 "------------------------------------------------------
 source ~/.vim/startup/mapping.vim
+
+"------------------------------------------------------
+" GoLang
+"------------------------------------------------------
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim
+endif
+" gocodeを読み込む
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
 "------------------------------------
 " ultisnips
