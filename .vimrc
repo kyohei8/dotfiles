@@ -16,11 +16,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'moll/vim-bbye'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tmhedberg/matchit'
-Plug 'wincent/Command-T'
-" <- command-t install ->
-" $ cd ~/dotfiles/.vim/plugged/Command-T/ruby/command-t
-" $ ruby extconf.rb
-" $ make
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 't9md/vim-smalls' "easymotion的なやつ
 
 Plug 'ap/vim-css-color'
