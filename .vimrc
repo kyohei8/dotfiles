@@ -16,7 +16,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'moll/vim-bbye'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tmhedberg/matchit'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim' "ファイル検索
 Plug 't9md/vim-smalls' "easymotion的なやつ
 
 Plug 'ap/vim-css-color'
@@ -175,16 +175,6 @@ autocmd FileType html,ejs,css,sass,scss,stylus,less EmmetInstall
 " Emmet keymap
 imap <C-f> <C-y>,
 
-"------------------------------------------------------
-" command-T
-"------------------------------------------------------
-nnoremap <Space>t :CommandT<Enter>
-nnoremap <Space>b :CommandTBuffer<Enter>
-let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/dist/*,**/node_modules/*,*.png,*.jpg,*.gif,*.svg,*.map, **/vendor/*"
-let s:commandTHeight=15 " 検索結果を同じ高さにする
-let g:CommandTMaxHeight=s:commandTHeight
-let g:CommandTMinHeight=s:commandTHeight
-let g:CommandTMaxFiles=100
 
 "------------------------------------------------------
 " smalls
