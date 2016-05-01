@@ -17,24 +17,6 @@ source $ZSH/oh-my-zsh.sh
 #predict-on
 
 #------------------------------------------------------------------------------
-# git cloneからWebStromで開く
-#------------------------------------------------------------------------------
-function clone_w(){
-reponame="$(echo $1 | grep / | cut -d/ -f5 | cut -d\. -f1)"
-git clone $1&& wstorm $reponame
-}
-
-#------------------------------------------------------------------------------
-# git cloneからRubyMineで開く
-#------------------------------------------------------------------------------
-function clone_r(){
-reponame="$(echo $1 | grep / | cut -d/ -f5 | cut -d\. -f1)"
-git clone $1&& mine $reponame
-}
-
-
-
-#------------------------------------------------------------------------------
 # Visual Studio Code
 #------------------------------------------------------------------------------
 code () {
@@ -97,9 +79,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # MySQL Path Setting
 export PATH=$PATH:/usr/local/mysql/bin
-
-#grunt task autocomplete
-eval "$(grunt --completion=zsh)"
 
 #重複したpathを一意にする
 typeset -U path cdpath fpath manpath
