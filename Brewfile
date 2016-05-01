@@ -21,6 +21,7 @@ install wget || true
 install thefuck || true
 install node
 install z
+install fasd
 # php 5.5
 tap homebrew/dupes
 tap josegonzalez/php
