@@ -1,13 +1,7 @@
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="miloshadzic"
-
-#------------------------------------------------------------------------------
-# plugins
-# zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting
-#------------------------------------------------------------------------------
-plugins=(git gem rails bower npm nyan osx zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 # z https://github.com/rupa/z
 . `brew --prefix`/Cellar/z/1.8/etc/profile.d/z.sh
