@@ -26,11 +26,10 @@ code () {
 #------------------------------------------------------------------------------
 # nvm
 #
-# mac側のnodeのパスが残っている場合は
-# $ rm `which node` で一度パスを消す
+# 起動時に呼び出すと重くなるのでコメントアウトにする。利用する場合は手動で呼び出す
 #-----------------------------------------------------------------------------
-source ~/.nvm/nvm.sh
-nvm use stable
+# source ~/.nvm/nvm.sh
+# nvm use stable
 
 # path gradle
 export GRADLE_HOME=/project/gradle-1.7
@@ -76,8 +75,6 @@ export PATH=$PATH:/usr/local/mysql/bin
 
 #重複したpathを一意にする
 typeset -U path cdpath fpath manpath
-
-export LANG=ja_JP.UTF-8
 
 # aliases
 for file in ~/.{zshrc-local,aliases}; do
