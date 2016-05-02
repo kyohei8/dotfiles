@@ -25,8 +25,9 @@ for dotfile in `ls -aF | grep '^\.'`; do
 done
 
 # add "global gitignore" alias
-ln -s `pwd`/'_gitignore' $HOME/'.gitignore'
-echo 'create symbolic link -> .gitignore'
+ln -s `pwd`/'_gitignore' $HOME/'.global_ignore'
+echo 'create symbolic link -> .global_ignore'
+git config --global core.excludesfile $HOME/.global_ignore
 #install brew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 #brewインストール
