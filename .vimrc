@@ -18,7 +18,9 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'tmhedberg/matchit'
 Plug 'ctrlpvim/ctrlp.vim' "ファイル検索
 Plug 't9md/vim-smalls' "easymotion的なやつ
-
+Plug 'rking/ag.vim' " ag
+" Plug 'craigemery/vim-autotag'
+Plug 'majutsushi/tagbar'
 Plug 'ap/vim-css-color'
 Plug 'KabbAmine/vCoolor.vim'
 
@@ -32,7 +34,7 @@ Plug 'Valloric/YouCompleteMe'
 " -> then
 "  $ cd ~/.vim/plugged/YouCompleteMe
 "  $ git submodule update --init --recursive
-"  $ ./install.sh
+"  $ ./install.py  --tern-completer
 " vimが起動しな起動しなくなるので brew unlink python する
 Plug 'thinca/vim-visualstar'
 
@@ -74,8 +76,7 @@ call plug#end()
 "==============================================================================>
 "
 "<Basics========================================================================
-" set shell=/usr/local/bin/zsh\ -i  "遅い・・・
-set shell=/bin/bash
+set shell=/usr/local/bin/zsh\ -i
 
 set t_Co=256
 set nowrap                          "折り返さない
@@ -162,10 +163,35 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsEditSplit="vertical"
 
 "------------------------------------------------------
+" ag.vim
+"------------------------------------------------------
+let g:ag_working_path_mode="r"
+
+"------------------------------------------------------
 " YouCompleteMe
 "------------------------------------------------------
+let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_key_list_select_completion = ['<TAB>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>']
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_cache_omnifunc = 1
+let g:ycm_complete_in_comments_and_strings = 1
+let g:ycm_min_num_identifier_candidate_chars = 3
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_collect_identifiers_from_tags_files = 1
+
+let g:ycm_filetype_blacklist = {
+  \ 'tagbar' : 1,
+  \ 'vimwiki' : 1,
+  \ 'json' : 1
+  \ }
+
+"------------------------------------------------------
+" tern js
+"------------------------------------------------------
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
 
 "------------------------------------------------------
 " emmet
@@ -175,6 +201,23 @@ autocmd FileType html,ejs,css,sass,scss,stylus,less EmmetInstall
 " Emmet keymap
 imap <C-f> <C-y>,
 
+"------------------------------------------------------
+" CtrlP
+"------------------------------------------------------
+" let g:ctrlp_custom_ignore = {
+" \ 'dir':  '\v[\/](\.git|node_modules|dist)$',
+" \ }
+let g:ctrlp_show_hidden=1
+let g:ctrlp_by_filename=1
+let g:ctrlp_match_window = 'max:10;results:100'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|*.png'
+
+nmap <space>t :CtrlPBuffer<CR>
+
+"------------------------------------------------------
+" Tagbar
+"------------------------------------------------------
+nmap <F8> :TagbarToggle<CR>
 
 "------------------------------------------------------
 " smalls
