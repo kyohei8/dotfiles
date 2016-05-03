@@ -1,8 +1,10 @@
 set background=dark
 colorscheme sandydune
 
-" メニューを非表示
+" メニューを英語に
 source $VIMRUNTIME/delmenu.vim
+set langmenu=none
+source $VIMRUNTIME/menu.vim
 
 set cmdheight=1
 set guioptions-=T                   " ツールバーを表示しない
