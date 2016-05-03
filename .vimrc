@@ -210,7 +210,10 @@ imap <C-f> <C-y>,
 let g:ctrlp_show_hidden=1
 let g:ctrlp_by_filename=1
 let g:ctrlp_match_window = 'max:10;results:100'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|*.png'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|bower_conpnent)',
+  \ 'file': '\v\.(png|jpg|jpeg|gif|svg)$'
+  \ }
 
 nmap <space>t :CtrlPBuffer<CR>
 
