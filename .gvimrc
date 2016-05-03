@@ -1,6 +1,9 @@
 set background=dark
 colorscheme sandydune
 
+" メニューを非表示
+source $VIMRUNTIME/delmenu.vim
+
 set cmdheight=1
 set guioptions-=T                   " ツールバーを表示しない
 set guioptions+=b                   "水平スクロールバーを表示
