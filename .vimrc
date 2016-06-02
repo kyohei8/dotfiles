@@ -119,7 +119,7 @@ set noerrorbells visualbell t_vb=   "ベルを無効
 
 au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
 au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
-au BufNewFile,BufRead *.tag setlocal ft=javascript " Riotjsの読込設定
+au BufRead,BufNewFile *.tag :set filetype=html " Riotjsの読込設定
 
 "==============================================================================>
 
@@ -140,6 +140,12 @@ set foldlevel=100
 " キーマップ
 "------------------------------------------------------
 source ~/.vim/startup/mapping.vim
+
+"------------------------------------------------------
+" JavaScript
+"------------------------------------------------------
+let g:javascript_enable_domhtmlcss = 1
+let g:javascript_ignore_javaScriptdoc = 1
 
 "------------------------------------------------------
 " GoLang
@@ -204,15 +210,12 @@ imap <C-f> <C-y>,
 "------------------------------------------------------
 " CtrlP
 "------------------------------------------------------
-" let g:ctrlp_custom_ignore = {
-" \ 'dir':  '\v[\/](\.git|node_modules|dist)$',
-" \ }
 let g:ctrlp_show_hidden=1
 let g:ctrlp_by_filename=1
 let g:ctrlp_match_window = 'max:10;results:100'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|bower_conpnent)',
-  \ 'file': '\v\.(png|jpg|jpeg|gif|svg)$'
+  \ 'file': '\v\.(png|jpg|jpeg|gif|svg|swp|swp|swo)$'
   \ }
 
 nmap <space>t :CtrlPBuffer<CR>
