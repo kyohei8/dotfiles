@@ -89,7 +89,7 @@ iterm2_print_user_vars() {
   gitBranch=$((git branch 2> /dev/null) | grep \* | cut -c3-)
   on=' on '
   gitRepo=$([[ -d .git ]] && basename `git rev-parse --show-toplevel`);
-  if [ $gitBranch != "" ]; then
+  if ! [ -z ${gitBranch} ]; then
     iterm2_set_user_var git ${t1}${gitRepo}${on}${gitBranch}
   fi
   iterm2_set_user_var ip $(ip)
