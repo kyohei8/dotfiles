@@ -82,8 +82,8 @@ for file in ~/.{zshrc-local,aliases}; do
 done;
 unset file;
 
+# iterm2 shell integration
 source /Users/ktsukuda/.iterm2_shell_integration.zsh
-# zsh: Place this in .zshrc after "source /Users/georgen/.iterm2_shell_integration.zsh".
 iterm2_print_user_vars() {
   t1='git =>'
   gitBranch=$((git branch 2> /dev/null) | grep \* | cut -c3-)
@@ -94,4 +94,5 @@ iterm2_print_user_vars() {
   fi
   iterm2_set_user_var ip $(ip)
 }
+
 date
