@@ -1,5 +1,5 @@
 set background=dark
-colorscheme sandydune
+colorscheme onedark
 
 " メニューを英語に
 source $VIMRUNTIME/delmenu.vim

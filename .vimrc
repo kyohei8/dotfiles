@@ -71,6 +71,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'dfxyz/CandyPaper.vim'
 Plug 'Wutzara/vim-materialtheme'
 Plug 'idbrii/vim-sandydune'
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 "==============================================================================>
