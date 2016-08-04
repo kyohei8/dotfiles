@@ -60,7 +60,7 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
 Plug 'nicklasos/vim-jsx-riot'
 " YouCompleteMeのJS改善
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 " Tool
 Plug 'rizzatti/dash.vim'
@@ -240,6 +240,11 @@ xmap <c-s> <Plug>(smalls)
 "------------------------------------------------------
 nmap ç :VCoolor<CR>
 
+"------------------------------------------------------
+" switch.vim
+" command: g-s
+"------------------------------------------------------
+let g:switch_custom_definitions = [['absolute', 'relative', 'fixed', 'static'], ['inline', 'block', 'inline-block', 'table', 'table-cell']]
 "------------------------------------------------------
 "NERDtree(ファイルツリー)の設定
 "------------------------------------------------------
