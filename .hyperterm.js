@@ -65,7 +65,15 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [],
+  plugins: [
+    'hyperline',
+    'hyperpower',
+    'hyperterm-material',
+    // 'hyperborder',
+    'hyperterm-close-on-left',
+    'hyperterm-final-say',
+    'hyperterm-tab-icons'
+  ],
 
   // in development, you can create a directory under
   // `~/.hyperterm_plugins/local/` and include it here
