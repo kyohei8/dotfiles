@@ -96,7 +96,7 @@ alias bwl='bower list'
 #------------------------------------------------------------------------------
 # npm
 #------------------------------------------------------------------------------
-alias npm=gifi
+alias npmx=gifi
 alias n='npm'
 alias ns='npm start'
 alias nl='npm list'
