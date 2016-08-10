@@ -69,11 +69,11 @@ module.exports = {
   plugins: [
     'hyperline',
     'hyperpower',
-    'hyperterm-material',
     // 'hyperborder',
     'hyperterm-close-on-left',
     'hyperterm-final-say',
-    'hyperterm-tab-icons'
+    'hyperterm-tab-icons',
+    'hyperterm-material',
   ],
 
   // in development, you can create a directory under
