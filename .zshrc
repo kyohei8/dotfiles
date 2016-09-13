@@ -82,6 +82,13 @@ for file in ~/.{zshrc-local,aliases}; do
 done;
 unset file;
 
+# `take` command
+# Create a new directory and change to it, will create intermediate directories as required.
+function take() {
+  mkdir -p $1
+  cd $1
+}
+
 # iterm2 shell integration
 source /Users/ktsukuda/.iterm2_shell_integration.zsh
 iterm2_print_user_vars() {
