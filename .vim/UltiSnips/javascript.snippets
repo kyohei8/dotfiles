@@ -2,6 +2,10 @@ snippet esd "eslint-disable-line"
 // eslint-disable-line no-alert
 endsnippet
 
+snippet t= "import to this"
+this.${1:prop} = $1;
+endsnippet
+
 snippet extend "extend class" b
 ${1:Child}.prototype = Object.create(${2:Parent}.prototype);
 $1.prototype.constructor = $1;
