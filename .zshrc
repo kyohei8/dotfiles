@@ -89,6 +89,15 @@ function take() {
   cd $1
 }
 
+#------------------------------------------------------------------------------
+# Start development
+#------------------------------------------------------------------------------
+function dev() {
+  git clone https://github.com/kyohei8/dev-env.git $1
+  cd $1
+  rm -rf .git README.md
+}
+
 # iterm2 shell integration
 source /Users/ktsukuda/.iterm2_shell_integration.zsh
 iterm2_print_user_vars() {
