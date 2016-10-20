@@ -17,6 +17,8 @@ Plug 'moll/vim-bbye'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tmhedberg/matchit'
 Plug 'ctrlpvim/ctrlp.vim' "ファイル検索
+Plug 'tacahiroy/ctrlp-funky' "関数検索
+Plug 'suy/vim-ctrlp-commandline' "コマンドライン検索
 Plug 't9md/vim-smalls' "easymotion的なやつ
 Plug 'rking/ag.vim' " ag
 " Plug 'craigemery/vim-autotag'
@@ -55,7 +57,7 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'sophacles/vim-processing'
-Plug 'digitaltoad/vim-jade'
+Plug 'digitaltoad/vim-pug'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
 Plug 'nicklasos/vim-jsx-riot'
@@ -102,6 +104,7 @@ set incsearch                       "インクリメンタルサーチを行う
 set number                          "行番号を表示する
 set relativenumber                  "相対行番号を有効にする
 set showmatch                       "閉じ括弧が入力されたとき、対応する括弧を表示する
+source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する
 set smartcase                       "検索時に大文字を含んでいたら大/小を区別
 set smartindent                     "新しい行を作ったときに高度な自動インデントを行う
 set smarttab                        "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
@@ -115,7 +118,7 @@ set colorcolumn=100                 "100列目を強調表示
 set backspace=indent,eol,start      "インデントを削除
 set equalalways                     "全てのウィンドウを自動的に同じサイズにする
 set lazyredraw                      "マクロなどの途中経過を描写しない
-set title                           "ウィンドウタイトルを設を設定
+set title                           "ウィンドウタイトルを設定
 set noerrorbells visualbell t_vb=   "ベルを無効
 
 au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
@@ -145,8 +148,9 @@ source ~/.vim/startup/mapping.vim
 "------------------------------------------------------
 " JavaScript
 "------------------------------------------------------
-let g:javascript_enable_domhtmlcss = 1
-let g:javascript_ignore_javaScriptdoc = 1
+" let g:javascript_enable_domhtmlcss = 1
+" let g:javascript_ignore_javaScriptdoc = 1
+let g:javascript_plugin_jsdoc = 1
 
 "------------------------------------------------------
 " GoLang
@@ -211,15 +215,27 @@ imap <C-f> <C-y>,
 "------------------------------------------------------
 " CtrlP
 "------------------------------------------------------
-let g:ctrlp_show_hidden=1
+let g:ctrlp_show_hidden=1 " ドットファイルも検索対象にする
 let g:ctrlp_by_filename=1
 let g:ctrlp_match_window = 'max:10;results:100'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v([\/]\.(git|hg|svn)|node_modules|bower_conpnent)',
   \ 'file': '\v\.(png|jpg|jpeg|gif|svg|swp|swp|swo)$'
   \ }
+let g:ctrlp_extensions = ['funky', 'commandline'] " ctrlpの拡張
 
-nmap <space>t :CtrlPBuffer<CR>
+" CtrlPCommandLineの有効化
+command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
+
+" CtrlPFunkyの絞り込み検索設定
+let g:ctrlp_funky_matchtype = 'path'
+
+if executable('ag')
+  let g:ctrlp_use_caching=0 " CtrlPのキャッシュを使わない
+  let g:ctrlp_user_command='ag %s -i --hidden -g ""' " 「ag」の検索設定
+endif
+
+nmap<space>t :CtrlPBuffer<CR>
 
 "------------------------------------------------------
 " Tagbar
