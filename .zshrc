@@ -113,3 +113,4 @@ iterm2_print_user_vars() {
 
 date
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export PATH="$HOME/.yarn/bin:$PATH"
