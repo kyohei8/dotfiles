@@ -22,7 +22,7 @@ Plug 'suy/vim-ctrlp-commandline' "コマンドライン検索
 Plug 't9md/vim-smalls' "easymotion的なやつ
 Plug 'rking/ag.vim' " ag
 " Plug 'craigemery/vim-autotag'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'ap/vim-css-color'
 Plug 'KabbAmine/vCoolor.vim'
 
@@ -62,7 +62,7 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
 Plug 'nicklasos/vim-jsx-riot'
 " YouCompleteMeのJS改善
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 " Tool
 Plug 'rizzatti/dash.vim'
