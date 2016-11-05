@@ -91,6 +91,7 @@ function take() {
 
 #------------------------------------------------------------------------------
 # Start development
+# $ dev projectName
 #------------------------------------------------------------------------------
 function dev() {
   git clone https://github.com/kyohei8/dev-env.git $1
