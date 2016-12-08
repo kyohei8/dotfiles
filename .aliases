@@ -97,7 +97,6 @@ alias bwl='bower list'
 # npm
 #------------------------------------------------------------------------------
 alias npmx=gifi
-alias n='npm'
 alias ns='npm start'
 alias nl='npm list'
 alias nl0='npm list --depth=0 "$@" 2>/dev/null'
