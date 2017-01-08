@@ -320,6 +320,13 @@ let g:quickrun_config.markdown = {
   \ 'exec'      : '%c %o %a %s',
   \ }
 
+function! OpenMarkdown()
+  if &filetype == "markdown"
+    !open -a Marked\ 2 %
+  endif
+endfunction
+
+nmap <silent> <F9> :call OpenMarkdown()<CR>
 
 
 
@@ -357,12 +364,12 @@ function! Var2class()
   execute "%s//" . @z . "/gc"
 endfunction
 
-nmap <silent> <C-F9> :call UnUglyfyfirst()<CR>
-nmap <silent> <F9> :call UnUglyfy()<CR>
-nmap <silent> <F10> :call Var2class()<CR>
-nmap <silent> <space><space> f,r;a<CR><Esc>
-nmap <silent> <space>f Vj]}<space>=
-nmap <silent> <space>g F(lvf)h:s/\v(.+) (.+\=) (.+)/\3 \2 \1/gc<CR>
+" nmap <silent> <C-F9> :call UnUglyfyfirst()<CR>
+" nmap <silent> <F9> :call UnUglyfy()<CR>
+" nmap <silent> <F10> :call Var2class()<CR>
+" nmap <silent> <space><space> f,r;a<CR><Esc>
+" nmap <silent> <space>f Vj]}<space>=
+" nmap <silent> <space>g F(lvf)h:s/\v(.+) (.+\=) (.+)/\3 \2 \1/gc<CR>
 
 function! ToEs6()
   %s/\vvar (\a+) \= require\(('(\w|.)+')\);/import \1 from \2;/g
@@ -373,4 +380,4 @@ function! ToEs6()
 
 endfunction
 
-nmap <silent> <F6> :call ToEs6()<CR>
+" nmap <silent> <F6> :call ToEs6()<CR>
