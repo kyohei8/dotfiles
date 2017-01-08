@@ -1,4 +1,3 @@
-syntax on
 filetype off
 set nocompatible
 
@@ -9,8 +8,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-git'
+" Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'moll/vim-bbye'
@@ -32,7 +31,7 @@ Plug 'thinca/vim-quickrun'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'kana/vim-submode'
-Plug 'nelstrom/vim-visual-star-search'
+Plug 'nelstrom/vim-visual-star-search' " * で次を検索
 Plug 'AndrewRadev/switch.vim'
 Plug 'Valloric/YouCompleteMe'
 " -> then
@@ -40,26 +39,26 @@ Plug 'Valloric/YouCompleteMe'
 "  $ git submodule update --init --recursive
 "  $ ./install.py  --tern-completer
 " vimが起動しな起動しなくなるので brew unlink python する
+Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-visualstar'
 
 " snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-
 " Langage
 Plug 'mattn/emmet-vim'
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'einars/js-beautify'
+Plug 'einars/js-beautify', { 'for': ['javascript', 'jsx'] }
 Plug 'maksimr/vim-jsbeautify', { 'for': ['javascript','html','css'] }
-Plug 'heavenshell/vim-jsdoc'
+Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'sophacles/vim-processing'
-Plug 'digitaltoad/vim-pug'
+Plug 'sophacles/vim-processing', { 'for': 'processing' }
+Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
 Plug 'nicklasos/vim-jsx-riot'
@@ -104,7 +103,6 @@ set list                            "タブ文字、行末など不可視文字�
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:< "listで表示される文字のフォーマットを指定する
 set incsearch                       "インクリメンタルサーチを行う
 set number                          "行番号を表示する
-set relativenumber                  "相対行番号を有効にする
 set showmatch                       "閉じ括弧が入力されたとき、対応する括弧を表示する
 source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する
 set smartcase                       "検索時に大文字を含んでいたら大/小を区別
@@ -262,7 +260,10 @@ nmap ç :VCoolor<CR>
 " switch.vim
 " command: g-s
 "------------------------------------------------------
-let g:switch_custom_definitions = [['absolute', 'relative', 'fixed', 'static'], ['inline', 'block', 'inline-block', 'table', 'table-cell']]
+let g:switch_custom_definitions = [
+  \ ['absolute', 'relative', 'fixed', 'static'],
+  \ ['inline', 'block', 'inline-block', 'table', 'table-cell']
+\]
 "------------------------------------------------------
 "NERDtree(ファイルツリー)の設定
 "------------------------------------------------------

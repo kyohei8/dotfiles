@@ -7,7 +7,7 @@ set langmenu=none
 source $VIMRUNTIME/menu.vim
 
 set cmdheight=1
-set guioptions-=T                   " ツールバーを表示しない
+set guioptions-=m                   " ツールバーを表示しない
 set guioptions+=b                   "水平スクロールバーを表示
 
 " 起動時のみ

@@ -45,6 +45,9 @@ nnoremap <Space>q :Bdelete<CR>
 
 " 整形
 nnoremap <Space>= gg=G''zz
+" インデント変更時選択を消さない
+xnoremap <  <gv
+xnoremap >  >gv
 " -------------------------------------------------------------------------------
 
 "ノーマルモードのIMEを無効化
