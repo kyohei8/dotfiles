@@ -48,7 +48,7 @@ Plug 'honza/vim-snippets'
 
 " Langage
 Plug 'mattn/emmet-vim'
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
+Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -367,8 +367,8 @@ endfunction
 " nmap <silent> <C-F9> :call UnUglyfyfirst()<CR>
 " nmap <silent> <F9> :call UnUglyfy()<CR>
 " nmap <silent> <F10> :call Var2class()<CR>
-" nmap <silent> <space><space> f,r;a<CR><Esc>
-" nmap <silent> <space>f Vj]}<space>=
+nmap <silent> <space><space> f,r;a<CR><Esc>
+nmap <silent> <space>f Vj]}<space>=
 " nmap <silent> <space>g F(lvf)h:s/\v(.+) (.+\=) (.+)/\3 \2 \1/gc<CR>
 
 function! ToEs6()
