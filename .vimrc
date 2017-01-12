@@ -36,7 +36,6 @@ Plug 'AndrewRadev/switch.vim'
 Plug 'Valloric/YouCompleteMe'
 " -> then
 "  $ cd ~/.vim/plugged/YouCompleteMe
-"  $ git submodule update --init --recursive
 "  $ ./install.py  --tern-completer
 " vimが起動しな起動しなくなるので brew unlink python する
 Plug 'terryma/vim-multiple-cursors'
@@ -55,7 +54,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'einars/js-beautify', { 'for': ['javascript', 'jsx'] }
 Plug 'maksimr/vim-jsbeautify', { 'for': ['javascript','html','css'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx', 'jsx'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'sophacles/vim-processing', { 'for': 'processing' }
 Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
@@ -63,7 +62,9 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
 Plug 'nicklasos/vim-jsx-riot'
 " YouCompleteMeのJS改善
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
+Plug 'neomake/neomake'
+Plug 'benjie/neomake-local-eslint.vim'
 
 " Tool
 Plug 'rizzatti/dash.vim'
@@ -127,6 +128,9 @@ au BufRead,BufNewFile *.tag :set filetype=html " Riotjsの読込設定
 
 "==============================================================================>
 
+" Highlight .js as .jsx
+let g:jsx_ext_required = 0
+
 " Encode {{{
 " set encoding=utf-8
 " set fenc=utf-8
@@ -151,6 +155,31 @@ source ~/.vim/startup/mapping.vim
 " let g:javascript_enable_domhtmlcss = 1
 " let g:javascript_ignore_javaScriptdoc = 1
 let g:javascript_plugin_jsdoc = 1
+
+"------------------------------------------------------
+" neomake
+" (eslint check)
+"------------------------------------------------------
+let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
+let g:neomake_verbose = 0
+let g:neomake_open_list = 2 " 1 open list and move cursor 2 open list without move cursor
+let g:neomake_list_height = 5
+
+if has('mac') " {{{
+  let g:neomake_error_sign = {
+        \ 'text': '😡',
+        \ 'texthl': 'SignColumn',
+        \ }
+  let g:neomake_warning_sign = {
+        \ 'text': '😠',
+        \ 'texthl': 'SignColumn',
+        \ }
+endif " }}}
+
+" run neomake on the current file on every write
+autocmd! BufWritePost * Neomake
+
 
 "------------------------------------------------------
 " GoLang
@@ -201,8 +230,10 @@ let g:ycm_filetype_blacklist = {
 "------------------------------------------------------
 " tern js
 "------------------------------------------------------
+let g:tern#command = ['tern', '--no-port-file']
 let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
+let g:tern_show_signature_in_pum = 1
 
 "------------------------------------------------------
 " emmet

@@ -14,7 +14,8 @@
 "  ----------------------------------------------------------------------------
 
 "<Leader>キーの設定
-let mapleader=","
+let mapleader='\'
+let g:mapleader='\'
 " ヘルプを無効化(Escにする）
 nmap <F1> <Nop>
 map <F1> <Esc>
@@ -92,7 +93,7 @@ nmap yy Y
 map <F7> :call JsBeautify()<CR>
 
 "highlighting を無効
-map <C-n> :noh<CR>
+map <C-y> :noh<CR>
 
 "Cmd+Enterでフルスクリーン
 map <D-enter> :set fullscreen! <CR>
