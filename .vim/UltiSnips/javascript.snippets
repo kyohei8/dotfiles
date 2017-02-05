@@ -148,7 +148,7 @@ snippet then "generate Promise '.then' func" b
 .then((${1:result}) => {
   console.log($1);
   $0
-}, (err) => {
+}.catch((err) => {
   console.log(err);
 });
 endsnippet
