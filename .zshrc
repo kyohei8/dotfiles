@@ -110,8 +110,8 @@ iterm2_print_user_vars() {
     iterm2_set_user_var git ${t1}${gitRepo}${on}${gitBranch}
   fi
   iterm2_set_user_var ip $(ip)
+  iterm2_set_user_var node-v $(node -v)
 }
 
 date
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export PATH="$HOME/.yarn/bin:$PATH"
