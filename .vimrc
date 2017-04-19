@@ -88,7 +88,7 @@ set t_Co=256
 set nowrap                          "折り返さない
 set wildmenu                        "コマンドライン補完するときに補完候補を表示する
 set noundofile                      "undoファイルを無効化
-set cursorline                      "カーソルの強調表示
+" set cursorline                      "カーソルの強調表示 →カーソル移動が遅くなるのでOFF
 set imdisable                       "コマンドモードでIMEを無効化(kaoriya限定)
 
 set helplang=ja,en                  "日本語のヘルプを表示
