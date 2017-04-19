@@ -126,7 +126,7 @@ set noerrorbells visualbell t_vb=   "ベルを無効
 au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
 au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
 au BufRead,BufNewFile *.tag :set filetype=html " Riotjsの読込設定
-
+au BufNewFile,BufRead *.ejs set filetype=html " ejsをhtmlとして開
 "==============================================================================>
 
 " Highlight .js as .jsx
