@@ -62,6 +62,7 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
 Plug 'nicklasos/vim-jsx-riot'
 Plug 'cespare/vim-toml'
+Plug 'tomlion/vim-solidity'
 " YouCompleteMeのJS改善
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
 Plug 'neomake/neomake'
