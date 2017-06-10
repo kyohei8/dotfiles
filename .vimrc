@@ -339,6 +339,12 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "------------------------------------
+" vim-markdown
+"------------------------------------
+" リンクなどを省略表示しない
+let g:vim_markdown_conceal = 0
+
+"------------------------------------
 " vim-quickrun
 "
 " :QuickRun
