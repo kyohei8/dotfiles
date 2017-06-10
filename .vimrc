@@ -40,6 +40,7 @@ Plug 'Valloric/YouCompleteMe'
 " vimが起動しな起動しなくなるので brew unlink python する
 Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-visualstar'
+Plug 'vim-scripts/indentpython.vim'
 
 " snippets
 Plug 'SirVer/ultisnips'
