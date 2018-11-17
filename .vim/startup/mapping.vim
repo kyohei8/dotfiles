@@ -49,6 +49,14 @@ nnoremap <Space>= gg=G''zz
 " インデント変更時選択を消さない
 xnoremap <  <gv
 xnoremap >  >gv
+
+" カンマで改行する
+nmap <silent> <space><space> f,a<CR><Esc>
+" 1行の分割代入を改行ありに変更
+nmap <silent> <space>j <S-v>:s/[,{]/\0\r /g<CR>:noh<CR>f<Space>i<CR><Esc>
+" {}内をフォーマット
+nmap <silent> <space>f Vj]}<space>=
+
 " -------------------------------------------------------------------------------
 
 "ノーマルモードのIMEを無効化
@@ -79,6 +87,9 @@ nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 
 " Ctrl-qで閉じる
 nmap <C-q> :q<CR>
+
+" Ctrl-fが進みすぎないようにする
+nmap <C-f> 20j20<C-e>
 
 "検索語が画面の真ん中に来るようにする
 nmap n nzz
@@ -157,3 +168,14 @@ call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
+"------ vim-bookmarks
+nmap <Leader><Leader> <Plug>BookmarkToggle
+nmap <Leader>i <Plug>BookmarkAnnotate
+nmap <Leader>a <Plug>BookmarkShowAll
+nmap <Leader>j <Plug>BookmarkNext
+nmap <Leader>k <Plug>BookmarkPrev
+nmap <Leader>c <Plug>BookmarkClear
+nmap <Leader>x <Plug>BookmarkClearAll
+nmap <Leader>kk <Plug>BookmarkMoveUp
+nmap <Leader>jj <Plug>BookmarkMoveDown
+nmap <Leader>g <Plug>BookmarkMoveToLine
