@@ -1,5 +1,14 @@
-snippet esd "eslint-disable-line"
+snippet esdl "eslint-disable-line"
 // eslint-disable-line no-alert
+endsnippet
+
+snippet esd "eslint-disable"
+/* eslint-disable no-alert */
+endsnippet
+
+snippet imp "import syntax"
+import $1 from '$1';
+$0
 endsnippet
 
 snippet t= "import to this"
@@ -20,6 +29,13 @@ endsnippet
 snippet rcls "React.Component Class" b
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import third-party libs
+
+// import components
+
+// import constants.
+
+// import assets.
 
 const propTypes = {};
 const defaultProps = {};
@@ -40,7 +56,6 @@ class ${1:name} extends Component{
     );
   }
 }
-
 $1.propTypes = propTypes;
 $1.defaultProps = defaultProps;
 
@@ -50,6 +65,13 @@ endsnippet
 snippet rclss "React stateless Component" b
 import React from 'react';
 import PropTypes from 'prop-types';
+// import third-party libs
+
+// import components
+
+// import constants.
+
+// import assets.
 
 const propTypes = {};
 const defaultProps = {};
@@ -72,7 +94,245 @@ $1.defaultProps = defaultProps;
 export default $1;
 endsnippet
 
-# Redux
+snippet rcmp "React styled Component" b
+import React from 'react';
+import styled from 'styled-components';
+// import PropTypes from 'prop-types';
+// import { COLORS, commonHover } from '~/styles/styleUtil';
+
+const propTypes = {};
+const defaultProps = {};
+
+/**
+ * $1
+ */
+const $1 = ({ text }) => {
+  return (
+    <Styled$1>
+      {text ? text : "No text provided"}
+    </Styled$1>
+  );
+};
+
+const Styled$1 = styled.div\`
+  font-size: 2rem;
+  background: papayawhip;
+\`;
+
+$1.propTypes = propTypes;
+$1.defaultProps = defaultProps;
+
+export default $1;
+endsnippet
+
+# ReactNative用snippets
+snippet rncls "ReactNative.Component Class" b
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { View, Text, StyleSheet } from 'react-native';
+
+const propTypes = {};
+const defaultProps = {};
+
+/**
+ * $1
+ */
+class ${1:name} extends Component{
+  render(){
+    const { containerStyle } = styles;
+    return (
+      <View style={containerStyle}>
+        <Text>$1$0</Text>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  containerStyle: {
+    flex: 1,
+    backgroundColor: '#ccc'
+  }
+});
+
+$1.propTypes = propTypes;
+$1.defaultProps = defaultProps;
+
+export default $1;
+endsnippet
+
+snippet stld "Styled Component Item" b
+const $1 = styled.div\`
+  $0
+\`;
+endsnippet
+# ReactNative用snippets
+snippet rnclss "ReactNative stateless function" b
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, Text, StyleSheet } from 'react-native';
+
+const propTypes = {};
+const defaultProps = {};
+
+/**
+ * $1
+ */
+const ${1:name} = () => {
+  const { containerStyle } = styles;
+  return (
+    <View style={containerStyle}>
+      <Text>$1$0</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  containerStyle: {
+    flex: 1,
+    backgroundColor: '#ccc'
+  }
+});
+
+$1.propTypes = propTypes;
+$1.defaultProps = defaultProps;
+
+export default $1;
+endsnippet
+
+snippet sts "ReactNative style attribute" w
+style={ styles.$0 }
+endsnippet
+
+# preact ------------------------------------------------------------------------------------------
+snippet prcls "Preact Component" b
+import { h, Component } from 'preact';
+// import third-party libs
+
+// import components
+
+// import constants, utils
+
+// import assets.
+
+/**
+ * $1
+ */
+class $1 extends Component {
+  constructor(props){
+    super(props);
+  }
+
+  render(props) {
+    return (
+      <div>$0</div>
+    );
+  }
+};
+
+export default $1;
+endsnippet
+
+snippet prclss "Preact stateless Component" b
+import { h } from 'preact';
+// import third-party libs
+
+// import components
+
+// import constants, utils
+
+// import assets.
+
+/**
+ * $1
+ */
+const $1 = (props) => {
+  return (
+    <div>$0</div>
+  );
+};
+export default $1
+endsnippet
+
+snippet prcmp "Preact styled Component" b
+import { h } from 'preact';
+import { styled } from "styletron-react";
+// import third-party libs
+
+// import components
+
+// import constants.
+
+// import assets.
+
+const $1 = styled("div", {
+  fontSize: "2rem",
+  background: "papayawhip"
+});
+
+export default ({ text }) => {
+  return (
+    <$1>
+      {text ? text : "No text provided"}
+    </$1>
+  );
+};
+endsnippet
+
+snippet prcn "Preact redux connect" b
+const mapStateToProps = (state, ownProps) => {
+  const { todos } = state;
+  return {
+    todos
+  };
+};
+
+const actions = {};
+
+export default connect(mapStateToProps, actions)($1);
+endsnippet
+
+snippet str "Styletron Component" b
+const $1 = styled('div', {
+  $0
+});
+endsnippet
+
+
+
+# StoryBook -------------------------------------------------------------------------------------------
+
+snippet story "Storybook Component" b
+import { h } from "preact";
+import { storiesOf } from "@storybook/react";
+import { action } from '@storybook/addon-actions';
+import { withNotes } from '@storybook/addon-notes';
+// import { withKnobs, boolean, number } from '@storybook/addon-knobs/react';
+
+import { StyletronProvider } from 'styletron-preact';
+import Styletron from 'styletron';
+const styletron = new Styletron();
+
+import $1 from '~/components/$1';
+
+storiesOf("xx/$1", module)
+  .addDecorator(withKnobs)
+  .addDecorator(story => (
+    <StyletronProvider styletron={styletron}>
+      {story()}
+    </StyletronProvider>
+  ))
+  .add("default", withNotes('')(() => {
+    return <$1 $0/>
+  }));
+endsnippet
+
+
+
+
+
+
+# Redux -------------------------------------------------------------------------------------------
 snippet rd:at "redux action const" b
 export const ${1:name} = '$1';
 endsnippet
