@@ -27,6 +27,6 @@
 [merge]
 	tool = deltawalker
 [mergetool]
-	keepBackup = false
+	keepBackup = true
 [mergetool  "deltawalker"]
 	cmd = '/Applications/DeltaWalker.app/Contents/Resources/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
