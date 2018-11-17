@@ -97,9 +97,16 @@ alias bwl='bower list'
 # npm
 #------------------------------------------------------------------------------
 alias npmx=gifi
-alias ns='npm start'
+alias ns='clear && npm start'
 alias nl='npm list'
 alias nl0='npm list --depth=0 "$@" 2>/dev/null'
+
+#------------------------------------------------------------------------------
+# react native
+#------------------------------------------------------------------------------
+alias rn='react-native'
+alias rnri='react-native run-ios'
+alias rni='react-native init'
 
 #------------------------------------------------------------------------------
 # the fuck
