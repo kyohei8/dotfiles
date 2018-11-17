@@ -2,7 +2,7 @@
 "NERDtree(ファイルツリー)の設定
 "------------------------------------------------------
 let NERDTreeIgnore =
-            \ ['\.pyc', '\.git$', '\~$',
+            \ ['node_modules', 'dist', '\.pyc', '\.git$', '\~$',
             \  '\.swo$', '\.hg', '\.svn', '\.swp',
             \  '\.bzr', '\.DS_Store', '\.sass-cache',
             \  '\.idea']
@@ -16,11 +16,15 @@ let NERDTreeShowBookmarks=1
 "自動的にchange directoryする
 let NERDTreeChDirMode=2
 "let g:NERDTreeDirArrows=0
+
+" Close NERDTree when it's the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 if has('vim_starting') && file_name == ""
   autocmd VimEnter * NERDTree ./
   autocmd VimEnter  <C-w>wi
 endif
-"Ctrl+eで開閉
+"F2で開閉
 nmap <silent> <F2>      :NERDTreeToggle<CR>
 vmap <silent> <F2> <Esc>:NERDTreeToggle<CR>
 omap <silent> <F2>      :NERDTreeToggle<CR>
