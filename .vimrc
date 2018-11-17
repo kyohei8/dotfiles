@@ -1,4 +1,4 @@
-filetype off
+" filetype off
 set nocompatible
 
 " <plug =======================================================================
@@ -9,7 +9,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
 " Plug 'tpope/vim-git'
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'moll/vim-bbye'
@@ -41,6 +41,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'thinca/vim-visualstar'
 Plug 'vim-scripts/indentpython.vim'
+Plug 'MattesGroeger/vim-bookmarks' " mmでマークを付ける
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -56,18 +57,25 @@ Plug 'einars/js-beautify', { 'for': ['javascript', 'jsx'] }
 Plug 'maksimr/vim-jsbeautify', { 'for': ['javascript','html','css'] }
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx', 'jsx'] }
+Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx', 'jsx'] }
+Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'javascript.jsx', 'jsx'] }
+Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'javascript.jsx', 'jsx'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'sophacles/vim-processing', { 'for': 'processing' }
 Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
-Plug 'nicklasos/vim-jsx-riot'
+Plug 'ryym/vim-riot'
 Plug 'cespare/vim-toml'
 Plug 'tomlion/vim-solidity'
+Plug 'elixir-lang/vim-elixir'
+Plug 'udalov/kotlin-vim'
+Plug 'posva/vim-vue'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'javascript.jsx', 'jsx'] }
 " YouCompleteMeのJS改善
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
-Plug 'neomake/neomake'
-Plug 'benjie/neomake-local-eslint.vim'
+" Plug 'neomake/neomake'
+" Plug 'benjie/neomake-local-eslint.vim'
 
 " Tool
 Plug 'rizzatti/dash.vim'
@@ -87,8 +95,11 @@ call plug#end()
 set shell=/usr/local/bin/zsh\ -i
 
 set t_Co=256
+set nobackup                        "backupを無効化
+set nowritebackup
+set noswapfile                      "スワップファイルを作らない
 set nowrap                          "折り返さない
-set wildmenu                        "コマンドライン補完するときに補完候補を表示する
+set wildmenu                        "コマンドライン補完補完候補を表示する
 set noundofile                      "undoファイルを無効化
 " set cursorline                      "カーソルの強調表示 →カーソル移動が遅くなるのでOFF
 set imdisable                       "コマンドモードでIMEを無効化(kaoriya限定)
@@ -127,12 +138,13 @@ set noerrorbells visualbell t_vb=   "ベルを無効
 
 au BufNewFile,BufRead * set iminsert=0 "日本語入力をリセット
 au BufNewFile,BufRead * set tabstop=2 shiftwidth=2 "タブ幅をリセット
-au BufRead,BufNewFile *.tag :set filetype=html " Riotjsの読込設定
+au BufNewFile,BufRead *.sol set tabstop=4 shiftwidth=4 "タブ幅をリセット
+au BufRead,BufNewFile *.tag :set filetype=pug " Riotjsの読込設定
 au BufNewFile,BufRead *.ejs set filetype=html " ejsをhtmlとして開
 "==============================================================================>
 
 " Highlight .js as .jsx
-let g:jsx_ext_required = 0
+" let g:jsx_ext_required = 0
 
 " Encode {{{
 " set encoding=utf-8
@@ -160,6 +172,20 @@ source ~/.vim/startup/mapping.vim
 let g:javascript_plugin_jsdoc = 1
 
 "------------------------------------------------------
+" Python
+"------------------------------------------------------
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+"------------------------------------------------------
 " neomake
 " (eslint check)
 "------------------------------------------------------
@@ -181,7 +207,7 @@ if has('mac') " {{{
 endif " }}}
 
 " run neomake on the current file on every write
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
 
 "------------------------------------------------------
@@ -242,7 +268,7 @@ let g:tern_show_signature_in_pum = 1
 " emmet
 "------------------------------------------------------
 let g:user_emmet_install_global = 0
-autocmd FileType html,ejs,css,sass,scss,stylus,less EmmetInstall
+autocmd FileType html,ejs,css,sass,scss,stylus,less,javascript.jsx EmmetInstall
 " Emmet keymap
 imap <C-f> <C-y>,
 
@@ -407,8 +433,6 @@ endfunction
 " nmap <silent> <C-F9> :call UnUglyfyfirst()<CR>
 " nmap <silent> <F9> :call UnUglyfy()<CR>
 " nmap <silent> <F10> :call Var2class()<CR>
-nmap <silent> <space><space> f,r;a<CR><Esc>
-nmap <silent> <space>f Vj]}<space>=
 " nmap <silent> <space>g F(lvf)h:s/\v(.+) (.+\=) (.+)/\3 \2 \1/gc<CR>
 
 function! ToEs6()
