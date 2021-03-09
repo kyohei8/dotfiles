@@ -3,56 +3,51 @@
 Macを買ったら最初にすること
 
 * setting to System Preferences
- * setup trackPad
- * change language(ja->en)
+  * setup trackPad
+  * change language(ja->en)
 
 * generate ssh-key(and add key to Github)
 
+## put dotfiles, create symblic links
 
-* install packages
-
+```sh
+git clone git@github.com:kyohei8/dotfiles.git
 ```
-$ cd ~
-$ git clone [this rep]
-$ sh dotfiles/install.sh
+
+```sh
+zsh bootstrap.sh
+```
+
+## istall Homebrew, and install packages
+
+```sh
+brew bundle
+#Finderを一旦落とす(quicklookを反映するため)
+defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
 ```
 
 * Manual install
- * magical  
- http://www.charcoaldesign.co.uk/magical
- * adium  
- http://sourceforge.net/projects/adium/files/latest/download
- * Hosts
- https://github.com/specialunderwear/Hosts.prefpane/downloads
+  * Hosts
+    <https://github.com/specialunderwear/Hosts.prefpane/downloads>
+  * [z](https://github.com/rupa/z)
 
- * [Today Scripts](https://github.com/SamRothCA/Today-Scripts/releases)
- * [z](https://github.com/rupa/z)
+## Keyboard Settings
 
-* for AppStore
- * flycut
- * FreeMan
- * CodeRunner
- * SourceTree  
+### disable the Character Accent Menu
 
-* link atom files  
-```bash
-$ rm -rf ~/.atom && ln -s ~/Dropbox/private/atom ~/.atom
-```
-
-### for Yosemite
-
-#### disable the Character Accent Menu.
-
-```
-$ defaults write -g ApplePressAndHoldEnabled -bool false
+```sh
+defaults write -g ApplePressAndHoldEnabled -bool false
 ```
 
 #### '\' key generate '\' (not '¥')
 
 System Preferences > Keybord > inputSource
 
-![bsimg](https://dl.dropboxusercontent.com/u/25442177/backslash.png)
+![keyboard setting1](img/keyboard1.png)
 
+System Preferences > Keybord > Text
+
+![keyboard setting2](img/keyboard2.png)
 
 # Turn off animations
 
@@ -84,8 +79,11 @@ $ defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
 $ defaults write -g NSToolbarFullScreenAnimationDuration -float 0
 # disable finder animations
 $ defaults write com.apple.finder DisableAllAnimations -bool true
-#(then reboot your mac)
-
+#(then reboot or logout your mac)
 ```
 
+## Screencapture to jpg
 
+```sh
+defaults write com.apple.screencapture type jpg
+```
