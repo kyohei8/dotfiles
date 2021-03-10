@@ -26,11 +26,15 @@ export PATH=$HOME/n:$PATH
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
 
-# 環境変数など
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+## rbenv setting
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 #重複したpathを一意にする
 typeset -U path cdpath fpath manpath
+
+# 環境変数など
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # iterm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
