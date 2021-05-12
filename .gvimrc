@@ -16,7 +16,8 @@ if has('vim_starting')
   set columns=120               "横幅
   " フォント設定
   "set guifontwide=Source\ Han\ Code\ JP\ Normal:h12 こっちを設定すると⌘+で日本語が大きくならない
-  set guifont=Source\ Han\ Code\ JP\ Normal:h12
+  "set guifont=Source\ Han\ Code\ JP\ Normal:h12
+  set guifont=SF\ Mono:h14
 endif
 
 set lsp=1                     "行間

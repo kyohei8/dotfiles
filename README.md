@@ -1,12 +1,19 @@
 # Setup New Mac
 
-Macを買ったら最初にすること
+Mac を買ったら最初にすること
 
-* setting to System Preferences
-  * setup trackPad
-  * change language(ja->en)
+- setting to System Preferences
 
-* generate ssh-key(and add key to Github)
+  - setup trackPad
+  - change language(ja->en)
+
+- generate ssh-key(and add key to Github)
+
+## Xcode command line tool をインストール
+
+```
+xcode-select --install
+```
 
 ## put dotfiles, create symblic links
 
@@ -26,10 +33,10 @@ brew bundle
 defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
 ```
 
-* Manual install
-  * Hosts
+- Manual install
+  - Hosts
     <https://github.com/specialunderwear/Hosts.prefpane/downloads>
-  * [z](https://github.com/rupa/z)
+  - [z](https://github.com/rupa/z)
 
 ## Keyboard Settings
 
@@ -48,6 +55,10 @@ System Preferences > Keybord > inputSource
 System Preferences > Keybord > Text
 
 ![keyboard setting2](img/keyboard2.png)
+
+fixed Ctrl+Space behavior
+
+![keyboard setting3](img/keyboard3.jpg)
 
 # Turn off animations
 
@@ -86,4 +97,12 @@ $ defaults write com.apple.finder DisableAllAnimations -bool true
 
 ```sh
 defaults write com.apple.screencapture type jpg
+```
+
+## other
+
+git settings
+
+```
+git config --global core.ignorecase true
 ```
