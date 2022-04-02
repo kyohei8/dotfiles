@@ -5,7 +5,10 @@ Mac を買ったら最初にすること
 - setting to System Preferences
 
   - setup trackPad
+    - "タップでクリック"を有効化
+    - "スクロールの方向:ナチュラル"を無効化
   - change language(ja->en)
+    - 設定 > 言語と地域 > "優先する言語"に英語を追加し、先頭に配置 （再起動）
 
 - generate ssh-key(and add key to Github)
 
