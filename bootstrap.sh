@@ -1,5 +1,6 @@
 #!/bin/zsh
-
+# install z
+git clone git@github.com:rupa/z.git
 # install prezto
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
