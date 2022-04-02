@@ -102,6 +102,13 @@ $ defaults write com.apple.finder DisableAllAnimations -bool true
 defaults write com.apple.screencapture type jpg
 ```
 
+## show hidden files
+
+```
+defaults write com.apple.Finder AppleShowAllFiles true
+killall Finder
+```
+
 ## other
 
 git settings
