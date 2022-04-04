@@ -97,6 +97,7 @@ $ defaults write com.apple.finder DisableAllAnimations -bool true
 ```
 
 ## Screencapture to jpg
+（jpgでウィンドウキャプチャをすると周りが（透過じゃなく）黒くなるので注意）
 
 ```sh
 defaults write com.apple.screencapture type jpg
@@ -116,3 +117,7 @@ git settings
 ```
 git config --global core.ignorecase true
 ```
+
+### スクリーンセーバー起動直後にパスワード入力がでるようにする
+
+<img width="736" alt="Screen Shot 2022-04-05 at 0 05 25" src="https://user-images.githubusercontent.com/615774/161573967-a77b1d88-fad4-44c4-8e3c-5c404036113c.png">
